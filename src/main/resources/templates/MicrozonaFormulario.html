@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>NEXT Level - Java</title>
+
+<link rel="shortcut icon"
+	href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
+	rel="stylesheet" />
+
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/}">MENU</a></li>
+				<li><a th:href="@{/microzonaListar}"> Listar </a></li>
+				<li><a th:href="@{/microzona/novo}"> Novo </a></li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<main>
+		<section>
+			<h1>Cadastro de Microszonas</h1>
+		</section>
+
+		<section>
+
+			<form
+				th:action="${microzona.novo} ? @{/microzona/form} : @{/microzona/salvar/{codigo}(codigo=${microzona.codigo})}"
+				th:object="${microzona}" th:method="${microzona.novo} ? post : put">
+
+				<div th:if="${!microzona.novo}">
+					<label>Código: </label> <input th:field="*{codigo}"
+						readonly="readonly" />
+				</div>
+
+				<div>
+					<label>Nome: </label> <input th:field="*{nome}" />
+				</div>
+
+				<div>
+					<label>Status: </label> <input th:field="*{status}" />
+				</div>
+
+				<div>
+					<label>Atendimento Diario: </label> <input
+						th:field="*{atendimentoDiario}" />
+				</div>
+
+				<div>
+					<label>Atende Segunda: </label> <input th:field="*{atendeSegunda}" />
+				</div>
+
+				<div>
+					<label>Atende Terça: </label> <input th:field="*{atendeTerca}" />
+				</div>
+
+				<div>
+					<label>Atende Quarta: </label> <input th:field="*{atendeQuarta}" />
+				</div>
+
+				<div>
+					<label>Atende Quinta: </label> <input th:field="*{atendeQuinta}" />
+				</div>
+
+				<div>
+					<label>Atende Sexta: </label> <input th:field="*{atendeSexta}" />
+				</div>
+
+				<div>
+					<label>Atende Sábado: </label> <input th:field="*{atendeSabado}" />
+				</div>
+
+				<div>
+					<label>Municipio: </label> <input th:field="*{codigoMunicipio}" />
+				</div>
+
+				<div>
+					<label>Estado da Rota: </label> <input th:field="*{estadoRota}" />
+				</div>
+
+				<div>
+					<label>Rota: </label> <input th:field="*{codigoRota}" />
+				</div>
+
+
+				<div>
+					<button>Salvar</button>
+				</div>
+
+			</form>
+		</section>
+
+	</main>
+</body>
+
+</html>

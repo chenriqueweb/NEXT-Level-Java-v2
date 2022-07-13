@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>NEXT Level - Java</title>
+
+<link rel="shortcut icon"
+	href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
+	rel="stylesheet" />
+
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/}">MENU</a></li>
+				<li><a th:href="@{/filialListar}"> Listar </a></li>
+				<li><a th:href="@{/filial/novo}"> Novo </a></li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<main>
+		<section>
+			<h1>Cadastro de Filiais</h1>
+		</section>
+
+		<section>
+			<form
+				th:action="${filial.novo} ? @{/filial/form} : @{/filial/salvar/{empresa}/{codigo}(empresa=${filialPK.codigoEmpresa},codigo=${filialPK.codigoFilial})}"
+				th:object="${filial}" th:method="${filial.novo} ? post : put">
+
+				<div th:if="${!filial.novo}">
+					<label>Empresa: </label> <input
+						th:field="*{filialPK.codigoEmpresa}" readonly="readonly" />
+				</div>
+
+				<div th:if="${!filial.novo}">
+					<label>Código: </label> <input th:field="*{filialPK.codigoFilial}"
+						readonly="readonly" />
+				</div>
+
+				<div>
+					<label>Nome: </label> <input th:field="*{nome}" />
+				</div>
+
+				<div>
+					<label>CNPJ: </label> <input th:field="*{cnpj}" />
+				</div>
+
+				<div>
+					<label>Munipio: </label> <input th:field="*{municipio}" />
+				</div>
+
+				<div>
+					<button>Salvar</button>
+				</div>
+
+			</form>
+		</section>
+
+	</main>
+</body>
+
+</html>

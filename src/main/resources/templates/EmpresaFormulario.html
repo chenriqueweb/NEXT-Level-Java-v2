@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>NEXT Level - Java</title>
+
+<link rel="shortcut icon"
+	href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
+	rel="stylesheet" />
+<script src="/javascript/funcoes.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/}">MENU</a></li>
+				<li><a th:href="@{/empresaListar}"> Listar </a></li>
+				<li><a th:href="@{/empresa/novo}"> Novo </a></li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<main>
+		<section>
+			<h1>Cadastro de Empresas</h1>
+		</section>
+
+		<section>
+
+			<form
+				th:action="${empresa.novo} ? @{/empresa/form} : @{/empresa/salvar/{codigo}(codigo=${empresa.codigo})}"
+				th:object="${empresa}" th:method="${empresa.novo} ? post : put">
+
+				<div th:if="${!empresa.novo}">
+					<label>Código: </label> <input th:field="*{codigo}"
+						readonly="readonly" />
+				</div>
+
+				<div>
+					<label>Razao Social: </label> <input th:field="*{razaoSocial}" />
+				</div>
+
+				<div>
+					<label>CNPJ: </label> <input th:field="*{raizCNPJ}" />
+				</div>
+
+				<div>
+					<label>Data Abertura: </label> <input th:field="*{dataAbertura}" />
+				</div>
+
+				<!-- The actual snackbar -->
+				<div id="snackbar">Empresa Cadastrada com sucesso !</div>
+
+				<div>
+					<button onclick="myFunction()">Salvar</button>
+				</div>
+
+			</form>
+		</section>
+
+	</main>
+</body>
+
+</html>

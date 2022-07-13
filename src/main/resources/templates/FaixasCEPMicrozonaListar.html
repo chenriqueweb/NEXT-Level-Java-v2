@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>NEXT Level - Java</title>
+
+<link rel="shortcut icon"
+	href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
+	rel="stylesheet" />
+
+</head>
+   
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/}">MENU</a></li>
+				<li><a th:href="@{/faixasCEPMicrozona/novo}"> Novo </a></li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<main>
+		<section>
+			<h1>Lista das Faixas de CEP das Microzonas</h1>
+		</section>
+
+		<section>
+			<table>
+				<thead>
+					<tr>
+						<th>Codigo</th>
+						<th>Sequencia</th>
+						<th>CEP Inicial</th>
+						<th>CEP Final</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr th:each="faixasCEPMicrozona: ${faixasCEPMicrozonas}">
+						<td
+							th:text="${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoMicrozona}"></td>
+						<td
+							th:text="${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoSequencial}"></td>
+						<td th:text="${faixasCEPMicrozona.CEPinicial}"></td>
+						<td th:text="${faixasCEPMicrozona.CEPfinal}"></td>
+
+						<td><a
+							th:href="@{/faixasCEPMicrozona/editar/{codigoMicrozona}/{codigoSequencial}(codigoMicrozona=${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoMicrozona},codigoSequencial=${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoSequencial})}">Editar</a>
+						</td>
+
+						<td>
+							<form
+								th:action="@{/faixasCEPMicrozona/remover/{codigoMicrozona}/{codigoSequencial}(codigoMicrozona=${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoMicrozona},codigoSequencial=${faixasCEPMicrozona.faixasCEPMicrozonaPK.codigoSequencial})}"
+								th:method="delete">
+								<button>Remover</button>
+							</form>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+</body>
+
+</html>
