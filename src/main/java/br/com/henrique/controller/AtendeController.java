@@ -23,6 +23,7 @@ public class AtendeController {
     @Autowired
     private FaixasCEPMicrozonaService faixasCEPMicrozonaService;
     
+    @SuppressWarnings("unchecked")
     @GetMapping(path = "{cepAtende}")    
     public ResponseEntity<JSONObject> cepAtende(@PathVariable Integer cepAtende) {
 //      System.out.println(cepAtende);

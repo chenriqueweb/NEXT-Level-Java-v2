@@ -216,7 +216,7 @@ public class NextLevelController {
             FilialPK filialPK = new FilialPK();
             filialPK.setCodigoEmpresa(codigoEmpresa);
             filialPK.setCodigoFilial(codigoFilial);              
-            Filial filialAntes = filialService.findById(filialPK);            
+//            Filial filialAntes = filialService.findById(filialPK);            
             
             filialService.deletaFilial(filialPK);
             filialService.addFilial(filial);
