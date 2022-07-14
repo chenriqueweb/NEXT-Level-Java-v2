@@ -26,12 +26,12 @@ public class RotaEntregaService {
     
     // Busca pela Rota de Entrega
     public RotaEntrega findById(RotaEntregaPK rotaEntregaPK) {
-        RotaEntrega rotaEntregaBusca2 = repositRotaEntrega.findById(rotaEntregaPK).orElse(null);
+        RotaEntrega rotaEntregaBusca = repositRotaEntrega.findById(rotaEntregaPK).orElse(null);
         
-        if (rotaEntregaBusca2 == null) {
+        if (rotaEntregaBusca == null) {
             throw new ObjectNotFoundException("Rota de Entrega nao encontrada !");
         }
-        return rotaEntregaBusca2;
+        return rotaEntregaBusca;
     }
     
     // Inclui Rota de Entrega
