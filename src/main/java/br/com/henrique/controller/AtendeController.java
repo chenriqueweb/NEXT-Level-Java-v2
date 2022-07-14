@@ -68,7 +68,7 @@ public class AtendeController {
 //                System.out.println("CEPInicial:" + faixasCEPMicrozona.get(x).getCEPinicial());
 //                System.out.println("CEPFinal:" + faixasCEPMicrozona.get(x).getCEPfinal());
                 
-                Cep cep = ViaCepClient.findCep("07807220");  // 14620000
+                Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
               
 //              System.out.println(cep.getCep());
 //              System.out.println(cep.getBairro());
@@ -124,7 +124,7 @@ public class AtendeController {
               
               // Resultado da Busca por CEP x Rota de Entrega e Filial
               arrayMicrozonaJson.add("cepRequisitado: " + cepAtende);  // ok
-              arrayMicrozonaJson.add("empresaAtende: " + rotaEntregaBusca.get().getCodigoEmpresa());
+              arrayMicrozonaJson.add("empresaAtende: " + rotaEntregaBusca.get().getCodigoEmpresa());  // Verificar na tabela DB2.ZEN (cd_empgcb_atd)
               arrayMicrozonaJson.add("filialAtende: " + rotaEntregaBusca.get().getCodigoFilial());
               arrayMicrozonaJson.add("nomeFilial: " + filialBusca.get().getNome());
               arrayMicrozonaJson.add("cnpjFilial: " + filialBusca.get().getCnpj());
