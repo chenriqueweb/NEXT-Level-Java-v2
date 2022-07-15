@@ -1,17 +1,15 @@
 package br.com.henrique.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Empresa {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)   // Utilizando numeracao do banco DB2
     private Integer codigo;
-    
+
     private String razaoSocial;
     private String raizCNPJ;
     private String dataAbertura;
@@ -23,11 +21,12 @@ public class Empresa {
     
     public Empresa(Integer codigo, String razaoSocial, String raizCNPJ, String dataAbertura) {
         super();
+        this.codigo = codigo;
         this.razaoSocial = razaoSocial;
         this.raizCNPJ = raizCNPJ;
         this.dataAbertura = dataAbertura;
     }
-    
+
     // Método para identificar registro novo
     public boolean isNovo() {
         return razaoSocial == null;

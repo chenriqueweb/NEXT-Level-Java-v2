@@ -1,8 +1,6 @@
 package br.com.henrique.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class Municipio {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)  // Usando sequencia do DB2
     private Integer codigo_ID;
     
     public Municipio() {

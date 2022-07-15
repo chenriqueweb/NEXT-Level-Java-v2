@@ -49,7 +49,6 @@ public class AtendeController {
     @SuppressWarnings("unchecked")
     @GetMapping(path = "{cepAtende}")    
     public ResponseEntity<JSONObject> cepAtende(@PathVariable Integer cepAtende) {
-//      System.out.println(cepAtende);
         
         List<FaixasCEPMicrozona> faixasCEPMicrozona = faixasCEPMicrozonaService.findAll();
         JSONObject objetoJson = new JSONObject();
@@ -61,13 +60,6 @@ public class AtendeController {
         for (int x = 0; x < faixasCEPMicrozona.size(); x++ ) {
           if (cepAtende >= faixasCEPMicrozona.get(x).getCEPinicial() & 
               cepAtende <= faixasCEPMicrozona.get(x).getCEPfinal()) {
-//                System.out.println("--------------------------------------------------------------------------------------------");
-//                System.out.println("== Faixa:");
-//                System.out.println("Microzona: " + faixasCEPMicrozona.get(x).getFaixasCEPMicrozonaPK().getCodigoMicrozona());
-//                System.out.println("Sequencial: " + faixasCEPMicrozona.get(x).getFaixasCEPMicrozonaPK().getCodigoSequencial());
-//                System.out.println("CEPInicial:" + faixasCEPMicrozona.get(x).getCEPinicial());
-//                System.out.println("CEPFinal:" + faixasCEPMicrozona.get(x).getCEPfinal());
-                
                 Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
               
 //              System.out.println(cep.getCep());
@@ -81,14 +73,6 @@ public class AtendeController {
 //              System.out.println(cep.getSiafi());
 //              System.out.println(cep.getUf());
 //
-//              // Dados do CEP da Microzona
-//              arrayMicrozonaJson.add("microzona: " + faixasCEPMicrozona.get(x).getFaixasCEPMicrozonaPK().getCodigoMicrozona());
-//              arrayMicrozonaJson.add("sequencial: " + faixasCEPMicrozona.get(x).getFaixasCEPMicrozonaPK().getCodigoSequencial());
-//              arrayMicrozonaJson.add("cepInicial: " + faixasCEPMicrozona.get(x).getCEPinicial());
-//              arrayMicrozonaJson.add("cepFinal: " + faixasCEPMicrozona.get(x).getCEPfinal());                
-//
-//              objetoJson.put("microzona", arrayMicrozonaJson);       
-                
               // Dados do CEP informado
               if (cep.getCep() != null) {
                  arrayEnderecoJson.add("cep: " + cep.getCep());
@@ -128,16 +112,13 @@ public class AtendeController {
               arrayMicrozonaJson.add("filialAtende: " + rotaEntregaBusca.get().getCodigoFilial());
               arrayMicrozonaJson.add("nomeFilial: " + filialBusca.get().getNome());
               arrayMicrozonaJson.add("cnpjFilial: " + filialBusca.get().getCnpj());
-              arrayMicrozonaJson.add("microzona: " + faixasCEPMicrozona.get(x).getFaixasCEPMicrozonaPK().getCodigoMicrozona());
+              
+              arrayMicrozonaJson.add("microzona: " + microzona.getCodigo());
               arrayMicrozonaJson.add("ufRota: " + microzona.getEstadoRota().getSigla());
               arrayMicrozonaJson.add("codigoRota: " + microzona.getCodigoRota());             
-              
-//              arrayMicrozonaJson.add("codigoMunicipio: " + microzona.getCodigoMunicipio().getCodigo_ID());          
-//              arrayMicrozonaJson.add("municipio: " + microzona.getCodigoMunicipio().getNome());
-//              arrayMicrozonaJson.add("estado: " + microzona.getCodigoMunicipio().getEstado().getSigla());
-//              arrayMicrozonaJson.add("nomeEstado: " + microzona.getCodigoMunicipio().getEstado().getNome());
-              
-              arrayMicrozonaJson.add("codigoMunicipioIBGE: " + cep.getIbge());
+              arrayMicrozonaJson.add("codigoMunicipio: " + microzona.getCodigoMunicipio().getCodigo_ID());
+
+              // Informarções do Cliente
               arrayMicrozonaJson.add("municipio: " + cep.getLocalidade());
               arrayMicrozonaJson.add("estado: " + cep.getUf());
               arrayMicrozonaJson.add("nomeEstado: " + estadoBusca.getNome());
