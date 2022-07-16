@@ -84,7 +84,7 @@ public class ControllerExceptionHandler {
     public ResponseEntity<StandardError> handleTransactionSystemException(TransactionSystemException ex, 
                                                                           HttpServletRequest httpRequest) {
         
-        System.out.println(">>>>>>>>>> teste 333");   
+        System.out.println(">>>>>>>>>> teste 333");     
         
         HttpStatus status = HttpStatus.CONFLICT;   // INTERNAL_SERVER_ERROR;
         StandardError error = new StandardError(
