@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -23,6 +24,7 @@ public class Microzona {
     private String atendeQuinta;
     private String atendeSexta;
     private String atendeSabado;
+    private Integer codigoRota;
     
     // FK com Estado
     @ManyToOne
@@ -33,9 +35,21 @@ public class Microzona {
     @ManyToOne
     @JoinColumn(name="codigo_ID")
     private Municipio codigoMunicipio;
-        
     
-    private Integer codigoRota;
+    // FK com Estado
+    @ManyToOne
+    @JoinColumn(name="rotaEntregaPK.siglaEstado", referencedColumnName="sigla") 
+    private Estado estado; 
+    
+    // FK com Rota de Entrega
+    @ManyToOne
+    @JoinColumns({@JoinColumn(updatable = false, insertable = false, 
+                                    name = "rotaEntregaPK.siglaEstado", referencedColumnName = "siglaEstado"), 
+                  @JoinColumn(updatable = false, insertable = false,
+                                    name = "rotaEntregaPK.codigoRota",  referencedColumnName = "codigoRota")
+                 })  
+    private RotaEntrega rotaEntrega;      
+
 
     public Microzona() {
         super();

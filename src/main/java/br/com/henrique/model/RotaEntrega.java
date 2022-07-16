@@ -2,6 +2,9 @@ package br.com.henrique.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RotaEntrega {
@@ -14,6 +17,21 @@ public class RotaEntrega {
     private Integer codigoEmpresa;
     private Integer codigoFilial;
     private Integer prazoExpedicao;
+    
+    // FK com Estado
+    @ManyToOne
+    @JoinColumn(name="rotaEntregaPK.siglaEstado", referencedColumnName="sigla") 
+    private Estado estado; 
+    
+    // FK com Filial
+    @ManyToOne
+    @JoinColumns({@JoinColumn(updatable = false, insertable = false, 
+                                    name = "filialPK.codigoEmpresa", referencedColumnName = "codigoEmpresa"), 
+                  @JoinColumn(updatable = false, insertable = false,
+                                    name = "filialPK.codigoFilial",  referencedColumnName = "codigoFilial")
+                 })  
+    private Filial filial;    
+    
     
     public RotaEntrega() {
         super();
@@ -30,7 +48,7 @@ public class RotaEntrega {
         this.prazoExpedicao = prazoExpedicao;
     }
 
-    // Método para identificar registro novo
+    // MÃ©todo para identificar registro novo
     public boolean isNovo() {
         return nome == null;
     }
