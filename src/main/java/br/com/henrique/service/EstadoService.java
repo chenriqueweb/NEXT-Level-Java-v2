@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Estado;
@@ -23,6 +25,11 @@ public class EstadoService {
         
         return estados;
     }    
+    
+    // Lista Estados com Paginação
+    public Page<Estado> findAllPage(Pageable pageable) {
+        return repositEstado.findAll(pageable);
+    }
  
     // Busca por Estado
     public Estado findById(String sigla) {

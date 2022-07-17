@@ -9,7 +9,7 @@ SELECT  '        Empresa empresa' ||
         TRIM(SUBSTR(TO_CHAR(FNE.CD_EMPFNE_CGC_RAI, '00000000'),7,3)) || '/' ||       
         TRIM(TO_CHAR(FNE.CD_FNE_CGC_FIL, '0000')) || '-' ||
         TRIM(TO_CHAR(FNE.CD_FNE_CGC_DVR, '00')) || '", ' ||
-        '"' || TO_CHAR(FNE.DT_FNE_ABE_EST, 'YYYY-MM-DD') || '");' || CHR(13) ||  
+        'formatterDate.parse("' || TO_CHAR(FNE.DT_FNE_ABE_EST, 'dd/mm/yyyy') || '"));' || CHR(13) ||  
         '        empresaService.addEmpresa(empresa' || TRIM(TO_CHAR(ROW_NUMBER() OVER (ORDER BY GCB.CD_EMPGCB ASC),'0000')) || ');'
         AS "Empresa"
  FROM jtrach.EMP_GCB GCB,

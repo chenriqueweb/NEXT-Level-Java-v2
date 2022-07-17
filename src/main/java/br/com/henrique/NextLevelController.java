@@ -3,7 +3,11 @@ package br.com.henrique;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -108,6 +112,23 @@ public class NextLevelController {
             
             return modelAndView;
         }
+        
+        @GetMapping("/estadoListar/page")
+//        public ModelAndView getEstados(@PageableDefault(size = 10) Pageable pageable,
+//                                 Model model) {
+            
+        public ModelAndView findAllEstadoPage(@PageableDefault(size = 7) Pageable pageable) {            
+            
+            Page<Estado> estados = estadoService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("EstadoListar");
+            
+            // modelAndView.addAttribute("estados", estados);
+            
+            modelAndView.addObject("estados", estados);            
+            
+            return modelAndView;
+        }        
         
         @GetMapping("/estado/novo")
         public ModelAndView estadoNovo() {            

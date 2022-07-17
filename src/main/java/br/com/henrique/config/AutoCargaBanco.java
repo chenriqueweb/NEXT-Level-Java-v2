@@ -1,7 +1,5 @@
 package br.com.henrique.config;
 
-import static java.lang.String.format;
-
 import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
@@ -61,44 +59,24 @@ public class AutoCargaBanco implements CommandLineRunner {
     @Override
     public void run(String...args) throws Exception { 
         
-        // Carga da Tabela: EMPRESA
-//        Empresa empresa1 = new Empresa(null, "teste-01", "11.456.789/0001-01", "2022-06-25");
-//        Empresa empresa2 = new Empresa(null, "teste-02", "22.456.789/0001-01", "2022-06-26");
-//        Empresa empresa3 = new Empresa(null, "teste-03", "33.456.789/0001-01", "2022-06-27");
-//        Empresa empresa4 = new Empresa(null, "teste-04", "33.456.789/0001-01", "2022-06-27");
-//        
-//        empresaService.addEmpresa(empresa1);
-//        empresaService.addEmpresa(empresa2);
-//        empresaService.addEmpresa(empresa3);
-//        empresaService.addEmpresa(empresa4);
-        
-        // Script carga DB2
         final SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");        
         
+        // Carga da Tabela: EMPRESA
         Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33.041.260/0947-11", formatterDate.parse("25/08/2016"));
+        empresaService.addEmpresa(empresa0001);
+        
         empresaService.addEmpresa(empresa0001);
         
         logger.debug("[INFO] 1 Carga de Empresa");
         
-//        logger.info("[INFO] 2 Carga de Empresa");
+        logger.info("[INFO] 2 Carga de Empresa");
 //        
 //        logger.info(format(INICIO_CARGA));
 //        
-//        logger.error("teste 2 - error");
+        logger.error("teste 2 - error");        
         
-
+        
         // Carga da Tabela: ESTADO        
-//        Estado estadoRJ = new Estado("RJ", "Rio de Janeiro");
-//        Estado estadoSP = new Estado("SP","Sao Paulo");
-//        Estado estadoMG = new Estado("MG","Minas Gerais");
-//        Estado estadoES = new Estado("ES","Espirito Santo");
-//
-//        estadoService.addEstado(estadoRJ);       
-//        estadoService.addEstado(estadoSP);
-//        estadoService.addEstado(estadoMG);       
-//        estadoService.addEstado(estadoES); 
-        
-        // Script carga DB2
         Estado estadoAC = new Estado("AC","Acre");
         estadoService.addEstado(estadoAC);
         Estado estadoAL = new Estado("AL","Alagoas");
@@ -157,21 +135,7 @@ public class AutoCargaBanco implements CommandLineRunner {
         estadoService.addEstado(estadoTO);
         
         
-//        
-//        // Carga da Tabela: MUNICIPIO
-//        Municipio municipioRJ1 = new Municipio(null, "Barra do Pirai", estadoRJ);
-//        Municipio municipioRJ2 = new Municipio(null, "Volta Redonda", estadoRJ);
-//        Municipio municipioRJ3 = new Municipio(null, "Pirai", estadoRJ);        
-//        Municipio municipioSP1 = new Municipio(null, "São Caetano", estadoSP);
-//        Municipio municipioSP2 = new Municipio(null, "Jundiai", estadoSP);
-//
-//        municipioService.addMunicipio(municipioRJ1);
-//        municipioService.addMunicipio(municipioRJ2);
-//        municipioService.addMunicipio(municipioRJ3);        
-//        municipioService.addMunicipio(municipioSP1);
-//        municipioService.addMunicipio(municipioSP2);     
-        
-//        // Script carga DB2
+        // Carga da Tabela: MUNICIPIO
         Municipio municipioES27529 = new Municipio(27529, "Afonso claudio", estadoES);
         municipioService.addMunicipio(municipioES27529);
         Municipio municipioES27537 = new Municipio(27537, "Agua doce do no", estadoES);
@@ -330,20 +294,7 @@ public class AutoCargaBanco implements CommandLineRunner {
         municipioService.addMunicipio(municipioES55425);        
         
         
-//        // Carga da Tabela: FILIAL
-//        FilialPK filialPK = new FilialPK();
-//        filialPK.setCodigoEmpresa(1);
-//        filialPK.setCodigoFilial(1);
-//        Filial filial1 = new Filial(filialPK, "Filial-01", "123.456.0001/01", 1);
-//        filialService.addFilial(filial1);
-//
-//        filialPK.setCodigoEmpresa(1);
-//        filialPK.setCodigoFilial(2);
-//        Filial filial2 = new Filial(filialPK, "Filial-02", "222.456.0001/01", 2);
-//        filialService.addFilial(filial2);
-        
-
-        // Script carga DB2
+        // Carga da Tabela: FILIAL
         FilialPK filialPK = new FilialPK();
         
         filialPK.setCodigoEmpresa(21);
@@ -424,21 +375,7 @@ public class AutoCargaBanco implements CommandLineRunner {
         filialService.addFilial(filial0019);        
 
         
-        
-//        // Carga da Tabela: MICROZONA
-//        Microzona microzona1 = new Microzona(null, "Microzona-01", "A", "N", "S", "N", "S", "N", "S", "N", estadoRJ, municipioRJ1, 1);
-//        Microzona microzona2 = new Microzona(null, "Microzona-02", "A", "N", "S", "N", "S", "N", "S", "N", estadoRJ, municipioRJ2, 1);
-//        Microzona microzona3 = new Microzona(null, "Microzona-03", "A", "N", "S", "N", "S", "N", "S", "N", estadoRJ, municipioRJ3, 1);
-//        Microzona microzona4 = new Microzona(null, "Microzona-04", "A", "N", "S", "N", "S", "N", "S", "N", estadoSP, municipioSP1, 1);
-//        Microzona microzona5 = new Microzona(null, "Microzona-05", "A", "N", "S", "N", "S", "N", "S", "N", estadoSP, municipioSP2, 1);
-//        
-//        microzonaService.addMicrozona(microzona1);
-//        microzonaService.addMicrozona(microzona2);        
-//        microzonaService.addMicrozona(microzona3);
-//        microzonaService.addMicrozona(microzona4);
-//        microzonaService.addMicrozona(microzona5);        
-
-        // Script carga DB2
+        // Carga da Tabela: MICROZONA
         Microzona microzona0001 = new Microzona(null, "ESPIRITO SANTO-EXCLUSIV CNOVA", "A", "S", " ", " ", " ", " ", " ", " ", estadoES, municipioES28231, 70);
         microzonaService.addMicrozona(microzona0001);
         Microzona microzona0002 = new Microzona(null, "REVERSA CORREIOS", "A", "S", " ", " ", " ", " ", " ", " ", estadoES, municipioES28177, 299);
@@ -709,302 +646,252 @@ public class AutoCargaBanco implements CommandLineRunner {
         microzonaService.addMicrozona(microzona0134);
         
         
+        // Carga da Tabela: ROTA DE ENTREGA
+        RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
+        rotaEntregaPK.setSiglaEstado("ES");        
         
-        
-//        // Carga da Tabela: ROTA DE ENTREGA
-          RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
-          rotaEntregaPK.setSiglaEstado("ES");        
-//
-//        rotaEntregaPK.setCodigoRota(1);
-//        RotaEntrega rotaEntrega1 = new RotaEntrega(rotaEntregaPK, "Rota-01", "A", 1, 1, 10);
-//        rotaEntregaService.addRotaEntrega(rotaEntrega1);
-//
-//        rotaEntregaPK.setCodigoRota(2);
-//        RotaEntrega rotaEntrega2 = new RotaEntrega(rotaEntregaPK, "Rota-02", "A", 1, 1, 2);
-//        rotaEntregaService.addRotaEntrega(rotaEntrega2);
-//
-//        rotaEntregaPK.setCodigoRota(3);
-//        RotaEntrega rotaEntrega3 = new RotaEntrega(rotaEntregaPK, "Rota-03", "I", 1, 1, 5);
-//        rotaEntregaService.addRotaEntrega(rotaEntrega3);
-//        
-//        rotaEntregaPK.setSiglaEstado("SP");        
-//
-//        rotaEntregaPK.setCodigoRota(4);
-//        RotaEntrega rotaEntrega4 = new RotaEntrega(rotaEntregaPK, "Rota-04", "A", 1, 1, 20);
-//        rotaEntregaService.addRotaEntrega(rotaEntrega4);
-//
-//        rotaEntregaPK.setCodigoRota(5);
-//        RotaEntrega rotaEntrega5 = new RotaEntrega(rotaEntregaPK, "Rota-05", "I", 1, 1, 3);        
-//        rotaEntregaService.addRotaEntrega(rotaEntrega5);
-        
-          rotaEntregaPK.setCodigoRota(1); 
-          RotaEntrega rotaEntrega1 = new RotaEntrega(rotaEntregaPK, "1640_VITORIA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega1);
-          rotaEntregaPK.setCodigoRota(2); 
-          RotaEntrega rotaEntrega2 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega2);
-          rotaEntregaPK.setCodigoRota(4); 
-          RotaEntrega rotaEntrega4 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega4);
-          rotaEntregaPK.setCodigoRota(5); 
-          RotaEntrega rotaEntrega5 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega5);
-          rotaEntregaPK.setCodigoRota(6); 
-          RotaEntrega rotaEntrega6 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega6);
-          rotaEntregaPK.setCodigoRota(8); 
-          RotaEntrega rotaEntrega8 = new RotaEntrega(rotaEntregaPK, "1640_VIANA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega8);
-          rotaEntregaPK.setCodigoRota(9); 
-          RotaEntrega rotaEntrega9 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega9);
-          rotaEntregaPK.setCodigoRota(10); 
-          RotaEntrega rotaEntrega10 = new RotaEntrega(rotaEntregaPK, "1640_ALEGRE_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega10);
-          rotaEntregaPK.setCodigoRota(11); 
-          RotaEntrega rotaEntrega11 = new RotaEntrega(rotaEntregaPK, "ATILIO/MIMOSO/MUQUI I/46/47/56", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega11);
-          rotaEntregaPK.setCodigoRota(12); 
-          RotaEntrega rotaEntrega12 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega12);
-          rotaEntregaPK.setCodigoRota(13); 
-          RotaEntrega rotaEntrega13 = new RotaEntrega(rotaEntregaPK, "1640_SAO MATHEUS_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega13);
-          rotaEntregaPK.setCodigoRota(14); 
-          RotaEntrega rotaEntrega14 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega14);
-          rotaEntregaPK.setCodigoRota(16); 
-          RotaEntrega rotaEntrega16 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega16);
-          rotaEntregaPK.setCodigoRota(17); 
-          RotaEntrega rotaEntrega17 = new RotaEntrega(rotaEntregaPK, "S.TEREZA/LEOPOLDINA/M.JETIBA", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega17);
-          rotaEntregaPK.setCodigoRota(19); 
-          RotaEntrega rotaEntrega19 = new RotaEntrega(rotaEntregaPK, "CAST/C.CAST/V.ALTA I/51/52/55", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega19);
-          rotaEntregaPK.setCodigoRota(20); 
-          RotaEntrega rotaEntrega20 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega20);
-          rotaEntregaPK.setCodigoRota(21); 
-          RotaEntrega rotaEntrega21 = new RotaEntrega(rotaEntregaPK, "1640_VITORIA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega21);
-          rotaEntregaPK.setCodigoRota(22); 
-          RotaEntrega rotaEntrega22 = new RotaEntrega(rotaEntregaPK, "D.MARTINS/M.FLORIANO/A.CHAVES", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega22);
-          rotaEntregaPK.setCodigoRota(23); 
-          RotaEntrega rotaEntrega23 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega23);
-          rotaEntregaPK.setCodigoRota(24); 
-          RotaEntrega rotaEntrega24 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega24);
-          rotaEntregaPK.setCodigoRota(25); 
-          RotaEntrega rotaEntrega25 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega25);
-          rotaEntregaPK.setCodigoRota(26); 
-          RotaEntrega rotaEntrega26 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega26);
-          rotaEntregaPK.setCodigoRota(27); 
-          RotaEntrega rotaEntrega27 = new RotaEntrega(rotaEntregaPK, "REGIOES DE SERRA", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega27);
-          rotaEntregaPK.setCodigoRota(28); 
-          RotaEntrega rotaEntrega28 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega28);
-          rotaEntregaPK.setCodigoRota(29); 
-          RotaEntrega rotaEntrega29 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega29);
-          rotaEntregaPK.setCodigoRota(53); 
-          RotaEntrega rotaEntrega53 = new RotaEntrega(rotaEntregaPK, "REGIOES DE LINHARES RURAL", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega53);
-          rotaEntregaPK.setCodigoRota(67); 
-          RotaEntrega rotaEntrega67 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega67);
-          rotaEntregaPK.setCodigoRota(72); 
-          RotaEntrega rotaEntrega72 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega72);
-          rotaEntregaPK.setCodigoRota(73); 
-          RotaEntrega rotaEntrega73 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega73);
-          rotaEntregaPK.setCodigoRota(75); 
-          RotaEntrega rotaEntrega75 = new RotaEntrega(rotaEntregaPK, "1640_INTERIOR_NP", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega75);
-          rotaEntregaPK.setCodigoRota(76); 
-          RotaEntrega rotaEntrega76 = new RotaEntrega(rotaEntregaPK, "MINI HUB LJ1639 VITORIA ES", "A", 21, 1639, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega76);
-          rotaEntregaPK.setCodigoRota(77); 
-          RotaEntrega rotaEntrega77 = new RotaEntrega(rotaEntregaPK, "MINI HUB LJ1648 SERRA ES", "A", 21, 1648, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega77);
-          rotaEntregaPK.setCodigoRota(79); 
-          RotaEntrega rotaEntrega79 = new RotaEntrega(rotaEntregaPK, "L OUTRAS TRANSP. (LEVE)", "A", 21, 1401, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega79);
-          rotaEntregaPK.setCodigoRota(80); 
-          RotaEntrega rotaEntrega80 = new RotaEntrega(rotaEntregaPK, "T OUTRAS TRANSP. (PESADO)", "A", 21, 1401, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega80);
-          rotaEntregaPK.setCodigoRota(98); 
-          RotaEntrega rotaEntrega98 = new RotaEntrega(rotaEntregaPK, "REVERSA CORREIOS", "A", 21, 1088, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega98);
-          rotaEntregaPK.setCodigoRota(99); 
-          RotaEntrega rotaEntrega99 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega99);
-          rotaEntregaPK.setCodigoRota(110); 
-          RotaEntrega rotaEntrega110 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega110);
-          rotaEntregaPK.setCodigoRota(111); 
-          RotaEntrega rotaEntrega111 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega111);
-          rotaEntregaPK.setCodigoRota(112); 
-          RotaEntrega rotaEntrega112 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega112);
-          rotaEntregaPK.setCodigoRota(115); 
-          RotaEntrega rotaEntrega115 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega115);
-          rotaEntregaPK.setCodigoRota(117); 
-          RotaEntrega rotaEntrega117 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega117);
-          rotaEntregaPK.setCodigoRota(133); 
-          RotaEntrega rotaEntrega133 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega133);
-          rotaEntregaPK.setCodigoRota(168); 
-          RotaEntrega rotaEntrega168 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega168);
-          rotaEntregaPK.setCodigoRota(173); 
-          RotaEntrega rotaEntrega173 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega173);
-          rotaEntregaPK.setCodigoRota(183); 
-          RotaEntrega rotaEntrega183 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1736, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega183);
-          rotaEntregaPK.setCodigoRota(294); 
-          RotaEntrega rotaEntrega294 = new RotaEntrega(rotaEntregaPK, "L OUTRAS TRANSP. LEVE", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega294);
-          rotaEntregaPK.setCodigoRota(295); 
-          RotaEntrega rotaEntrega295 = new RotaEntrega(rotaEntregaPK, "T OUTRAS TRANSP. PESADO", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega295);
-          rotaEntregaPK.setCodigoRota(296); 
-          RotaEntrega rotaEntrega296 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega296);
-          rotaEntregaPK.setCodigoRota(297); 
-          RotaEntrega rotaEntrega297 = new RotaEntrega(rotaEntregaPK, "RETIRA NOS CORREIOS", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega297);
-          rotaEntregaPK.setCodigoRota(298); 
-          RotaEntrega rotaEntrega298 = new RotaEntrega(rotaEntregaPK, "ENTREGA PELOS CORREIOS", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega298);
-          rotaEntregaPK.setCodigoRota(299); 
-          RotaEntrega rotaEntrega299 = new RotaEntrega(rotaEntregaPK, "P - REVERSA CORREIOS", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega299);
-          rotaEntregaPK.setCodigoRota(300); 
-          RotaEntrega rotaEntrega300 = new RotaEntrega(rotaEntregaPK, "MINIHUB 1646", "A", 21, 1646, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega300);
-          rotaEntregaPK.setCodigoRota(301); 
-          RotaEntrega rotaEntrega301 = new RotaEntrega(rotaEntregaPK, "MINI HUB", "A", 21, 1641, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega301);
-          rotaEntregaPK.setCodigoRota(302); 
-          RotaEntrega rotaEntrega302 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1642, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega302);
-          rotaEntregaPK.setCodigoRota(303); 
-          RotaEntrega rotaEntrega303 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1645, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega303);
-          rotaEntregaPK.setCodigoRota(304); 
-          RotaEntrega rotaEntrega304 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1949, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega304);
-          rotaEntregaPK.setCodigoRota(305); 
-          RotaEntrega rotaEntrega305 = new RotaEntrega(rotaEntregaPK, "APIACA S JOSE CALDO D2", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega305);
-          rotaEntregaPK.setCodigoRota(306); 
-          RotaEntrega rotaEntrega306 = new RotaEntrega(rotaEntregaPK, "DOMINGOS REGIOES D1", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega306);
-          rotaEntregaPK.setCodigoRota(307); 
-          RotaEntrega rotaEntrega307 = new RotaEntrega(rotaEntregaPK, "ARACRUZ REGIOES", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega307);
-          rotaEntregaPK.setCodigoRota(308); 
-          RotaEntrega rotaEntrega308 = new RotaEntrega(rotaEntregaPK, "SERRA", "A", 21, 1640, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega308);
-          rotaEntregaPK.setCodigoRota(309); 
-          RotaEntrega rotaEntrega309 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1639, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega309);
-          rotaEntregaPK.setCodigoRota(310); 
-          RotaEntrega rotaEntrega310 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1641, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega310);
-          rotaEntregaPK.setCodigoRota(311); 
-          RotaEntrega rotaEntrega311 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1642, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega311);
-          rotaEntregaPK.setCodigoRota(312); 
-          RotaEntrega rotaEntrega312 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1645, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega312);
-          rotaEntregaPK.setCodigoRota(313); 
-          RotaEntrega rotaEntrega313 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1646, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega313);
-          rotaEntregaPK.setCodigoRota(314); 
-          RotaEntrega rotaEntrega314 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1648, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega314);
-          rotaEntregaPK.setCodigoRota(315); 
-          RotaEntrega rotaEntrega315 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1949, 0);
-          rotaEntregaService.addRotaEntrega(rotaEntrega315);
+        rotaEntregaPK.setCodigoRota(1); 
+        RotaEntrega rotaEntrega1 = new RotaEntrega(rotaEntregaPK, "1640_VITORIA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega1);
+        rotaEntregaPK.setCodigoRota(2); 
+        RotaEntrega rotaEntrega2 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega2);
+        rotaEntregaPK.setCodigoRota(4); 
+        RotaEntrega rotaEntrega4 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega4);
+        rotaEntregaPK.setCodigoRota(5); 
+        RotaEntrega rotaEntrega5 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega5);
+        rotaEntregaPK.setCodigoRota(6); 
+        RotaEntrega rotaEntrega6 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega6);
+        rotaEntregaPK.setCodigoRota(8); 
+        RotaEntrega rotaEntrega8 = new RotaEntrega(rotaEntregaPK, "1640_VIANA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega8);
+        rotaEntregaPK.setCodigoRota(9); 
+        RotaEntrega rotaEntrega9 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega9);
+        rotaEntregaPK.setCodigoRota(10); 
+        RotaEntrega rotaEntrega10 = new RotaEntrega(rotaEntregaPK, "1640_ALEGRE_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega10);
+        rotaEntregaPK.setCodigoRota(11); 
+        RotaEntrega rotaEntrega11 = new RotaEntrega(rotaEntregaPK, "ATILIO/MIMOSO/MUQUI I/46/47/56", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega11);
+        rotaEntregaPK.setCodigoRota(12); 
+        RotaEntrega rotaEntrega12 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega12);
+        rotaEntregaPK.setCodigoRota(13); 
+        RotaEntrega rotaEntrega13 = new RotaEntrega(rotaEntregaPK, "1640_SAO MATHEUS_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega13);
+        rotaEntregaPK.setCodigoRota(14); 
+        RotaEntrega rotaEntrega14 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega14);
+        rotaEntregaPK.setCodigoRota(16); 
+        RotaEntrega rotaEntrega16 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega16);
+        rotaEntregaPK.setCodigoRota(17); 
+        RotaEntrega rotaEntrega17 = new RotaEntrega(rotaEntregaPK, "S.TEREZA/LEOPOLDINA/M.JETIBA", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega17);
+        rotaEntregaPK.setCodigoRota(19); 
+        RotaEntrega rotaEntrega19 = new RotaEntrega(rotaEntregaPK, "CAST/C.CAST/V.ALTA I/51/52/55", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega19);
+        rotaEntregaPK.setCodigoRota(20); 
+        RotaEntrega rotaEntrega20 = new RotaEntrega(rotaEntregaPK, "1640_VILA VELHA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega20);
+        rotaEntregaPK.setCodigoRota(21); 
+        RotaEntrega rotaEntrega21 = new RotaEntrega(rotaEntregaPK, "1640_VITORIA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega21);
+        rotaEntregaPK.setCodigoRota(22); 
+        RotaEntrega rotaEntrega22 = new RotaEntrega(rotaEntregaPK, "D.MARTINS/M.FLORIANO/A.CHAVES", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega22);
+        rotaEntregaPK.setCodigoRota(23); 
+        RotaEntrega rotaEntrega23 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega23);
+        rotaEntregaPK.setCodigoRota(24); 
+        RotaEntrega rotaEntrega24 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega24);
+        rotaEntregaPK.setCodigoRota(25); 
+        RotaEntrega rotaEntrega25 = new RotaEntrega(rotaEntregaPK, "1640_GUARAPARI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega25);
+        rotaEntregaPK.setCodigoRota(26); 
+        RotaEntrega rotaEntrega26 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega26);
+        rotaEntregaPK.setCodigoRota(27); 
+        RotaEntrega rotaEntrega27 = new RotaEntrega(rotaEntregaPK, "REGIOES DE SERRA", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega27);
+        rotaEntregaPK.setCodigoRota(28); 
+        RotaEntrega rotaEntrega28 = new RotaEntrega(rotaEntregaPK, "1640_SERRA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega28);
+        rotaEntregaPK.setCodigoRota(29); 
+        RotaEntrega rotaEntrega29 = new RotaEntrega(rotaEntregaPK, "1640_CARIACICA_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega29);
+        rotaEntregaPK.setCodigoRota(53); 
+        RotaEntrega rotaEntrega53 = new RotaEntrega(rotaEntregaPK, "REGIOES DE LINHARES RURAL", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega53);
+        rotaEntregaPK.setCodigoRota(67); 
+        RotaEntrega rotaEntrega67 = new RotaEntrega(rotaEntregaPK, "1640_CACHOEIRO DE ITAPEMIRI_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega67);
+        rotaEntregaPK.setCodigoRota(72); 
+        RotaEntrega rotaEntrega72 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega72);
+        rotaEntregaPK.setCodigoRota(73); 
+        RotaEntrega rotaEntrega73 = new RotaEntrega(rotaEntregaPK, "1640_LINHARES_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega73);
+        rotaEntregaPK.setCodigoRota(75); 
+        RotaEntrega rotaEntrega75 = new RotaEntrega(rotaEntregaPK, "1640_INTERIOR_NP", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega75);
+        rotaEntregaPK.setCodigoRota(76); 
+        RotaEntrega rotaEntrega76 = new RotaEntrega(rotaEntregaPK, "MINI HUB LJ1639 VITORIA ES", "A", 21, 1639, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega76);
+        rotaEntregaPK.setCodigoRota(77); 
+        RotaEntrega rotaEntrega77 = new RotaEntrega(rotaEntregaPK, "MINI HUB LJ1648 SERRA ES", "A", 21, 1648, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega77);
+        rotaEntregaPK.setCodigoRota(79); 
+        RotaEntrega rotaEntrega79 = new RotaEntrega(rotaEntregaPK, "L OUTRAS TRANSP. (LEVE)", "A", 21, 1401, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega79);
+        rotaEntregaPK.setCodigoRota(80); 
+        RotaEntrega rotaEntrega80 = new RotaEntrega(rotaEntregaPK, "T OUTRAS TRANSP. (PESADO)", "A", 21, 1401, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega80);
+        rotaEntregaPK.setCodigoRota(98); 
+        RotaEntrega rotaEntrega98 = new RotaEntrega(rotaEntregaPK, "REVERSA CORREIOS", "A", 21, 1088, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega98);
+        rotaEntregaPK.setCodigoRota(99); 
+        RotaEntrega rotaEntrega99 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega99);
+        rotaEntregaPK.setCodigoRota(110); 
+        RotaEntrega rotaEntrega110 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega110);
+        rotaEntregaPK.setCodigoRota(111); 
+        RotaEntrega rotaEntrega111 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega111);
+        rotaEntregaPK.setCodigoRota(112); 
+        RotaEntrega rotaEntrega112 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega112);
+        rotaEntregaPK.setCodigoRota(115); 
+        RotaEntrega rotaEntrega115 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega115);
+        rotaEntregaPK.setCodigoRota(117); 
+        RotaEntrega rotaEntrega117 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega117);
+        rotaEntregaPK.setCodigoRota(133); 
+        RotaEntrega rotaEntrega133 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega133);
+        rotaEntregaPK.setCodigoRota(168); 
+        RotaEntrega rotaEntrega168 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1400, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega168);
+        rotaEntregaPK.setCodigoRota(173); 
+        RotaEntrega rotaEntrega173 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1200, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega173);
+        rotaEntregaPK.setCodigoRota(183); 
+        RotaEntrega rotaEntrega183 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1736, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega183);
+        rotaEntregaPK.setCodigoRota(294); 
+        RotaEntrega rotaEntrega294 = new RotaEntrega(rotaEntregaPK, "L OUTRAS TRANSP. LEVE", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega294);
+        rotaEntregaPK.setCodigoRota(295); 
+        RotaEntrega rotaEntrega295 = new RotaEntrega(rotaEntregaPK, "T OUTRAS TRANSP. PESADO", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega295);
+        rotaEntregaPK.setCodigoRota(296); 
+        RotaEntrega rotaEntrega296 = new RotaEntrega(rotaEntregaPK, "KIT COLETA", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega296);
+        rotaEntregaPK.setCodigoRota(297); 
+        RotaEntrega rotaEntrega297 = new RotaEntrega(rotaEntregaPK, "RETIRA NOS CORREIOS", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega297);
+        rotaEntregaPK.setCodigoRota(298); 
+        RotaEntrega rotaEntrega298 = new RotaEntrega(rotaEntregaPK, "ENTREGA PELOS CORREIOS", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega298);
+        rotaEntregaPK.setCodigoRota(299); 
+        RotaEntrega rotaEntrega299 = new RotaEntrega(rotaEntregaPK, "P - REVERSA CORREIOS", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega299);
+        rotaEntregaPK.setCodigoRota(300); 
+        RotaEntrega rotaEntrega300 = new RotaEntrega(rotaEntregaPK, "MINIHUB 1646", "A", 21, 1646, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega300);
+        rotaEntregaPK.setCodigoRota(301); 
+        RotaEntrega rotaEntrega301 = new RotaEntrega(rotaEntregaPK, "MINI HUB", "A", 21, 1641, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega301);
+        rotaEntregaPK.setCodigoRota(302); 
+        RotaEntrega rotaEntrega302 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1642, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega302);
+        rotaEntregaPK.setCodigoRota(303); 
+        RotaEntrega rotaEntrega303 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1645, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega303);
+        rotaEntregaPK.setCodigoRota(304); 
+        RotaEntrega rotaEntrega304 = new RotaEntrega(rotaEntregaPK, "MINIHUB", "A", 21, 1949, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega304);
+        rotaEntregaPK.setCodigoRota(305); 
+        RotaEntrega rotaEntrega305 = new RotaEntrega(rotaEntregaPK, "APIACA S JOSE CALDO D2", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega305);
+        rotaEntregaPK.setCodigoRota(306); 
+        RotaEntrega rotaEntrega306 = new RotaEntrega(rotaEntregaPK, "DOMINGOS REGIOES D1", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega306);
+        rotaEntregaPK.setCodigoRota(307); 
+        RotaEntrega rotaEntrega307 = new RotaEntrega(rotaEntregaPK, "ARACRUZ REGIOES", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega307);
+        rotaEntregaPK.setCodigoRota(308); 
+        RotaEntrega rotaEntrega308 = new RotaEntrega(rotaEntregaPK, "SERRA", "A", 21, 1640, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega308);
+        rotaEntregaPK.setCodigoRota(309); 
+        RotaEntrega rotaEntrega309 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1639, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega309);
+        rotaEntregaPK.setCodigoRota(310); 
+        RotaEntrega rotaEntrega310 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1641, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega310);
+        rotaEntregaPK.setCodigoRota(311); 
+        RotaEntrega rotaEntrega311 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1642, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega311);
+        rotaEntregaPK.setCodigoRota(312); 
+        RotaEntrega rotaEntrega312 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1645, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega312);
+        rotaEntregaPK.setCodigoRota(313); 
+        RotaEntrega rotaEntrega313 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1646, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega313);
+        rotaEntregaPK.setCodigoRota(314); 
+        RotaEntrega rotaEntrega314 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1648, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega314);
+        rotaEntregaPK.setCodigoRota(315); 
+        RotaEntrega rotaEntrega315 = new RotaEntrega(rotaEntregaPK, "MINIHUB SDD", "A", 21, 1949, 0);
+        rotaEntregaService.addRotaEntrega(rotaEntrega315);
 
         
-//        // Carga da Tabela: FAIXAS DE MICROZONA
-          FaixasCEPMicrozonaPK faixasCEPMicrozonaPK = new FaixasCEPMicrozonaPK();
-//        
-//        faixasCEPMicrozonaPK.setCodigoMicrozona(1);
-//        faixasCEPMicrozonaPK.setCodigoSequencial(1);
-//        FaixasCEPMicrozona faixasCEPMicrozona1 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 1000, 2000);
-//        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona1);
-//        
-//        faixasCEPMicrozonaPK.setCodigoMicrozona(1);
-//        faixasCEPMicrozonaPK.setCodigoSequencial(2);
-//        FaixasCEPMicrozona faixasCEPMicrozona2 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 2001, 3000);
-//        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona2);
-//        
-//        faixasCEPMicrozonaPK.setCodigoMicrozona(1);
-//        faixasCEPMicrozonaPK.setCodigoSequencial(3);
-//        FaixasCEPMicrozona faixasCEPMicrozona3 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 3001, 4000);
-//        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona3);
-//        
-//        faixasCEPMicrozonaPK.setCodigoMicrozona(2);
-//        faixasCEPMicrozonaPK.setCodigoSequencial(1);
-//        FaixasCEPMicrozona faixasCEPMicrozona4 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 4001, 5000);
-//        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona4);
-//        
-//        faixasCEPMicrozonaPK.setCodigoMicrozona(3);
-//        faixasCEPMicrozonaPK.setCodigoSequencial(1);
-//        FaixasCEPMicrozona faixasCEPMicrozona5 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 5001, 6000);
-//        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona5);
-
-        // Script carga DB2
-          faixasCEPMicrozonaPK.setCodigoMicrozona(35);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0001 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29620000, 29620000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0001);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(36);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0002 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29690000, 29699000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0002);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(37);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0003 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29730000, 29742000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0003);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(38);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0004 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29725000, 29728000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0004);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(39);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0005 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29750000, 29755000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0005);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(40);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0006 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29665000, 29669000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0006);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(41);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0007 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29950000, 29957000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0007);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(42);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0008 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29927000, 29927000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0008);
-          faixasCEPMicrozonaPK.setCodigoMicrozona(43);
-          faixasCEPMicrozonaPK.setCodigoSequencial(1);
-          FaixasCEPMicrozona faixasCEPMicrozona0009 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29920000, 29925000);
-          faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0009);
+        // Carga da Tabela: FAIXAS DE MICROZONA
+        FaixasCEPMicrozonaPK faixasCEPMicrozonaPK = new FaixasCEPMicrozonaPK();
+          
+        faixasCEPMicrozonaPK.setCodigoMicrozona(35);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0001 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29620000, 29620000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0001);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(36);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0002 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29690000, 29699000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0002);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(37);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0003 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29730000, 29742000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0003);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(38);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0004 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29725000, 29728000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0004);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(39);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0005 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29750000, 29755000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0005);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(40);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0006 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29665000, 29669000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0006);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(41);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0007 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29950000, 29957000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0007);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(42);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0008 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29927000, 29927000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0008);
+        faixasCEPMicrozonaPK.setCodigoMicrozona(43);
+        faixasCEPMicrozonaPK.setCodigoSequencial(1);
+        FaixasCEPMicrozona faixasCEPMicrozona0009 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29920000, 29925000);
+        faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0009);
     }
     
 }
