@@ -1,7 +1,11 @@
 package br.com.henrique.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Empresa {
@@ -12,14 +16,16 @@ public class Empresa {
 
     private String razaoSocial;
     private String raizCNPJ;
-    private String dataAbertura;
+    
+    @JsonFormat(pattern="dd/MM/yyyy")
+    private Date dataAbertura;
     
     // Construtor da Classe
     public Empresa() {
         super();
     }
     
-    public Empresa(Integer codigo, String razaoSocial, String raizCNPJ, String dataAbertura) {
+    public Empresa(Integer codigo, String razaoSocial, String raizCNPJ, Date dataAbertura) {
         super();
         this.codigo = codigo;
         this.razaoSocial = razaoSocial;
@@ -50,10 +56,10 @@ public class Empresa {
     public void setRaizCNPJ(String raizCNPJ) {
         this.raizCNPJ = raizCNPJ;
     }
-    public String getDataAbertura() {
+    public Date getDataAbertura() {
         return dataAbertura;
     }
-    public void setDataAbertura(String dataAbertura) {
+    public void setDataAbertura(Date dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
     @Override

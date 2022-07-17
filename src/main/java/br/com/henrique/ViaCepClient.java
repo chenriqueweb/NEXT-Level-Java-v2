@@ -36,7 +36,7 @@ public class ViaCepClient {
             HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
             // log.info("[VIA CEP API] - [RESULTADO DA BUSCA: {}]", httpResponse.body());
-
+            
             return gson.fromJson(httpResponse.body(), Cep.class);
 
         } catch (IOException e) {

@@ -1,5 +1,12 @@
 package br.com.henrique.config;
 
+import static java.lang.String.format;
+
+import java.text.SimpleDateFormat;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +31,10 @@ import br.com.henrique.service.RotaEntregaService;
 
 @Configuration
 public class AutoCargaBanco implements CommandLineRunner {
+    
+    private static Logger logger = LoggerFactory.getLogger(AutoCargaBanco.class);
+    
+    private static final String INICIO_CARGA = "Inicio da carga de Dados - H2";
     
     @Autowired
     private EmpresaService empresaService;
@@ -62,10 +73,20 @@ public class AutoCargaBanco implements CommandLineRunner {
 //        empresaService.addEmpresa(empresa4);
         
         // Script carga DB2
-        Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33.041.260/0947-11", "2016-08-25");
+        final SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");        
+        
+        Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33.041.260/0947-11", formatterDate.parse("25/08/2016"));
         empresaService.addEmpresa(empresa0001);
         
+        logger.debug("[INFO] 1 Carga de Empresa");
         
+//        logger.info("[INFO] 2 Carga de Empresa");
+//        
+//        logger.info(format(INICIO_CARGA));
+//        
+//        logger.error("teste 2 - error");
+        
+
         // Carga da Tabela: ESTADO        
 //        Estado estadoRJ = new Estado("RJ", "Rio de Janeiro");
 //        Estado estadoSP = new Estado("SP","Sao Paulo");
