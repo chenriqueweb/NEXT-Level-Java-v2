@@ -110,11 +110,11 @@ main section table tbody tr td form button:hover {
 	cursor: pointer;		
 }
 
-pagination div {
+main section div {
 	user-select: none;
 }
 
-pagination-div span {
+main section div span {
    border-radius:3px;
    border:1px solid #999;
    padding:5px;
@@ -122,7 +122,7 @@ pagination-div span {
    display:inline-block
 }
 
-span.selected {
+main section div span.selected {
 	background:#ccf;
 }
 

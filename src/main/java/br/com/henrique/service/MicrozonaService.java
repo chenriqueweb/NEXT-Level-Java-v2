@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Microzona;
@@ -23,6 +25,11 @@ public class MicrozonaService {
         
         return microzonas;
     }
+    
+    // Lista de Microzonas com Paginação
+    public Page<Microzona> findAllPage(Pageable pageable) {
+        return repositMicrozona.findAll(pageable);
+    }         
     
     // Inclui Microzona
     public Microzona addMicrozona(Microzona microzona) {

@@ -82,6 +82,25 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<div>
+				<span th:if="${microzonas.hasPrevious()}"> 
+				      <a th:href="@{/microzonaListar/page(page=${microzonas.number-1},size=${microzonas.size})}">Anterior</a>
+				</span>
+
+				<th:block
+					th:each="i: ${#numbers.sequence(0, microzonas.totalPages - 1)}">
+					<span th:if="${microzonas.number == i}" class="selected">[[${i}+1]]</span>
+					<span th:unless="${microzonas.number == i}"> 
+					      <a  th:href="@{/microzonaListar/page(page=${i},size=${microzonas.size})}">[[${i}+1]]</a>
+					</span>
+				</th:block>
+
+				<span th:if="${microzonas.hasNext()}"> 
+				      <a th:href="@{/microzonaListar/page(page=${microzonas.number+1},size=${microzonas.size})}">Próximo</a>
+				</span>
+			</div>					
+			
 		</section>
 	</main>
 </body>

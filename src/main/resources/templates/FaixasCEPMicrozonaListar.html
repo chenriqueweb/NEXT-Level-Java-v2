@@ -67,6 +67,25 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<div>
+				<span th:if="${faixasCEPMicrozonas.hasPrevious()}"> 
+				      <a th:href="@{/faixasCEPMicrozonaListar/page(page=${faixasCEPMicrozonas.number-1},size=${faixasCEPMicrozonas.size})}">Anterior</a>
+				</span>
+
+				<th:block
+					th:each="i: ${#numbers.sequence(0, faixasCEPMicrozonas.totalPages - 1)}">
+					<span th:if="${faixasCEPMicrozonas.number == i}" class="selected">[[${i}+1]]</span>
+					<span th:unless="${faixasCEPMicrozonas.number == i}"> 
+					      <a  th:href="@{/faixasCEPMicrozonaListar/page(page=${i},size=${faixasCEPMicrozonas.size})}">[[${i}+1]]</a>
+					</span>
+				</th:block>
+
+				<span th:if="${faixasCEPMicrozonas.hasNext()}"> 
+				      <a th:href="@{/faixasCEPMicrozonaListar/page(page=${faixasCEPMicrozonas.number+1},size=${faixasCEPMicrozonas.size})}">Próximo</a>
+				</span>
+			</div>		
+			
 		</section>
 	</main>
 </body>

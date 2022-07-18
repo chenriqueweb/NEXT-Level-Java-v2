@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.FaixasCEPMicrozona;
@@ -24,6 +26,10 @@ public class FaixasCEPMicrozonaService {
         return faixasCEPMicrozona;
     }
     
+    // Lista de Faixas de CEP Microzona com Paginação
+    public Page<FaixasCEPMicrozona> findAllPage(Pageable pageable) {
+        return repositFaixasCEPMicrozona.findAll(pageable);
+    }      
     
     // Busca por Faixas de CEP da Microzona
     public FaixasCEPMicrozona findById(FaixasCEPMicrozonaPK faixasCEPMicrozonaPK) {

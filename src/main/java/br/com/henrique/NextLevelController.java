@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,6 +71,16 @@ public class NextLevelController {
             return modelAndView;
         }
         
+        @GetMapping("/empresaListar/page")
+        public ModelAndView findAllEmpresaPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<Empresa> empresas = empresaService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("EmpresaListar");
+            modelAndView.addObject("empresas", empresas);            
+            
+            return modelAndView;
+        }            
+        
         @GetMapping("/empresa/novo")
         public ModelAndView empresaNovo() {            
             ModelAndView modelAndView = new ModelAndView("EmpresaFormulario");
@@ -114,17 +123,10 @@ public class NextLevelController {
         }
         
         @GetMapping("/estadoListar/page")
-//        public ModelAndView getEstados(@PageableDefault(size = 10) Pageable pageable,
-//                                 Model model) {
-            
         public ModelAndView findAllEstadoPage(@PageableDefault(size = 7) Pageable pageable) {            
-            
             Page<Estado> estados = estadoService.findAllPage(pageable);
             
             ModelAndView modelAndView = new ModelAndView("EstadoListar");
-            
-            // modelAndView.addAttribute("estados", estados);
-            
             modelAndView.addObject("estados", estados);            
             
             return modelAndView;
@@ -169,6 +171,16 @@ public class NextLevelController {
             return modelAndView;
         }
         
+        @GetMapping("/municipioListar/page")
+        public ModelAndView findAllMunicipioPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<Municipio> municipios = municipioService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("MunicipioListar");
+            modelAndView.addObject("municipios", municipios);            
+            
+            return modelAndView;
+        }          
+        
         @GetMapping("/municipio/novo")
         public ModelAndView municipioNovo() {            
             ModelAndView modelAndView = new ModelAndView("MunicipioFormulario");
@@ -210,6 +222,16 @@ public class NextLevelController {
             
             return modelAndView;
         }        
+        
+        @GetMapping("/filialListar/page")
+        public ModelAndView findAllFilialPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<Filial> filiais = filialService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("FilialListar");
+            modelAndView.addObject("filiais", filiais);            
+            
+            return modelAndView;
+        }         
         
         @GetMapping("/filial/novo")
         public ModelAndView filialNovo() {            
@@ -260,6 +282,16 @@ public class NextLevelController {
             return modelAndView;
         }
         
+        @GetMapping("/rotaEntregaListar/page")
+        public ModelAndView findAllRotaEntregaPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<RotaEntrega> rotasEntregas = rotaEntregaService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("RotaEntregaListar");
+            modelAndView.addObject("rotasEntregas", rotasEntregas);            
+            
+            return modelAndView;
+        }                
+        
         @GetMapping("/rotaEntrega/novo")
         public ModelAndView rotaEntregaNovo() {            
             ModelAndView modelAndView = new ModelAndView("RotaEntregaFormulario");
@@ -299,6 +331,16 @@ public class NextLevelController {
             
             return modelAndView;
         }
+        
+        @GetMapping("/microzonaListar/page")
+        public ModelAndView findAllMicrozonaPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<Microzona> microzonas = microzonaService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("MicrozonaListar");
+            modelAndView.addObject("microzonas", microzonas);            
+            
+            return modelAndView;
+        }        
 
         @GetMapping("/microzona/novo")
         public ModelAndView microzonaNovo() {            
@@ -327,6 +369,7 @@ public class NextLevelController {
             return "redirect:/microzonaListar";        
         }             
         
+        
         //--------------------------------------------------------------------------------------        
         // ### Faixa de CEPs Microzona
         @GetMapping("/faixasCEPMicrozonaListar")
@@ -338,6 +381,16 @@ public class NextLevelController {
             
             return modelAndView;
         }
+        
+        @GetMapping("/faixasCEPMicrozonaListar/page")
+        public ModelAndView findAllFaixasCEPMicrozonaPage(@PageableDefault(size = 7) Pageable pageable) {            
+            Page<FaixasCEPMicrozona> faixasCEPMicrozonas = faixasCEPMicrozonaService.findAllPage(pageable);
+            
+            ModelAndView modelAndView = new ModelAndView("FaixasCEPMicrozonaListar");
+            modelAndView.addObject("faixasCEPMicrozonas", faixasCEPMicrozonas);            
+            
+            return modelAndView;
+        }               
         
         @GetMapping("/faixasCEPMicrozona/novo")
         public ModelAndView faixasCEPMicrozonaNovo() {            

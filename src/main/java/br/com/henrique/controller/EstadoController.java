@@ -35,13 +35,11 @@ public class EstadoController {
         return ResponseEntity.ok().body(estados);
     }
     
-    
     // Lista de Estado com paginação
     @GetMapping(path = "page")
     public ResponseEntity<Page<Estado>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(estadoService.findAllPage(pageable));
     }
-    
     
     // Busca pelo Estado
     @GetMapping(path = "{sigla}")

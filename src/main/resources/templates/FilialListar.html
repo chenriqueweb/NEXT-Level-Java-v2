@@ -67,8 +67,26 @@
 
 					</tr>
 				</tbody>
-
 			</table>
+			
+			<div>
+				<span th:if="${filiais.hasPrevious()}"> 
+				      <a th:href="@{/filialListar/page(page=${filiais.number-1},size=${filiais.size})}">Anterior</a>
+				</span>
+
+				<th:block
+					th:each="i: ${#numbers.sequence(0, filiais.totalPages - 1)}">
+					<span th:if="${filiais.number == i}" class="selected">[[${i}+1]]</span>
+					<span th:unless="${filiais.number == i}"> 
+					      <a  th:href="@{/filialListar/page(page=${i},size=${filiais.size})}">[[${i}+1]]</a>
+					</span>
+				</th:block>
+
+				<span th:if="${filiais.hasNext()}"> 
+				      <a th:href="@{/filialListar/page(page=${filiais.number+1},size=${filiais.size})}">Próximo</a>
+				</span>
+			</div>					
+			
 		</section>
 	</main>
 </body>

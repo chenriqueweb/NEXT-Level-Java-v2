@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.henrique.model.Filial;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
 import br.com.henrique.repository.RotaEntregaRepository;
@@ -23,6 +26,11 @@ public class RotaEntregaService {
         rotasEntregas = repositRotaEntrega.findAll();        
         return rotasEntregas;
     }    
+    
+    // Lista de Rotas de Entrega com Paginação
+    public Page<RotaEntrega> findAllPage(Pageable pageable) {
+        return repositRotaEntrega.findAll(pageable);
+    }        
     
     // Busca pela Rota de Entrega
     public RotaEntrega findById(RotaEntregaPK rotaEntregaPK) {

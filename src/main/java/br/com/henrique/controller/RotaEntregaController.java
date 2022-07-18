@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.henrique.model.Filial;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
 import br.com.henrique.service.RotaEntregaService;
@@ -33,6 +36,12 @@ public class RotaEntregaController {
         List<RotaEntrega> rotaEntregas = rotaEntregaService.findAll();
         return ResponseEntity.ok().body(rotaEntregas);
     }
+    
+    // Lista de Rotas de Entrega com paginação
+    @GetMapping(path = "page")
+    public ResponseEntity<Page<RotaEntrega>> findAllPage(Pageable pageable) {
+        return ResponseEntity.ok().body(rotaEntregaService.findAllPage(pageable));
+    }       
     
     // Busca por RotaEntrega
     @GetMapping(path = "{siglaEstado}/{codigoRota}")

@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Empresa;
+import br.com.henrique.model.Estado;
 import br.com.henrique.repository.EmpresaRepository;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
@@ -23,7 +26,12 @@ public class EmpresaService {
         
         return empresas;
     }
-
+    
+    // Lista Empresas com Paginação
+    public Page<Empresa> findAllPage(Pageable pageable) {
+        return repositEmpresa.findAll(pageable);
+    }
+ 
     // Busca pela Empresa
     public Empresa findById(Integer codigo) {
         Empresa empresa = repositEmpresa.findById(codigo).orElse(null);

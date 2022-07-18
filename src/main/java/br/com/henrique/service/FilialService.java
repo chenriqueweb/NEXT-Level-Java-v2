@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Filial;
 import br.com.henrique.model.FilialPK;
+import br.com.henrique.model.Municipio;
 import br.com.henrique.repository.FilialRepository;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
@@ -23,6 +26,12 @@ public class FilialService {
         filiais = repositFilial.findAll();                
         return filiais;
     }
+    
+    // Lista de Filiais com Paginação
+    public Page<Filial> findAllPage(Pageable pageable) {
+        return repositFilial.findAll(pageable);
+    }    
+    
     
     // Busca por Filial
 //    public Filial findById(Integer codigoEmpresa, Integer codigoFilial) {

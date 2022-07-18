@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +35,11 @@ public class FaixasCEPMicrozonaController {
         return ResponseEntity.ok().body(faixasCEPMicrozona);
     }    
 
+    // Lista de Faixas de CEP Microzona com paginação
+    @GetMapping(path = "page")
+    public ResponseEntity<Page<FaixasCEPMicrozona>> findAllPage(Pageable pageable) {
+        return ResponseEntity.ok().body(faixasCEPMicrozonaService.findAllPage(pageable));
+    } 
     
     // Busca na Faixa de CEP da Microzona
     @GetMapping(path = "/{codigoMicrozona}/{codigoSequencial}")

@@ -13,13 +13,6 @@
 <link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
 	rel="stylesheet" />
 	
-<style>
-.pagination-div{user-select: none;}
-.pagination-div span{border-radius:3px;border:1px solid #999;
-   padding:5px;margin:10px 0px 0px 10px;display:inline-block}
-span.selected{background:#ccf;}
-</style>	
-
 </head>
 
 <body>
@@ -70,21 +63,21 @@ span.selected{background:#ccf;}
 				
 			</table>
 
-			<div class="pagination-div">
+			<div>
 				<span th:if="${estados.hasPrevious()}"> <a
-					  th:href="@{/estado/page(page=${estados.number-1},size=${estados.size})}">Anterior</a>
+					  th:href="@{/estadoListar/page(page=${estados.number-1},size=${estados.size})}">Anterior</a>
 				</span>
 
 				<th:block
 					th:each="i: ${#numbers.sequence(0, estados.totalPages - 1)}">
 					<span th:if="${estados.number == i}" class="selected">[[${i}+1]]</span>
 					<span th:unless="${estados.number == i}"> <a
-						  th:href="@{/estado/page(page=${i},size=${estados.size})}">[[${i}+1]]</a>
+						  th:href="@{/estadoListar/page(page=${i},size=${estados.size})}">[[${i}+1]]</a>
 					</span>
 				</th:block>
 
 				<span th:if="${estados.hasNext()}"> <a
-				      th:href="@{/estado/page(page=${estados.number+1},size=${estados.size})}">Próximo</a>
+				      th:href="@{/estadoListar/page(page=${estados.number+1},size=${estados.size})}">Próximo</a>
 				</span>
 			</div>
 
