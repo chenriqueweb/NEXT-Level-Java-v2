@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Empresa;
-import br.com.henrique.model.Estado;
 import br.com.henrique.repository.EmpresaRepository;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 

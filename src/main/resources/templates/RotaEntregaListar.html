@@ -70,25 +70,25 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 			<div>
-				<span th:if="${rotasEntregas.hasPrevious()}"> 
-				      <a th:href="@{/rotaEntregaListar/page(page=${rotasEntregas.number-1},size=${rotasEntregas.size})}">Anterior</a>
+				<span th:if="${rotasEntregas.hasPrevious()}"> <a
+					th:href="@{/rotaEntregaListar/page(page=${rotasEntregas.number-1},size=${rotasEntregas.size})}">Anterior</a>
 				</span>
 
 				<th:block
 					th:each="i: ${#numbers.sequence(0, rotasEntregas.totalPages - 1)}">
 					<span th:if="${rotasEntregas.number == i}" class="selected">[[${i}+1]]</span>
-					<span th:unless="${rotasEntregas.number == i}"> 
-					      <a  th:href="@{/rotaEntregaListar/page(page=${i},size=${rotasEntregas.size})}">[[${i}+1]]</a>
+					<span th:unless="${rotasEntregas.number == i}"> <a
+						th:href="@{/rotaEntregaListar/page(page=${i},size=${rotasEntregas.size})}">[[${i}+1]]</a>
 					</span>
 				</th:block>
 
-				<span th:if="${rotasEntregas.hasNext()}"> 
-				      <a th:href="@{/rotaEntregaListar/page(page=${rotasEntregas.number+1},size=${rotasEntregas.size})}">Próximo</a>
+				<span th:if="${rotasEntregas.hasNext()}"> <a
+					th:href="@{/rotaEntregaListar/page(page=${rotasEntregas.number+1},size=${rotasEntregas.size})}">Próximo</a>
 				</span>
-			</div>						
-			
+			</div>
+
 		</section>
 	</main>
 </body>

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Filial;
 import br.com.henrique.model.FilialPK;
-import br.com.henrique.model.Municipio;
 import br.com.henrique.repository.FilialRepository;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 

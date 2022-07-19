@@ -1,6 +1,7 @@
 package br.com.henrique.config;
 
 import java.text.SimpleDateFormat;
+import static java.lang.String.format;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,9 +71,11 @@ public class AutoCargaBanco implements CommandLineRunner {
         logger.debug("[INFO] 1 Carga de Empresa");
         
         logger.info("[INFO] 2 Carga de Empresa");
-//        
-//        logger.info(format(INICIO_CARGA));
-//        
+        
+        logger.info(format("[INFO] 333 Carga de Empresa", "teste 4", formatterDate.parse("25/08/2016")));
+        
+        logger.info(INICIO_CARGA);
+        
         logger.error("teste 2 - error");        
         
         

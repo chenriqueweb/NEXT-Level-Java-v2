@@ -28,7 +28,7 @@ public class ViaCepClient {
                     .connectTimeout(Duration.of(1, MINUTES))
                     .build();
 
-            HttpRequest httpRequest = HttpRequest.newBuilder()
+            HttpRequest httpRequest = HttpRequest.newBuilder() 
                     .GET()
                     .uri(URI.create(viaCepUrl+cepString+"/json"))
                     .build();

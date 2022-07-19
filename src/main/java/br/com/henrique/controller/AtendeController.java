@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.henrique.ViaCepClient;
 import br.com.henrique.model.Cep;
+import br.com.henrique.model.Empresa;
 import br.com.henrique.model.Estado;
 import br.com.henrique.model.FaixasCEPMicrozona;
 import br.com.henrique.model.Filial;
@@ -128,6 +130,16 @@ public class AtendeController {
         }
         
         return ResponseEntity.ok().body(objetoJson);        
+    }
+    
+    
+    @GetMapping(path = "/filial")
+    public ModelAndView filialAtendeWeb() {  // @PathVariable Integer cep
+        ModelAndView modelAndView = new ModelAndView("FilialAtende");
+        
+        // modelAndView.addObject("filialAtende", this.cepAtende(cep));
+        
+        return modelAndView;
     }
     
 }

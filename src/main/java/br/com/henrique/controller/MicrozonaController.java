@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Microzona;
-import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.service.MicrozonaService;
 
 @RestController
