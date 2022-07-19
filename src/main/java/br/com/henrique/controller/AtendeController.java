@@ -134,12 +134,19 @@ public class AtendeController {
     
     
     @GetMapping(path = "/filial")
-    public ModelAndView filialAtendeWeb() {  // @PathVariable Integer cep
+    public ModelAndView filialAtendeWeb() {
         ModelAndView modelAndView = new ModelAndView("FilialAtende");
-        
-        // modelAndView.addObject("filialAtende", this.cepAtende(cep));
         
         return modelAndView;
     }
+    
+    @GetMapping(path = "/filial/{cep}")
+    public ModelAndView filialAtendeBuscaWeb(@PathVariable Integer cep) {
+        ModelAndView modelAndView = new ModelAndView("FilialAtendeBusca");
+        
+        modelAndView.addObject("filialAtende", this.cepAtende(cep).getBody());  // this.cepAtende(cep));
+        
+        return modelAndView;
+    }    
     
 }

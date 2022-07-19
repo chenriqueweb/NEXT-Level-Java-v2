@@ -31,29 +31,29 @@
 		</section>
 
 		<section>
-<!-- 	
 			<form
+ 				action="/atende/filial" method="get">
+							
+<!-- 	
+				th:action="@{/atende/filial/{cep}" th:method="get">
 
-				th:action="@{/atende/filial/{cep}(cep=${filialAtende.cep}"
-				th:object="${filialAtende}" th:method="post">
-				
 		        th:action="${estado.novo} ? @{/estado/form} : @{/estado/salvar/{sigla}(sigla=${estado.sigla})}"
-				th:object="${estado}" th:method="${estado.novo} ? post : put">	
+				th:object="${estado}" th:method="${estado.novo} ? post : put">
+				
 -->
 				<div>
-					<label>CEP de Origem: </label>  
-		<!-- 			<input th:field="*{cepAtende}" />   -->
+					<label>CEP de Origem: </label>
+<!-- 		 			<input th:field="*{cep}" /> -->
+                        <input name="cep" />
 				</div>
 
 				<div>
-					<button>Buscar</button>
+ 				<button>Buscar</button>
 				</div>
 
-<!-- 
-			</form>
--->			
+			</form>		
+			
 		</section>
-
 	</main>
 </body>
 
