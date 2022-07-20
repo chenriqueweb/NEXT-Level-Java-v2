@@ -84,7 +84,24 @@ Você pode [acessar o código fonte do projeto](https://github.com/chenriqueweb/
 
 ## Abrir e rodar o projeto
 
-Após baixar o projeto, você pode abrir com o `Eclipse`.
+Após baixar o projeto, você poderá abri-lo com o STS - Eclipse.
+
+1º) Compilar o projeto
+mvn clean install
+
+2º) Para executar o Projeto
+cd target
+java -jar Next-Leval  :????? .jar  
+
+**IMPORTANTE:**
+O projeto esta direcionado para o ambiente de Desenvolvimento, caso deseje outro ambiente você devera
+informar um dos outros parâmetro abaixo durante a sua execução
+
+**Homologação:**
+_--spring.profiles.active=hml_
+
+**Produção:**
+_--spring.profiles.active=prd_
 <br>
 <br>
 
