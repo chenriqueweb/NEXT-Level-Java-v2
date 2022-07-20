@@ -8,14 +8,14 @@ body {
 }
 
 header {
-	margin: 0; 
+	margin: 0;
 }
-
+ 
 header nav {
 	background: #555;
 	height: 3em;
 }
- 
+
 header nav ul {
 	margin: 0;
 	padding: 0;

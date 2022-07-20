@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.henrique.ViaCepClient;
 import br.com.henrique.model.Cep;
-import br.com.henrique.model.Empresa;
 import br.com.henrique.model.Estado;
 import br.com.henrique.model.FaixasCEPMicrozona;
 import br.com.henrique.model.Filial;
@@ -64,16 +63,9 @@ public class AtendeController {
               cepAtende <= faixasCEPMicrozona.get(x).getCEPfinal()) {
                 Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
               
-//              System.out.println(cep.getCep());
-//              System.out.println(cep.getBairro());
-//              System.out.println(cep.getComplemento());
 //              System.out.println(cep.getDdd());
 //              System.out.println(cep.getGia());
-//              System.out.println(cep.getIbge());
-//              System.out.println(cep.getLocalidade());
-//              System.out.println(cep.getLogradouro());
 //              System.out.println(cep.getSiafi());
-//              System.out.println(cep.getUf());
 //
               // Dados do CEP informado
               if (cep.getCep() != null) {
@@ -141,10 +133,15 @@ public class AtendeController {
     }
     
     @GetMapping(path = "/filial/{cep}")
-    public ModelAndView filialAtendeBuscaWeb(@PathVariable Integer cep) {
+    public ModelAndView filialAtendeBuscaWeb(@PathVariable Integer cep) throws ClassNotFoundException {
         ModelAndView modelAndView = new ModelAndView("FilialAtendeBusca");
         
-        modelAndView.addObject("filialAtende", this.cepAtende(cep).getBody());  // this.cepAtende(cep));
+        
+//        Class filialAtendeBusca = Class.forName((this.cepAtende(cep).getBody()).toString());
+//        modelAndView.addObject("filialAtendeBusca", filialAtendeBusca);
+        
+//        Object objectFilialAtendeBusca = this.cepAtende(cep).getBody();
+//        modelAndView.addObject("filialAtendeBusca", objectFilialAtendeBusca);  // this.cepAtende(cep).getBody());  // this.cepAtende(cep));
         
         return modelAndView;
     }    

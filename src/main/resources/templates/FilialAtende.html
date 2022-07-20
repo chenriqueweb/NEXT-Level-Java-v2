@@ -31,10 +31,9 @@
 		</section>
 
 		<section>
-			<form
- 				action="/atende/filial" method="get">
-							
-<!-- 	
+			<form action="/atende/filial" method="get">
+
+				<!-- 	
 				th:action="@{/atende/filial/{cep}" th:method="get">
 
 		        th:action="${estado.novo} ? @{/estado/form} : @{/estado/salvar/{sigla}(sigla=${estado.sigla})}"
@@ -43,16 +42,16 @@
 -->
 				<div>
 					<label>CEP de Origem: </label>
-<!-- 		 			<input th:field="*{cep}" /> -->
-                        <input name="cep" />
+					<!-- 		 			<input th:field="*{cep}" /> -->
+					<input name="cep" />
 				</div>
 
 				<div>
- 				<button>Buscar</button>
+					<button>Buscar</button>
 				</div>
 
-			</form>		
-			
+			</form>
+
 		</section>
 	</main>
 </body>

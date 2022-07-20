@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
+	<parent>     
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version><!--$NO-MVN-MAN-VER$-->
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.7.1</version>
+		<relativePath/>
 	</parent>
 	<groupId>br.com.henrique</groupId>
 	<artifactId>NEXT-Level-Java-v2</artifactId>
@@ -70,7 +70,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		
+        <dependency>
+           <groupId>ch.qos.logback</groupId>
+           <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+           <groupId>ch.qos.logback</groupId>
+           <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+           <groupId>org.slf4j</groupId>
+           <artifactId>slf4j-api</artifactId>
+         </dependency>
 	</dependencies>
 	
     <repositories>
@@ -78,7 +89,8 @@
             <id>repsy</id>
             <url>https://repo.repsy.io/mvn/thalles/via-cep</url>
         </repository>
-    </repositories>	
+    </repositories>
+    	
 
 	<build>
 		<plugins>

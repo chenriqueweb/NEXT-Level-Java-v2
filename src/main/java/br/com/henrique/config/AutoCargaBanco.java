@@ -1,11 +1,11 @@
 package br.com.henrique.config;
 
-import java.text.SimpleDateFormat;
 import static java.lang.String.format;
+
+import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +29,7 @@ import br.com.henrique.service.MunicipioService;
 import br.com.henrique.service.RotaEntregaService;
 
 @Configuration
+// @Profile("dev")
 public class AutoCargaBanco implements CommandLineRunner {
     
     private static Logger logger = LoggerFactory.getLogger(AutoCargaBanco.class);

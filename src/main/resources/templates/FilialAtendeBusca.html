@@ -30,8 +30,9 @@
 			<h1>Busca Filial por CEP</h1>
 		</section>
 		
-<td th:text="${filialAtende}"></td>			
-		
+<td th:text="${filialAtendeBusca}"></td>			
+
+
 
 		<section>
 
@@ -44,7 +45,7 @@
 			<table >
 			
  				<tbody>
-					<tr th:each="filial: ${filialAtende}"></tr>
+					<tr th:each="filial: ${filialAtendeBusca}"></tr>
 
                     <tr>					
 	    				<td>CEP: </td> <td th:text="${cep}"></td>
