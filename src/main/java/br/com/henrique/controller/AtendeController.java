@@ -27,7 +27,11 @@ import br.com.henrique.repository.RotaEntregaRepository;
 import br.com.henrique.service.EstadoService;
 import br.com.henrique.service.FaixasCEPMicrozonaService;
 import br.com.henrique.service.MicrozonaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Busca_CEP")
+@ApiOperation(value = "Consulta de Filiais por CEP")
 @RestController
 @RequestMapping(path = "/atende")
 public class AtendeController {

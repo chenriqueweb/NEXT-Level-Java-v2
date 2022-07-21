@@ -86,12 +86,12 @@ Você pode [acessar o código fonte do projeto](https://github.com/chenriqueweb/
 
 Após baixar o projeto, você poderá abri-lo com o STS - Eclipse.
 
-1º) Compilar o projeto
-mvn clean install
+**1º) Compilar o projeto**
+_mvn clean install_
 
-2º) Para executar o Projeto
-cd target
-java -jar Next-Leval  :????? .jar  
+**2º) Para executar o Projeto**
+_cd target_
+_java -jar Next-Level-Java-v2.jar_
 
 **IMPORTANTE:**
 O projeto esta direcionado para o ambiente de Desenvolvimento, caso deseje outro ambiente você devera
