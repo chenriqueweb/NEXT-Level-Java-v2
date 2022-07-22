@@ -20,7 +20,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Empresa;
 import br.com.henrique.service.EmpresaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Empresa")
 @RestController
 @RequestMapping(path = "/empresa")
 public class EmpresaController {
@@ -30,6 +33,7 @@ public class EmpresaController {
 
     // Lista Empresa
     @GetMapping
+    @ApiOperation(value = "Lista todas as Empresas")
     public ResponseEntity<List<Empresa>> findAll() {
         List<Empresa> empresas = empresaService.findAll();
         return ResponseEntity.ok().body(empresas);
@@ -43,6 +47,7 @@ public class EmpresaController {
     
     // Busca por Empresa
     @GetMapping(path = "{codigo}")
+    @ApiOperation(value = "Busca por uma Empresa")
     public ResponseEntity<Empresa> findById(@PathVariable Integer codigo) {
         Empresa empresa = empresaService.findById(codigo);
         return ResponseEntity.ok().body(empresa);
@@ -50,6 +55,7 @@ public class EmpresaController {
     
     // Inclui Empresa
     @PostMapping
+    @ApiOperation(value = "Inclui uma Empresa")
     public ResponseEntity<Void> addEmpresa(@RequestBody Empresa empresa) {
         Empresa empresaNova = empresaService.addEmpresa(empresa);
         
@@ -59,6 +65,7 @@ public class EmpresaController {
     
     // Altera Empresa
     @PutMapping(path = "{codigo}")
+    @ApiOperation(value = "Altera os dados de uma Empresa")
     public ResponseEntity<Void> updateEmpresa(@PathVariable Integer codigo, @RequestBody Empresa empresa) {
         empresaService.updateEmpresa(codigo, empresa);
         return ResponseEntity.noContent().build();
@@ -66,6 +73,7 @@ public class EmpresaController {
     
     // Exclusão Empresa
     @DeleteMapping(path = "{codigo}")
+    @ApiOperation(value = "Exclui uma Empresa")
     public ResponseEntity<Void> deletaEmpresa(@PathVariable Integer codigo) {
         empresaService.deletaEmpresa(codigo);
         return ResponseEntity.noContent().build();

@@ -20,7 +20,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Municipio;
 import br.com.henrique.service.MunicipioService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Municipio")
+@ApiOperation(value = "CRUD - Municipio")
 @RestController
 @RequestMapping(path = "/municipio")
 public class MunicipioController {
@@ -30,6 +34,7 @@ public class MunicipioController {
     
     // Lista Municipio
     @GetMapping
+    @ApiOperation(value = "Lista todos os Municipios")
     public ResponseEntity<List<Municipio>> findAll() {
         List<Municipio> municipios = municipioService.findAll();        
         return ResponseEntity.ok().body(municipios);
@@ -43,6 +48,7 @@ public class MunicipioController {
    
     // Busca pelo Municipio
     @GetMapping(path = "{codigo}")
+    @ApiOperation(value = "Busca por um Municipio")
     public ResponseEntity<Municipio> findById(@PathVariable Integer codigo) {
         Municipio municipio = municipioService.findById(codigo);
         return ResponseEntity.ok().body(municipio);
@@ -50,6 +56,7 @@ public class MunicipioController {
 
     // Inclui Municipio
     @PostMapping
+    @ApiOperation(value = "Inclui um Municipio")
     public ResponseEntity<Void> addMunicipio(@RequestBody Municipio municipio) {
         Municipio municipioNovo = municipioService.addMunicipio(municipio);
         
@@ -59,6 +66,7 @@ public class MunicipioController {
     
     // Altera Municipio
     @PutMapping(path = "{codigo}")
+    @ApiOperation(value = "Altera os dados de um Municipio")
     public ResponseEntity<Void> updateMunicipio(@PathVariable Integer codigo, @RequestBody Municipio municipio) {
         municipioService.updateMunicipio(codigo, municipio);
         return ResponseEntity.noContent().build();
@@ -66,6 +74,7 @@ public class MunicipioController {
     
     // Deleta Municipio = method Delete
     @DeleteMapping(path = "{codigo}")
+    @ApiOperation(value = "Exclui um Municipio")
     public ResponseEntity<Void> deletaMunicipio(@PathVariable Integer codigo) {
         municipioService.deletaMunicipio(codigo);
         return ResponseEntity.noContent().build();

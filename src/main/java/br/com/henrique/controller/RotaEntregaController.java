@@ -21,7 +21,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
 import br.com.henrique.service.RotaEntregaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Rota_Entrega")
+@ApiOperation(value = "CRUD - Rota de Entrega")
 @RestController
 @RequestMapping(path = "/rotaEntrega")
 public class RotaEntregaController {
@@ -31,6 +35,7 @@ public class RotaEntregaController {
 
     // Lista RotaEntrega
     @GetMapping
+    @ApiOperation(value = "Lista todas as RotaEntregas")
     public ResponseEntity<List<RotaEntrega>> findAll() {
         List<RotaEntrega> rotaEntregas = rotaEntregaService.findAll();
         return ResponseEntity.ok().body(rotaEntregas);
@@ -44,6 +49,7 @@ public class RotaEntregaController {
     
     // Busca por RotaEntrega
     @GetMapping(path = "{siglaEstado}/{codigoRota}")
+    @ApiOperation(value = "Busca por uma RotaEntrega")
     public ResponseEntity<RotaEntrega> findById(@PathVariable String siglaEstado,
                                                 @PathVariable Integer codigoRota) {
         RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
@@ -57,6 +63,7 @@ public class RotaEntregaController {
     
     // Inclui RotaEntrega
     @PostMapping
+    @ApiOperation(value = "Inclui uma RotaEntrega")
     public ResponseEntity<Void> addRotaEntrega(@RequestBody RotaEntrega rotaEntrega) {
         RotaEntrega rotaEntregaNova = rotaEntregaService.addRotaEntrega(rotaEntrega);
         
@@ -69,6 +76,7 @@ public class RotaEntregaController {
     
     // Altera RotaEntrega
     @PutMapping(path = "{siglaEstado}/{codigoRota}")
+    @ApiOperation(value = "Altera os dados de uma RotaEntrega")
     public ResponseEntity<Void> updateRotaEntrega(@PathVariable String siglaEstado,
                                                   @PathVariable Integer codigoRota, 
                                                   @RequestBody RotaEntrega rotaEntrega) {
@@ -84,6 +92,7 @@ public class RotaEntregaController {
     
     // Exclusão RotaEntrega
     @DeleteMapping(path = "{siglaEstado}/{codigoRota}")
+    @ApiOperation(value = "Exclui uma RotaEntrega")
     public ResponseEntity<Void> deletaRotaEntrega(@PathVariable String siglaEstado,
                                                   @PathVariable Integer codigoRota) {
         

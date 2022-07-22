@@ -31,7 +31,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Api(value = "Busca_CEP")
-@ApiOperation(value = "Consulta de Filiais por CEP")
 @RestController
 @RequestMapping(path = "/atende")
 public class AtendeController {
@@ -53,6 +52,7 @@ public class AtendeController {
 
     @SuppressWarnings("unchecked")
     @GetMapping(path = "{cepAtende}")    
+    @ApiOperation(value = "Consulta de Filiais por CEP")
     public ResponseEntity<JSONObject> cepAtende(@PathVariable Integer cepAtende) {
         
         List<FaixasCEPMicrozona> faixasCEPMicrozona = faixasCEPMicrozonaService.findAll();

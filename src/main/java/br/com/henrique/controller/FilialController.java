@@ -21,7 +21,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.henrique.model.Filial;
 import br.com.henrique.model.FilialPK;
 import br.com.henrique.service.FilialService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Filial")
+@ApiOperation(value = "CRUD - Filial")
 @RestController
 @RequestMapping(path = "/filial")
 public class FilialController {
@@ -31,6 +35,7 @@ public class FilialController {
 
     // Lista Filiais
     @GetMapping
+    @ApiOperation(value = "Lista todas as Filiais")
     public ResponseEntity<List<Filial>> findAll() {
         List<Filial> filiais = filialService.findAll();
         return ResponseEntity.ok().body(filiais);
@@ -43,6 +48,7 @@ public class FilialController {
     }     
     
     // Busca por Filial
+    @ApiOperation(value = "Busca por uma Filial")
     @GetMapping(path = "/{codigoEmpresa}/{codigoFilial}")
     public ResponseEntity<Filial> findById(@PathVariable Integer codigoEmpresa, 
                                            @PathVariable Integer codigoFilial) {
@@ -57,6 +63,7 @@ public class FilialController {
     
     // Inclui Filial
     @PostMapping
+    @ApiOperation(value = "Inclui uma Filial")
     public ResponseEntity<Void> addFilial(@RequestBody Filial filial) {
         Filial filialNova = filialService.addFilial(filial);
         
@@ -68,6 +75,7 @@ public class FilialController {
     
     // Altera Filial
     @PutMapping(path = "/{codigoEmpresa}/{codigoFilial}")
+    @ApiOperation(value = "Altera os dados de uma Filial")
     public ResponseEntity<Void> updateFilial(@PathVariable Integer codigoEmpresa,
                                              @PathVariable Integer codigoFilial, 
                                              @RequestBody Filial filial) {
@@ -81,8 +89,9 @@ public class FilialController {
         return ResponseEntity.noContent().build();
     }
     
-    // Exclusão RotaEntrega
+    // Exclusão Filial
     @DeleteMapping(path = "/{codigoEmpresa}/{codigoFilial}")
+    @ApiOperation(value = "Exclui uma Filial")
     public ResponseEntity<Void> deletaFilial(@PathVariable Integer codigoEmpresa, 
                                              @PathVariable Integer codigoFilial) {
         FilialPK filialPK = new FilialPK();

@@ -5,7 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import com.google.common.base.Predicates;
+
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -20,7 +23,25 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
    public Docket api() {
        return new Docket(DocumentationType.SWAGGER_2)
                          .select()
-                         .apis(RequestHandlerSelectors.any())
+                         .apis(RequestHandlerSelectors.basePackage("br.com.henrique.controller"))
+                         .paths(Predicates.not(PathSelectors.regex("/atende/filial.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/empresa/remover.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/empresa/editar.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/empresa/page.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/estado/remover.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/estado/editar.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/estado/page.*")))         
+                         .paths(Predicates.not(PathSelectors.regex("/faixasCEPMicrozona/page.*")))    
+                         .paths(Predicates.not(PathSelectors.regex("/filial/remover.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/filial/editar.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/filial/page.*")))        
+                         .paths(Predicates.not(PathSelectors.regex("/microzona/page.*")))      
+                         .paths(Predicates.not(PathSelectors.regex("/municipio/editar.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/municipio/page.*")))  
+                         .paths(Predicates.not(PathSelectors.regex("/rotaEntrega/remover.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/rotaEntrega/editar.*")))
+                         .paths(Predicates.not(PathSelectors.regex("/rotaEntrega/page.*")))                            
+                         .paths(PathSelectors.any())                         
                          .build()
                          .apiInfo(apiInfo());
    }

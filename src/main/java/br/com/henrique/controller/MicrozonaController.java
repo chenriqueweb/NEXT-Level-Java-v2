@@ -19,7 +19,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Microzona;
 import br.com.henrique.service.MicrozonaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Microzona")
+@ApiOperation(value = "CRUD - Microzona")
 @RestController
 @RequestMapping(path = "/microzona")
 public class MicrozonaController {
@@ -37,6 +41,7 @@ public class MicrozonaController {
 
     // Lista Microzona
     @GetMapping
+    @ApiOperation(value = "Lista todas as Microzonas")
     public ResponseEntity<List<Microzona>> findAll() {
         List<Microzona> microzonas = microzonaService.findAll();
         return ResponseEntity.ok().body(microzonas);
@@ -50,6 +55,7 @@ public class MicrozonaController {
     
     // Busca por Microzona
     @GetMapping(path = "{codigo}")
+    @ApiOperation(value = "Busca por uma Microzona")
     public ResponseEntity<Microzona> findById(@PathVariable Integer codigo) {
         Microzona microzona = microzonaService.findById(codigo);
         return ResponseEntity.ok().body(microzona);
@@ -57,6 +63,7 @@ public class MicrozonaController {
     
     // Inclui Micrzona
     @PostMapping
+    @ApiOperation(value = "Inclui uma Micrzona")
     public ResponseEntity<Void> addMicrozona(@RequestBody Microzona microzona) {
         Microzona microzonaNova = microzonaService.addMicrozona(microzona);
         
@@ -66,6 +73,7 @@ public class MicrozonaController {
 
     // Altera Microzona
     @PutMapping(path = "{codigo}")
+    @ApiOperation(value = "Altera os dados de uma Microzona")
     public ResponseEntity<Void> updateMicrozona(@PathVariable Integer codigo, 
                                                 @RequestBody Microzona microzona) {
         microzonaService.updateMicrozona(codigo, microzona);
@@ -74,6 +82,7 @@ public class MicrozonaController {
         
     // Exclusão Microzona
     @DeleteMapping(path = "{codigo}")
+    @ApiOperation(value = "Exclui uma Microzona")
     public ResponseEntity<Void> deletaMicrozona(@PathVariable Integer codigo) {
         microzonaService.deletaMicrozona(codigo);
         return ResponseEntity.noContent().build();

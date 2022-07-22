@@ -6,8 +6,8 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-family: 'Josefin Sans', sans-serif;
 }
-
-header {
+   
+header {   
 	margin: 0;
 }
  
@@ -179,7 +179,7 @@ to {
 -webkit-keyframes fadeout {
 	from {bottom: 30px;
 	opacity: 1;
-}
+} 
 
 to {
 	bottom: 0;

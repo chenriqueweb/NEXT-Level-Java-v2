@@ -20,7 +20,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Estado;
 import br.com.henrique.service.EstadoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Estado")
+@ApiOperation(value = "CRUD - Estado")
 @RestController
 @RequestMapping(path = "/estado")
 public class EstadoController {
@@ -30,6 +34,7 @@ public class EstadoController {
     
     // Lista Estado
     @GetMapping
+    @ApiOperation(value = "Lista todas os Estados")
     public ResponseEntity<List<Estado>> findAll() {
         List<Estado> estados = estadoService.findAll();
         return ResponseEntity.ok().body(estados);
@@ -43,6 +48,7 @@ public class EstadoController {
     
     // Busca pelo Estado
     @GetMapping(path = "{sigla}")
+    @ApiOperation(value = "Busca por um Estado")
     public ResponseEntity<Estado> findById(@PathVariable String sigla) {
         Estado estado = estadoService.findById(sigla);
         return ResponseEntity.ok().body(estado);
@@ -50,6 +56,7 @@ public class EstadoController {
     
     // Inclui Estado
     @PostMapping
+    @ApiOperation(value = "Inclui um Estado")
     public ResponseEntity<Void> addEstado(@RequestBody Estado estado) {
         Estado estadoNovo = estadoService.addEstado(estado);
         
@@ -59,6 +66,7 @@ public class EstadoController {
     
     // Altera Estado
     @PutMapping(path = "{sigla}")
+    @ApiOperation(value = "Altera os dados de um Estado")    
     public ResponseEntity<Void> updateEstado(@PathVariable String sigla, @RequestBody Estado estado ) {
         estadoService.updateEstado(sigla, estado);
         return ResponseEntity.noContent().build();
@@ -66,6 +74,7 @@ public class EstadoController {
 
     // Exclui Estado
     @DeleteMapping(path = "{sigla}")
+    @ApiOperation(value = "Exclui um Estado")
     public ResponseEntity<Void> deletaEstado(@PathVariable String sigla) {
         estadoService.deletaEstado(sigla);
         

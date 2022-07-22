@@ -20,7 +20,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.henrique.model.FaixasCEPMicrozona;
 import br.com.henrique.model.FaixasCEPMicrozonaPK;
 import br.com.henrique.service.FaixasCEPMicrozonaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Faixa_CEP_Microzona")
+@ApiOperation(value = "CRUD - Faixa de CEPs Microzona")
 @RestController
 @RequestMapping(path = "/faixasCEPMicrozona")
 public class FaixasCEPMicrozonaController {
@@ -30,6 +34,7 @@ public class FaixasCEPMicrozonaController {
 
     // Lista Faixas de CEP Microzona
     @GetMapping
+    @ApiOperation(value = "Lista todas as Faixas de CEP Microzona")
     public ResponseEntity<List<FaixasCEPMicrozona>> findAll() {
         List<FaixasCEPMicrozona> faixasCEPMicrozona = faixasCEPMicrozonaService.findAll();
         return ResponseEntity.ok().body(faixasCEPMicrozona);
@@ -42,6 +47,7 @@ public class FaixasCEPMicrozonaController {
     } 
     
     // Busca na Faixa de CEP da Microzona
+    @ApiOperation(value = "Busca por uma Faixa de CEP da Microzona")
     @GetMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
     public ResponseEntity<FaixasCEPMicrozona> findById(@PathVariable Integer codigoMicrozona,
                                                        @PathVariable Integer codigoSequencial) {
@@ -57,6 +63,7 @@ public class FaixasCEPMicrozonaController {
     
     // Inclui Faixas de CEP da Microzona
     @PostMapping
+    @ApiOperation(value = "Inclui uma Faixa de CEP da Microzona")
     public ResponseEntity<Void> addFaixasCEPMicrozona(@RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
         FaixasCEPMicrozona faixasCEPMicrozonaNova = faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona);
 
@@ -67,8 +74,9 @@ public class FaixasCEPMicrozonaController {
         return ResponseEntity.created(uri).build();
     }
         
-    // Altera Filial
+    // Altera Faixa de CEP da Microzona
     @PutMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
+    @ApiOperation(value = "Altera os dados de uma Faixa de CEP da Microzona")
     public ResponseEntity<Void> updateFaixasCEPMicrozona(@PathVariable Integer codigoMicrozona,
                                                          @PathVariable Integer codigoSequencial, 
                                                          @RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
@@ -85,6 +93,7 @@ public class FaixasCEPMicrozonaController {
     
     // Exclusão da Faixa de CEP da Microzona
     @DeleteMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
+    @ApiOperation(value = "Exclui uma Faixa de CEP da Microzona")
     public ResponseEntity<Void> deletaFaixasCEPMicrozona(@PathVariable Integer codigoMicrozona,
                                                          @PathVariable Integer codigoSequencial) {
 
