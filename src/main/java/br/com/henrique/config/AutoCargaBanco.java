@@ -67,18 +67,6 @@ public class AutoCargaBanco implements CommandLineRunner {
         Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33.041.260/0947-11", formatterDate.parse("25/08/2016"));
         empresaService.addEmpresa(empresa0001);
         
-        empresaService.addEmpresa(empresa0001);
-        
-        logger.debug("[INFO] 1 Carga de Empresa");
-        
-        logger.info("[INFO] 2 Carga de Empresa");
-        
-        logger.info(format("[INFO] 333 Carga de Empresa", "teste 4", formatterDate.parse("25/08/2016")));
-        
-        logger.info(INICIO_CARGA);
-        
-        logger.error("teste 2 - error");        
-        
         
         // Carga da Tabela: ESTADO        
         Estado estadoAC = new Estado("AC","Acre");

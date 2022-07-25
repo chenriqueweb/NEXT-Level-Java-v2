@@ -22,6 +22,7 @@ import br.com.henrique.model.FilialPK;
 import br.com.henrique.model.Microzona;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
+import br.com.henrique.repository.FaixasCEPMicrozonaRepository;
 import br.com.henrique.repository.FilialRepository;
 import br.com.henrique.repository.RotaEntregaRepository;
 import br.com.henrique.service.EstadoService;
@@ -40,6 +41,9 @@ public class AtendeController {
     
     @Autowired
     private MicrozonaService microzonaService;
+    
+    @Autowired
+    private FaixasCEPMicrozonaRepository faixasCEPMicrozonaRepository;
     
     @Autowired
     private RotaEntregaRepository repositRotaEntrega;    
@@ -65,6 +69,7 @@ public class AtendeController {
         for (int x = 0; x < faixasCEPMicrozona.size(); x++ ) {
           if (cepAtende >= faixasCEPMicrozona.get(x).getCEPinicial() & 
               cepAtende <= faixasCEPMicrozona.get(x).getCEPfinal()) {
+        	  
                 Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
               
 //              System.out.println(cep.getDdd());
@@ -148,6 +153,18 @@ public class AtendeController {
 //        modelAndView.addObject("filialAtendeBusca", objectFilialAtendeBusca);  // this.cepAtende(cep).getBody());  // this.cepAtende(cep));
         
         return modelAndView;
+    }
+    
+    @GetMapping(path = "range/{cep}")
+    public List<FaixasCEPMicrozona> findByRangeAtende(@PathVariable Integer cep) {
+    	return faixasCEPMicrozonaRepository.findByCEPinicialLessThanEqualAndCEPfinalGreaterThanEqual(cep, cep);
+    
+    }
+    
+    @GetMapping(path = "range2/{cep}")
+    public List<FaixasCEPMicrozona> findByRangeAtende2(@PathVariable Integer cep) {
+    	return faixasCEPMicrozonaRepository.procuraPorFaixa(cep);
+    
     }    
     
 }
