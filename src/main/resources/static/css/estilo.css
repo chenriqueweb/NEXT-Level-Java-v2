@@ -6,11 +6,11 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-family: 'Josefin Sans', sans-serif;
 }
-   
-header {   
+
+header {
 	margin: 0;
 }
- 
+
 header nav {
 	background: #555;
 	height: 3em;
@@ -151,8 +151,7 @@ main section div span.selected {
 }
 
 /* Animations to fade the snackbar in and out */
-@
--webkit-keyframes fadein {
+@-webkit-keyframes fadein {
 	from {bottom: 0;
 	opacity: 0;
 }
@@ -163,8 +162,7 @@ to {
 }
 
 }
-@
-keyframes fadein {
+@keyframes fadein {
 	from {bottom: 0;
 	opacity: 0;
 }
@@ -175,11 +173,10 @@ to {
 }
 
 }
-@
--webkit-keyframes fadeout {
+@-webkit-keyframes fadeout {
 	from {bottom: 30px;
 	opacity: 1;
-} 
+}
 
 to {
 	bottom: 0;
@@ -187,8 +184,7 @@ to {
 }
 
 }
-@
-keyframes fadeout {
+@keyframes fadeout {
 	from {bottom: 30px;
 	opacity: 1;
 }

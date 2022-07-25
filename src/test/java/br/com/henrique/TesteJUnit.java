@@ -1,9 +1,9 @@
 package br.com.henrique;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import junit.framework.TestCase;
 
-class TesteJUnit {
+class TesteJUnit extends TestCase {
 
 	@Test
 	void test() {

@@ -8,11 +8,206 @@
 
 <title>NEXT Level - Java</title>
 
-<link rel="shortcut icon"
-	href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
-<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}"
-	rel="stylesheet" />
+<link rel="shortcut icon" href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}" rel="stylesheet" />
 
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+header {
+	margin: 0;
+}
+
+header nav {
+	background: #555;
+	height: 3em;
+}
+
+header nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+header nav ul li {
+	list-style: none;
+	line-height: 3em;
+	float: left;
+}
+
+header nav ul li a {
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	padding: 0 1em;
+	color: #888;
+}
+
+nav a:hover {
+	color: #fff;
+	background-color: #777;
+}
+
+header nav ul li:first-child a {
+	font-size: 1.4em;
+	color: #80aebd;
+}
+
+header nav ul li:first-child a:hover {
+	color: lightblue;
+}
+
+main {
+	padding: 0 1em;
+}
+
+main section form div {
+	margin: 0 0 10px 0;
+}
+
+main section form div label {
+	display: block;
+}
+
+main section form div input {
+	width: 20em;
+}
+
+main section form div button {
+	border: none;
+	padding: 10px 15px;
+	background-color: #80aebd;
+	color: #fff;
+}
+
+main section form div button:hover {
+	background-color: lightblue;
+	cursor: pointer;
+}
+
+main section table {
+	border-collapse: collapse;
+}
+
+main section table, main section table th, main section table td {
+	border: 1px solid #eee;
+	padding: 10px 15px;
+}
+
+main section table tbody tr td a {
+	text-decoration: none;
+	color: #80aebd;
+}
+
+main section table tbody tr td a:hover {
+	text-decoration: underline;
+	color: lightblue;
+}
+
+main section table tbody tr td form button {
+	border: none;
+	padding: 10px 15px;
+	background-color: #bd8088;
+	color: #fff;
+}
+
+main section table tbody tr td form button:hover {
+	background-color: #e6adb7;
+	cursor: pointer;
+}
+
+main section div {
+	user-select: none;
+}
+
+main section div span {
+	border-radius: 3px;
+	border: 1px solid #999;
+	padding: 5px;
+	margin: 10px 0px 0px 10px;
+	display: inline-block
+}
+
+main section div span.selected {
+	background: #ccf;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+	visibility: hidden; /* Hidden by default. Visible on click */
+	min-width: 250px; /* Set a default minimum width */
+	margin-left: -125px; /* Divide value of min-width by 2 */
+	background-color: #333; /* Black background color */
+	/* limão como fundo #00ff00 */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 1; /* Add a z-index if needed */
+	left: 50%; /* Center the snackbar */
+	bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+</style>
+ 
 </head>
  
 <body> 
