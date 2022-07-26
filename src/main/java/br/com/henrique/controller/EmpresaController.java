@@ -22,6 +22,8 @@ import br.com.henrique.model.Empresa;
 import br.com.henrique.service.EmpresaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Empresa")
 @RestController
@@ -34,6 +36,9 @@ public class EmpresaController {
     // Lista Empresa
     @GetMapping
     @ApiOperation(value = "Lista todas as Empresas")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Empresas")
+    })    
     public ResponseEntity<List<Empresa>> findAll() {
         List<Empresa> empresas = empresaService.findAll();
         return ResponseEntity.ok().body(empresas);
@@ -48,6 +53,10 @@ public class EmpresaController {
     // Busca por Empresa
     @GetMapping(path = "{codigo}")
     @ApiOperation(value = "Busca por uma Empresa")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados da Empresa"),
+    	    @ApiResponse(code = 404, message = "Empresa não encontrada")    	    
+    })        
     public ResponseEntity<Empresa> findById(@PathVariable Integer codigo) {
         Empresa empresa = empresaService.findById(codigo);
         return ResponseEntity.ok().body(empresa);
@@ -56,6 +65,9 @@ public class EmpresaController {
     // Inclui Empresa
     @PostMapping
     @ApiOperation(value = "Inclui uma Empresa")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "Empresa criada com sucesso")
+    })  
     public ResponseEntity<Void> addEmpresa(@RequestBody Empresa empresa) {
         Empresa empresaNova = empresaService.addEmpresa(empresa);
         
@@ -66,6 +78,11 @@ public class EmpresaController {
     // Altera Empresa
     @PutMapping(path = "{codigo}")
     @ApiOperation(value = "Altera os dados de uma Empresa")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Empresa alterada com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "Empresa não encontrada")    	    
+    })  
     public ResponseEntity<Void> updateEmpresa(@PathVariable Integer codigo, @RequestBody Empresa empresa) {
         empresaService.updateEmpresa(codigo, empresa);
         return ResponseEntity.noContent().build();
@@ -74,6 +91,11 @@ public class EmpresaController {
     // Exclusão Empresa
     @DeleteMapping(path = "{codigo}")
     @ApiOperation(value = "Exclui uma Empresa")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Empresa excluída"),
+    	    @ApiResponse(code = 404, message = "Empresa não encontrada"), 
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir a Empresa")    	    
+    }) 
     public ResponseEntity<Void> deletaEmpresa(@PathVariable Integer codigo) {
         empresaService.deletaEmpresa(codigo);
         return ResponseEntity.noContent().build();

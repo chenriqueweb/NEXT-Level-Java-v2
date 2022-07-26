@@ -21,27 +21,24 @@ import br.com.henrique.model.Microzona;
 import br.com.henrique.service.MicrozonaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Microzona")
 @ApiOperation(value = "CRUD - Microzona")
 @RestController
 @RequestMapping(path = "/microzona")
 public class MicrozonaController {
-//
-//    @PersistenceContext
-//    private EntityManager manager;
-//    
-//    @GetMapping
-//    public List<Microzona> listaMicrozona() {
-//        return manager.createQuery("from Microzona", Microzona.class).getResultList();
-//    }
-    
+
     @Autowired
     private MicrozonaService microzonaService;
 
     // Lista Microzona
     @GetMapping
     @ApiOperation(value = "Lista todas as Microzonas")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Microzonas")
+    })    
     public ResponseEntity<List<Microzona>> findAll() {
         List<Microzona> microzonas = microzonaService.findAll();
         return ResponseEntity.ok().body(microzonas);
@@ -56,6 +53,10 @@ public class MicrozonaController {
     // Busca por Microzona
     @GetMapping(path = "{codigo}")
     @ApiOperation(value = "Busca por uma Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados da Microzona"),
+    	    @ApiResponse(code = 404, message = "Microzona não encontrada")    	    
+    })  
     public ResponseEntity<Microzona> findById(@PathVariable Integer codigo) {
         Microzona microzona = microzonaService.findById(codigo);
         return ResponseEntity.ok().body(microzona);
@@ -64,6 +65,9 @@ public class MicrozonaController {
     // Inclui Micrzona
     @PostMapping
     @ApiOperation(value = "Inclui uma Micrzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "Micrzona criada com sucesso")
+    }) 
     public ResponseEntity<Void> addMicrozona(@RequestBody Microzona microzona) {
         Microzona microzonaNova = microzonaService.addMicrozona(microzona);
         
@@ -74,6 +78,11 @@ public class MicrozonaController {
     // Altera Microzona
     @PutMapping(path = "{codigo}")
     @ApiOperation(value = "Altera os dados de uma Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Microzona alterada com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "Microzona não encontrada")    	    
+    }) 
     public ResponseEntity<Void> updateMicrozona(@PathVariable Integer codigo, 
                                                 @RequestBody Microzona microzona) {
         microzonaService.updateMicrozona(codigo, microzona);
@@ -83,6 +92,11 @@ public class MicrozonaController {
     // Exclusão Microzona
     @DeleteMapping(path = "{codigo}")
     @ApiOperation(value = "Exclui uma Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Microzona excluída"),
+    	    @ApiResponse(code = 404, message = "Microzona não encontrada"), 
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir a Microzona")    	    
+    })
     public ResponseEntity<Void> deletaMicrozona(@PathVariable Integer codigo) {
         microzonaService.deletaMicrozona(codigo);
         return ResponseEntity.noContent().build();

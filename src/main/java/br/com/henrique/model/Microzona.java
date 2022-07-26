@@ -11,31 +11,72 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Microzona {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código da Microzona")
     private Integer codigo;
         
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
+    @ApiModelProperty(value = "Nome da Microzona")
     private String nome;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
+    @ApiModelProperty(value = "Status da Microzona")
     private String status;
+
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento Diário")
     private String atendimentoDiario;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Segunda-feira")
     private String atendeSegunda;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Terça-feira")
     private String atendeTerca;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Quarta-feira")
     private String atendeQuarta;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Quinta-feira")
     private String atendeQuinta;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Sexta-feira")
     private String atendeSexta;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
+    @ApiModelProperty(value = "Atendimento - Sábado")
     private String atendeSabado;
     
     @NotNull
+    @ApiModelProperty(value = "Código da Rota")
     private Integer codigoRota;
     
     // FK com Estado

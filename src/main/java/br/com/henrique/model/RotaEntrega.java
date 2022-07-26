@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class RotaEntrega {
     
@@ -18,18 +20,25 @@ public class RotaEntrega {
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
+    @ApiModelProperty(value = "Nome da Rota de Entrega")
     private String nome;
 
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
+    @ApiModelProperty(value = "Status da Rota de Entrega")
     private String status;
     
     @NotNull
+    @ApiModelProperty(value = "Código da Empresa")
     private Integer codigoEmpresa;
+    
+    @NotNull
+    @ApiModelProperty(value = "Código da Filial")
     private Integer codigoFilial;
     
     @NotNull
+    @ApiModelProperty(value = "Prazo para Expedição")
     private Integer prazoExpedicao;
     
     // FK com Estado

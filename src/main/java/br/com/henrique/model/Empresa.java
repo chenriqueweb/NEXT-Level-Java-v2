@@ -10,24 +10,31 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Empresa {
     
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)   // Utilizando numeracao do banco DB2
+    @NotNull
+    @ApiModelProperty(value = "Código da Empresa")
     private Integer codigo;
 
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
+    @ApiModelProperty(value = "Razão Social")
     private String razaoSocial;
     
     @NotNull
     @NotEmpty
     @Size(min=14, max=14)
+    @ApiModelProperty(value = "Raiz do CNPJ")
     private String raizCNPJ;
     
     @JsonFormat(pattern="dd/MM/yyyy")
+    @ApiModelProperty(value = "Data da Abertura")
     private Date dataAbertura;
     
     // Construtor da Classe

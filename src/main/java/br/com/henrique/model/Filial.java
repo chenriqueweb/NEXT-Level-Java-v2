@@ -6,6 +6,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Filial {
     
@@ -15,14 +17,17 @@ public class Filial {
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
+    @ApiModelProperty(value = "Nome da Filial")
     private String nome;
     
     @NotNull
     @NotEmpty
     @Size(min=14, max=14)
+    @ApiModelProperty(value = "CNPJ da Filial")
     private String cnpj;
     
     @NotNull
+    @ApiModelProperty(value = "Número do Município")
     private Integer municipio;
     
     public Filial() {

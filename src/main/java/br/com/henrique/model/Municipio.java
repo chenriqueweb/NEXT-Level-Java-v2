@@ -8,12 +8,26 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Municipio {
     
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)  // Usando sequencia do DB2
+    @ApiModelProperty(value = "Código do Município")
     private Integer codigo_ID;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=4, max=50)
+    @ApiModelProperty(value = "Nome do Município")
+    private String nome;
+    
+    // FK com Estado
+    @ManyToOne
+    @JoinColumn(name="sigla")
+    private Estado estado;
     
     public Municipio() {
         super();
@@ -30,17 +44,6 @@ public class Municipio {
     public boolean isNovo() {
         return nome == null;
     }    
-    
-    @NotNull
-    @NotEmpty
-    @Size(min=4, max=50)
-    private String nome;
-    
-    // FK com Estado
-    @ManyToOne
-    @JoinColumn(name="sigla")
-    private Estado estado;
-    
     
     public Integer getCodigo_ID() {
         return codigo_ID;

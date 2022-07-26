@@ -23,6 +23,8 @@ import br.com.henrique.model.RotaEntregaPK;
 import br.com.henrique.service.RotaEntregaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Rota_Entrega")
 @ApiOperation(value = "CRUD - Rota de Entrega")
@@ -36,6 +38,9 @@ public class RotaEntregaController {
     // Lista RotaEntrega
     @GetMapping
     @ApiOperation(value = "Lista todas as RotaEntregas")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as RotaEntregas")
+    })  
     public ResponseEntity<List<RotaEntrega>> findAll() {
         List<RotaEntrega> rotaEntregas = rotaEntregaService.findAll();
         return ResponseEntity.ok().body(rotaEntregas);
@@ -50,6 +55,10 @@ public class RotaEntregaController {
     // Busca por RotaEntrega
     @GetMapping(path = "{siglaEstado}/{codigoRota}")
     @ApiOperation(value = "Busca por uma RotaEntrega")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados da RotaEntrega"),
+    	    @ApiResponse(code = 404, message = "RotaEntrega não encontrada")    	    
+    })  
     public ResponseEntity<RotaEntrega> findById(@PathVariable String siglaEstado,
                                                 @PathVariable Integer codigoRota) {
         RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
@@ -64,6 +73,9 @@ public class RotaEntregaController {
     // Inclui RotaEntrega
     @PostMapping
     @ApiOperation(value = "Inclui uma RotaEntrega")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "RotaEntrega criada com sucesso")
+    }) 
     public ResponseEntity<Void> addRotaEntrega(@RequestBody RotaEntrega rotaEntrega) {
         RotaEntrega rotaEntregaNova = rotaEntregaService.addRotaEntrega(rotaEntrega);
         
@@ -77,6 +89,11 @@ public class RotaEntregaController {
     // Altera RotaEntrega
     @PutMapping(path = "{siglaEstado}/{codigoRota}")
     @ApiOperation(value = "Altera os dados de uma RotaEntrega")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "RotaEntrega alterada com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "RotaEntrega não encontrada")    	    
+    })  
     public ResponseEntity<Void> updateRotaEntrega(@PathVariable String siglaEstado,
                                                   @PathVariable Integer codigoRota, 
                                                   @RequestBody RotaEntrega rotaEntrega) {
@@ -93,6 +110,11 @@ public class RotaEntregaController {
     // Exclusão RotaEntrega
     @DeleteMapping(path = "{siglaEstado}/{codigoRota}")
     @ApiOperation(value = "Exclui uma RotaEntrega")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "RotaEntrega excluída"),
+    	    @ApiResponse(code = 404, message = "RotaEntrega não encontrada"),
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir a RotaEntrega")
+    })  
     public ResponseEntity<Void> deletaRotaEntrega(@PathVariable String siglaEstado,
                                                   @PathVariable Integer codigoRota) {
         

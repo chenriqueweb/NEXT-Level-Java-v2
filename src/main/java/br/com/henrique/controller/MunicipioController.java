@@ -22,6 +22,8 @@ import br.com.henrique.model.Municipio;
 import br.com.henrique.service.MunicipioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Municipio")
 @ApiOperation(value = "CRUD - Municipio")
@@ -35,6 +37,9 @@ public class MunicipioController {
     // Lista Municipio
     @GetMapping
     @ApiOperation(value = "Lista todos os Municipios")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas os Municipios")
+    })  
     public ResponseEntity<List<Municipio>> findAll() {
         List<Municipio> municipios = municipioService.findAll();        
         return ResponseEntity.ok().body(municipios);
@@ -49,6 +54,10 @@ public class MunicipioController {
     // Busca pelo Municipio
     @GetMapping(path = "{codigo}")
     @ApiOperation(value = "Busca por um Municipio")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados do Municipio"),
+    	    @ApiResponse(code = 404, message = "Municipio não encontrado")    	    
+    })  
     public ResponseEntity<Municipio> findById(@PathVariable Integer codigo) {
         Municipio municipio = municipioService.findById(codigo);
         return ResponseEntity.ok().body(municipio);
@@ -57,6 +66,9 @@ public class MunicipioController {
     // Inclui Municipio
     @PostMapping
     @ApiOperation(value = "Inclui um Municipio")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "Municipio criado com sucesso")
+    }) 
     public ResponseEntity<Void> addMunicipio(@RequestBody Municipio municipio) {
         Municipio municipioNovo = municipioService.addMunicipio(municipio);
         
@@ -67,6 +79,11 @@ public class MunicipioController {
     // Altera Municipio
     @PutMapping(path = "{codigo}")
     @ApiOperation(value = "Altera os dados de um Municipio")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Municipio alterado com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "Municipio não encontrado")    	    
+    })  
     public ResponseEntity<Void> updateMunicipio(@PathVariable Integer codigo, @RequestBody Municipio municipio) {
         municipioService.updateMunicipio(codigo, municipio);
         return ResponseEntity.noContent().build();
@@ -75,6 +92,11 @@ public class MunicipioController {
     // Deleta Municipio = method Delete
     @DeleteMapping(path = "{codigo}")
     @ApiOperation(value = "Exclui um Municipio")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Municipio excluído"),
+    	    @ApiResponse(code = 404, message = "Municipio não encontrado"), 
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir o Municipio")
+    })  
     public ResponseEntity<Void> deletaMunicipio(@PathVariable Integer codigo) {
         municipioService.deletaMunicipio(codigo);
         return ResponseEntity.noContent().build();

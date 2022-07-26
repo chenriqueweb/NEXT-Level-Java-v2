@@ -6,13 +6,18 @@ import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Embeddable
 public class RotaEntregaPK  implements Serializable {
     
     private static final long serialVersionUID = 1L;
+    
+    @ApiModelProperty(value = "Sigla da Unidade Federativa")
     private String siglaEstado;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código da Rota")
     private Integer codigoRota;
        
     public RotaEntregaPK() {

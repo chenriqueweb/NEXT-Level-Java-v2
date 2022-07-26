@@ -30,6 +30,8 @@ import br.com.henrique.service.FaixasCEPMicrozonaService;
 import br.com.henrique.service.MicrozonaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Busca_CEP")
 @RestController
@@ -57,6 +59,9 @@ public class AtendeController {
     @SuppressWarnings("unchecked")
     @GetMapping(path = "{cepAtende}")    
     @ApiOperation(value = "Consulta de Filiais por CEP")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna a Filial por CEP")
+    })    
     public ResponseEntity<JSONObject> cepAtende(@PathVariable Integer cepAtende) {
         
         List<FaixasCEPMicrozona> faixasCEPMicrozona = faixasCEPMicrozonaService.findAll();

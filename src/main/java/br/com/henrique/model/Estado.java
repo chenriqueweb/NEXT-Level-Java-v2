@@ -6,6 +6,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Estado {
     
@@ -13,11 +15,13 @@ public class Estado {
     @NotEmpty
     @NotNull
     @Size(min=2, max=2)
+    @ApiModelProperty(value = "Sigla da Unidade Federativa")
     private String sigla;
     
     @NotEmpty
     @NotNull
     @Size(min=4, max=50)
+    @ApiModelProperty(value = "Nome do Estado")
     private String nome;
 
     // Construtores da Class

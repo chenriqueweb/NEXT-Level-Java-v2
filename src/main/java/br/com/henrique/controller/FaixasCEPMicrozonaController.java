@@ -22,6 +22,8 @@ import br.com.henrique.model.FaixasCEPMicrozonaPK;
 import br.com.henrique.service.FaixasCEPMicrozonaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Faixa_CEP_Microzona")
 @ApiOperation(value = "CRUD - Faixa de CEPs Microzona")
@@ -35,6 +37,9 @@ public class FaixasCEPMicrozonaController {
     // Lista Faixas de CEP Microzona
     @GetMapping
     @ApiOperation(value = "Lista todas as Faixas de CEP Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de Faixas de CEP Microzona")
+    }) 
     public ResponseEntity<List<FaixasCEPMicrozona>> findAll() {
         List<FaixasCEPMicrozona> faixasCEPMicrozona = faixasCEPMicrozonaService.findAll();
         return ResponseEntity.ok().body(faixasCEPMicrozona);
@@ -49,6 +54,10 @@ public class FaixasCEPMicrozonaController {
     // Busca na Faixa de CEP da Microzona
     @ApiOperation(value = "Busca por uma Faixa de CEP da Microzona")
     @GetMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados da Faixa de CEP da Microzona"),
+    	    @ApiResponse(code = 404, message = "Faixa de CEP da Microzona não encontrada")    	    
+    })  
     public ResponseEntity<FaixasCEPMicrozona> findById(@PathVariable Integer codigoMicrozona,
                                                        @PathVariable Integer codigoSequencial) {
     FaixasCEPMicrozonaPK faixasCEPMicrozonaPK = new FaixasCEPMicrozonaPK();
@@ -64,6 +73,9 @@ public class FaixasCEPMicrozonaController {
     // Inclui Faixas de CEP da Microzona
     @PostMapping
     @ApiOperation(value = "Inclui uma Faixa de CEP da Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "Faixa de CEP da Microzona criada com sucesso")
+    }) 
     public ResponseEntity<Void> addFaixasCEPMicrozona(@RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
         FaixasCEPMicrozona faixasCEPMicrozonaNova = faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona);
 
@@ -77,6 +89,11 @@ public class FaixasCEPMicrozonaController {
     // Altera Faixa de CEP da Microzona
     @PutMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
     @ApiOperation(value = "Altera os dados de uma Faixa de CEP da Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Faixa de CEP da Microzona alterada com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "Faixa de CEP da Microzona não encontrada")    	    
+    })
     public ResponseEntity<Void> updateFaixasCEPMicrozona(@PathVariable Integer codigoMicrozona,
                                                          @PathVariable Integer codigoSequencial, 
                                                          @RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
@@ -94,6 +111,11 @@ public class FaixasCEPMicrozonaController {
     // Exclusão da Faixa de CEP da Microzona
     @DeleteMapping(path = "/{codigoMicrozona}/{codigoSequencial}")
     @ApiOperation(value = "Exclui uma Faixa de CEP da Microzona")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Faixa de CEP da Microzona excluída"),
+    	    @ApiResponse(code = 404, message = "Faixa de CEP da Microzona não encontrada"), 
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir a Faixa de CEP da Microzona")    	    
+    })  
     public ResponseEntity<Void> deletaFaixasCEPMicrozona(@PathVariable Integer codigoMicrozona,
                                                          @PathVariable Integer codigoSequencial) {
 

@@ -6,13 +6,18 @@ import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Embeddable
 public class FilialPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    @ApiModelProperty(value = "Código da Empresa")
     private Integer codigoEmpresa;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código da Filial")
     private Integer codigoFilial;
     
     public FilialPK() {

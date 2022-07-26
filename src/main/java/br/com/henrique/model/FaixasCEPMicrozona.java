@@ -6,6 +6,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class FaixasCEPMicrozona {
 
@@ -13,7 +15,11 @@ public class FaixasCEPMicrozona {
     private FaixasCEPMicrozonaPK faixasCEPMicrozonaPK;
     
     @NotNull
+    @ApiModelProperty(value = "CEP Inicial")
     private Integer CEPinicial;
+    
+    @NotNull
+    @ApiModelProperty(value = "CEP Final")
     private Integer CEPfinal;
     
     // Método para identificar registro novo

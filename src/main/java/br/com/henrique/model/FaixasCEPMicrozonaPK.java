@@ -6,15 +6,19 @@ import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Embeddable
 public class FaixasCEPMicrozonaPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código da Microzona")
     private Integer codigoMicrozona;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código Sequencial de Microzonas")
     private Integer codigoSequencial;
 
     // Construtor

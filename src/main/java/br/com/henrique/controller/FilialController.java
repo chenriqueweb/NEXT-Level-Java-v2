@@ -23,6 +23,8 @@ import br.com.henrique.model.FilialPK;
 import br.com.henrique.service.FilialService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Filial")
 @ApiOperation(value = "CRUD - Filial")
@@ -36,6 +38,9 @@ public class FilialController {
     // Lista Filiais
     @GetMapping
     @ApiOperation(value = "Lista todas as Filiais")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Filiais")
+    }) 
     public ResponseEntity<List<Filial>> findAll() {
         List<Filial> filiais = filialService.findAll();
         return ResponseEntity.ok().body(filiais);
@@ -50,6 +55,10 @@ public class FilialController {
     // Busca por Filial
     @ApiOperation(value = "Busca por uma Filial")
     @GetMapping(path = "/{codigoEmpresa}/{codigoFilial}")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna dados da Filial"),
+    	    @ApiResponse(code = 404, message = "Filial não encontrada")    	    
+    })  
     public ResponseEntity<Filial> findById(@PathVariable Integer codigoEmpresa, 
                                            @PathVariable Integer codigoFilial) {
         FilialPK filialPK = new FilialPK();
@@ -64,6 +73,9 @@ public class FilialController {
     // Inclui Filial
     @PostMapping
     @ApiOperation(value = "Inclui uma Filial")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 201, message = "Filial criada com sucesso")
+    }) 
     public ResponseEntity<Void> addFilial(@RequestBody Filial filial) {
         Filial filialNova = filialService.addFilial(filial);
         
@@ -76,6 +88,11 @@ public class FilialController {
     // Altera Filial
     @PutMapping(path = "/{codigoEmpresa}/{codigoFilial}")
     @ApiOperation(value = "Altera os dados de uma Filial")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Filial alterada com sucesso"),
+    	    @ApiResponse(code = 400, message = "Dados inválidos"),
+    	    @ApiResponse(code = 404, message = "Filial não encontrada")    	    
+    })  
     public ResponseEntity<Void> updateFilial(@PathVariable Integer codigoEmpresa,
                                              @PathVariable Integer codigoFilial, 
                                              @RequestBody Filial filial) {
@@ -92,6 +109,11 @@ public class FilialController {
     // Exclusão Filial
     @DeleteMapping(path = "/{codigoEmpresa}/{codigoFilial}")
     @ApiOperation(value = "Exclui uma Filial")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 204, message = "Filial excluída"),
+    	    @ApiResponse(code = 404, message = "Filial não encontrada"), 
+    	    @ApiResponse(code = 500, message = "Houve um erro e não foi possível excluir a Filial")      	    
+    })  
     public ResponseEntity<Void> deletaFilial(@PathVariable Integer codigoEmpresa, 
                                              @PathVariable Integer codigoFilial) {
         FilialPK filialPK = new FilialPK();
