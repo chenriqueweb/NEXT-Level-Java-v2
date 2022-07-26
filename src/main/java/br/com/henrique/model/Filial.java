@@ -12,22 +12,23 @@ import io.swagger.annotations.ApiModelProperty;
 public class Filial {
     
     @EmbeddedId
+    @ApiModelProperty(value = "Chave para Filial", required = true)
     private FilialPK filialPK;
     
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
-    @ApiModelProperty(value = "Nome da Filial")
+    @ApiModelProperty(value = "Nome da Filial", required = true)
     private String nome;
     
     @NotNull
     @NotEmpty
     @Size(min=14, max=14)
-    @ApiModelProperty(value = "CNPJ da Filial")
+    @ApiModelProperty(value = "CNPJ da Filial", required = true)
     private String cnpj;
     
     @NotNull
-    @ApiModelProperty(value = "Número do Município")
+    @ApiModelProperty(value = "Número do Município", required = true)
     private Integer municipio;
     
     public Filial() {

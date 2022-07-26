@@ -15,13 +15,13 @@ public class Municipio {
     
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)  // Usando sequencia do DB2
-    @ApiModelProperty(value = "Código do Município")
+    @ApiModelProperty(value = "Código do Município", required = true)
     private Integer codigo_ID;
     
     @NotNull
     @NotEmpty
     @Size(min=4, max=50)
-    @ApiModelProperty(value = "Nome do Município")
+    @ApiModelProperty(value = "Nome do Município", required = true)
     private String nome;
     
     // FK com Estado

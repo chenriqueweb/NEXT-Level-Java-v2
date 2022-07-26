@@ -13,11 +13,11 @@ public class RotaEntregaPK  implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @ApiModelProperty(value = "Sigla da Unidade Federativa")
+    @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String siglaEstado;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Código da Rota")
+    @ApiModelProperty(value = "Código da Rota", required = true)
     private Integer codigoRota;
        
     public RotaEntregaPK() {

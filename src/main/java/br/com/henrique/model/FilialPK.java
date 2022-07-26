@@ -13,11 +13,11 @@ public class FilialPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @ApiModelProperty(value = "Código da Empresa")
+    @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigoEmpresa;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Código da Filial")
+    @ApiModelProperty(value = "Código da Filial", required = true)
     private Integer codigoFilial;
     
     public FilialPK() {

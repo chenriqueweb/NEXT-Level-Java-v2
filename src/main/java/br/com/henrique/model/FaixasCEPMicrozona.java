@@ -12,14 +12,15 @@ import io.swagger.annotations.ApiModelProperty;
 public class FaixasCEPMicrozona {
 
     @EmbeddedId
+    @ApiModelProperty(value = "Chave para Rota Faixa de CEP Microzona", required = true)
     private FaixasCEPMicrozonaPK faixasCEPMicrozonaPK;
     
     @NotNull
-    @ApiModelProperty(value = "CEP Inicial")
+    @ApiModelProperty(value = "CEP Inicial", required = true)
     private Integer CEPinicial;
     
     @NotNull
-    @ApiModelProperty(value = "CEP Final")
+    @ApiModelProperty(value = "CEP Final", required = true)
     private Integer CEPfinal;
     
     // Método para identificar registro novo

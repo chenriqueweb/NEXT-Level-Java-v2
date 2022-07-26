@@ -18,65 +18,65 @@ public class Microzona {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Código da Microzona")
+    @ApiModelProperty(value = "Código da Microzona", required = true)
     private Integer codigo;
         
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
-    @ApiModelProperty(value = "Nome da Microzona")
+    @ApiModelProperty(value = "Nome da Microzona", required = true)
     private String nome;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Status da Microzona")
+    @ApiModelProperty(value = "Status da Microzona", required = true)
     private String status;
 
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento Diário")
+    @ApiModelProperty(value = "Atendimento Diário", required = true)
     private String atendimentoDiario;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Segunda-feira")
+    @ApiModelProperty(value = "Atendimento - Segunda-feira", required = true)
     private String atendeSegunda;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Terça-feira")
+    @ApiModelProperty(value = "Atendimento - Terça-feira", required = true)
     private String atendeTerca;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Quarta-feira")
+    @ApiModelProperty(value = "Atendimento - Quarta-feira", required = true)
     private String atendeQuarta;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Quinta-feira")
+    @ApiModelProperty(value = "Atendimento - Quinta-feira", required = true)
     private String atendeQuinta;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Sexta-feira")
+    @ApiModelProperty(value = "Atendimento - Sexta-feira", required = true)
     private String atendeSexta;
     
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Atendimento - Sábado")
+    @ApiModelProperty(value = "Atendimento - Sábado", required = true)
     private String atendeSabado;
     
     @NotNull
-    @ApiModelProperty(value = "Código da Rota")
+    @ApiModelProperty(value = "Código da Rota", required = true)
     private Integer codigoRota;
     
     // FK com Estado

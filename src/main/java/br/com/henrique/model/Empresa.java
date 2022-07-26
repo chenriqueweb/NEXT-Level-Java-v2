@@ -18,23 +18,23 @@ public class Empresa {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)   // Utilizando numeracao do banco DB2
     @NotNull
-    @ApiModelProperty(value = "Código da Empresa")
+    @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigo;
 
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
-    @ApiModelProperty(value = "Razão Social")
+    @ApiModelProperty(value = "Razão Social", required = true)
     private String razaoSocial;
     
     @NotNull
     @NotEmpty
     @Size(min=14, max=14)
-    @ApiModelProperty(value = "Raiz do CNPJ")
+    @ApiModelProperty(value = "Raiz do CNPJ", required = true)
     private String raizCNPJ;
     
     @JsonFormat(pattern="dd/MM/yyyy")
-    @ApiModelProperty(value = "Data da Abertura")
+    @ApiModelProperty(value = "Data da Abertura", required = false)
     private Date dataAbertura;
     
     // Construtor da Classe

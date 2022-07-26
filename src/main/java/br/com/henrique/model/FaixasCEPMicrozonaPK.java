@@ -14,11 +14,11 @@ public class FaixasCEPMicrozonaPK implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Código da Microzona")
+    @ApiModelProperty(value = "Código da Microzona", required = true)
     private Integer codigoMicrozona;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Código Sequencial de Microzonas")
+    @ApiModelProperty(value = "Código Sequencial de Microzonas", required = true)
     private Integer codigoSequencial;
 
     // Construtor

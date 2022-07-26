@@ -15,30 +15,30 @@ import io.swagger.annotations.ApiModelProperty;
 public class RotaEntrega {
     
     @EmbeddedId
+    @ApiModelProperty(value = "Chave para Rota de Entrega", required = true)
     private RotaEntregaPK rotaEntregaPK;    
     
     @NotNull
     @NotEmpty
     @Size(min=5, max=50)
-    @ApiModelProperty(value = "Nome da Rota de Entrega")
+    @ApiModelProperty(value = "Nome da Rota de Entrega", required = true)
     private String nome;
 
     @NotNull
     @NotEmpty
     @Size(min=1, max=1)
-    @ApiModelProperty(value = "Status da Rota de Entrega")
+    @ApiModelProperty(value = "Status da Rota de Entrega", required = true)
     private String status;
     
     @NotNull
-    @ApiModelProperty(value = "Código da Empresa")
+    @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigoEmpresa;
     
     @NotNull
-    @ApiModelProperty(value = "Código da Filial")
+    @ApiModelProperty(value = "Código da Filial", required = true)
     private Integer codigoFilial;
     
-    @NotNull
-    @ApiModelProperty(value = "Prazo para Expedição")
+    @ApiModelProperty(value = "Prazo para Expedição", required = false)
     private Integer prazoExpedicao;
     
     // FK com Estado

@@ -15,13 +15,13 @@ public class Estado {
     @NotEmpty
     @NotNull
     @Size(min=2, max=2)
-    @ApiModelProperty(value = "Sigla da Unidade Federativa")
+    @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String sigla;
     
     @NotEmpty
     @NotNull
     @Size(min=4, max=50)
-    @ApiModelProperty(value = "Nome do Estado")
+    @ApiModelProperty(value = "Nome do Estado", required = true)
     private String nome;
 
     // Construtores da Class
