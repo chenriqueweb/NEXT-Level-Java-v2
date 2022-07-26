@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Municipio {
@@ -28,6 +31,9 @@ public class Municipio {
         return nome == null;
     }    
     
+    @NotNull
+    @NotEmpty
+    @Size(min=4, max=50)
     private String nome;
     
     // FK com Estado

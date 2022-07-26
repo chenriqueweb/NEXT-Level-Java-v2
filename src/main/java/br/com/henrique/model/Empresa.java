@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,7 +17,14 @@ public class Empresa {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)   // Utilizando numeracao do banco DB2
     private Integer codigo;
 
+    @NotNull
+    @NotEmpty
+    @Size(min=5, max=50)
     private String razaoSocial;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=14, max=14)
     private String raizCNPJ;
     
     @JsonFormat(pattern="dd/MM/yyyy")

@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Microzona {
@@ -15,7 +18,14 @@ public class Microzona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
         
+    @NotNull
+    @NotEmpty
+    @Size(min=5, max=50)
     private String nome;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
     private String status;
     private String atendimentoDiario;
     private String atendeSegunda;
@@ -24,6 +34,8 @@ public class Microzona {
     private String atendeQuinta;
     private String atendeSexta;
     private String atendeSabado;
+    
+    @NotNull
     private Integer codigoRota;
     
     // FK com Estado

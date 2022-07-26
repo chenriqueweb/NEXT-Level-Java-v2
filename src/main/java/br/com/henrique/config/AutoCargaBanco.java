@@ -1,11 +1,7 @@
 package br.com.henrique.config;
 
-import static java.lang.String.format;
-
 import java.text.SimpleDateFormat;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,9 +28,7 @@ import br.com.henrique.service.RotaEntregaService;
 // @Profile("dev")
 public class AutoCargaBanco implements CommandLineRunner {
     
-    private static Logger logger = LoggerFactory.getLogger(AutoCargaBanco.class);
-    
-    private static final String INICIO_CARGA = "Inicio da carga de Dados - H2";
+    // private static Logger logger = LoggerFactory.getLogger(AutoCargaBanco.class);
     
     @Autowired
     private EmpresaService empresaService;
@@ -64,7 +58,7 @@ public class AutoCargaBanco implements CommandLineRunner {
         final SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");        
         
         // Carga da Tabela: EMPRESA
-        Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33.041.260/0947-11", formatterDate.parse("25/08/2016"));
+        Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33041260094711", formatterDate.parse("25/08/2016"));  // "33.041.260/0947-11"
         empresaService.addEmpresa(empresa0001);
         
         
@@ -284,88 +278,87 @@ public class AutoCargaBanco implements CommandLineRunner {
         municipioService.addMunicipio(municipioES53040);
         Municipio municipioES55425 = new Municipio(55425, "Gov.lindenberg", estadoES);
         municipioService.addMunicipio(municipioES55425);        
-        
-        
+
         // Carga da Tabela: FILIAL
         FilialPK filialPK = new FilialPK();
-        
+
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(6);
-        Filial filial0001 = new Filial(filialPK, "CACHOEIRO DE ITAPEMIRIM-ES", "33.041.260/0129-28", 27669);
+        Filial filial0001 = new Filial(filialPK, "CACHOEIRO DE ITAPEMIRIM-ES", "33041260012928", 27669);
         filialService.addFilial(filial0001);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(53);
-        Filial filial0002 = new Filial(filialPK, "CENTRO-ES", "33.041.260/0199-30", 28231);
+        Filial filial0002 = new Filial(filialPK, "CENTRO-ES", "33041260019930", 28231);
         filialService.addFilial(filial0002);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(123);
-        Filial filial0003 = new Filial(filialPK, "CARIACICA 2 - ES", "33.041.260/0173-00", 27677);
+        Filial filial0003 = new Filial(filialPK, "CARIACICA 2 - ES", "33041260017300", 27677);
         filialService.addFilial(filial0003);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(132);
-        Filial filial0004 = new Filial(filialPK, "SHOP VITÓRIA-ES", "33.041.260/0170-59", 28231);
+        Filial filial0004 = new Filial(filialPK, "SHOP VITÓRIA-ES", "33041260017059", 28231);
         filialService.addFilial(filial0004);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1638);
-        Filial filial0005 = new Filial(filialPK, "SHOP PRAIA DA COSTA-ES", "33.041.260/0994-38", 28223);
+        Filial filial0005 = new Filial(filialPK, "SHOP PRAIA DA COSTA-ES", "33041260099438", 28223);
         filialService.addFilial(filial0005);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1639);
-        Filial filial0006 = new Filial(filialPK, "VITÓRIA-ES", "33.041.260/0996-08", 28231);
+        Filial filial0006 = new Filial(filialPK, "VITÓRIA-ES", "33041260099608", 28231);
         filialService.addFilial(filial0006);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1640);
-        Filial filial0007 = new Filial(filialPK, "SERRA-JD.LIMOEIRO - DEPOSITO", "33.041.260/0991-95", 28177);
+        Filial filial0007 = new Filial(filialPK, "SERRA-JD.LIMOEIRO - DEPOSITO", "33041260099195", 28177);
         filialService.addFilial(filial0007);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1641);
-        Filial filial0008 = new Filial(filialPK, "CARIACICA-ES", "33.041.260/0989-70", 27677);
+        Filial filial0008 = new Filial(filialPK, "CARIACICA-ES", "33041260098970", 27677);
         filialService.addFilial(filial0008);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1642);
-        Filial filial0009 = new Filial(filialPK, "CACHOEIRO DE ITAPEMIRIM 2 - ES", "33.041.260/0988-90", 27669);
+        Filial filial0009 = new Filial(filialPK, "CACHOEIRO DE ITAPEMIRIM 2 - ES", "33041260098890", 27669);
         filialService.addFilial(filial0009);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1645);
-        Filial filial0010 = new Filial(filialPK, "GUARAPARI-ES", "33.041.260/0990-04", 27782);
+        Filial filial0010 = new Filial(filialPK, "GUARAPARI-ES", "33041260099004", 27782);
         filialService.addFilial(filial0010);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1646);
-        Filial filial0011 = new Filial(filialPK, "VILA VELHA-ES", "33.041.260/0995-19", 28223);
+        Filial filial0011 = new Filial(filialPK, "VILA VELHA-ES", "33041260099519", 28223);
         filialService.addFilial(filial0011);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1648);
-        Filial filial0012 = new Filial(filialPK, "SERRA-ES", "33.041.260/0993-57", 28177);
+        Filial filial0012 = new Filial(filialPK, "SERRA-ES", "33041260099357", 28177);
         filialService.addFilial(filial0012);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1706);
-        Filial filial0013 = new Filial(filialPK, "SHOP BOULEVARD VILA VELHA - ES", "33.041.260/1427-08", 28223);
+        Filial filial0013 = new Filial(filialPK, "SHOP BOULEVARD VILA VELHA - ES", "33041260142708", 28223);
         filialService.addFilial(filial0013);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1715);
-        Filial filial0014 = new Filial(filialPK, "SHOP MESTRE ALVARO - ES", "33.041.260/1418-17", 28177);
+        Filial filial0014 = new Filial(filialPK, "SHOP MESTRE ALVARO - ES", "33041260141817", 28177);
         filialService.addFilial(filial0014);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1764);
-        Filial filial0015 = new Filial(filialPK, "SHOP MOXUARA -  ES", "33.041.260/1502-12", 27677);
+        Filial filial0015 = new Filial(filialPK, "SHOP MOXUARA -  ES", "33041260150212", 27677);
         filialService.addFilial(filial0015);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1772);
-        Filial filial0016 = new Filial(filialPK, "SHOP VILA VELHA - ES", "33.041.260/1500-50", 28223);
+        Filial filial0016 = new Filial(filialPK, "SHOP VILA VELHA - ES", "33041260150050", 28223);
         filialService.addFilial(filial0016);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1943);
-        Filial filial0017 = new Filial(filialPK, "CENTRO - ES", "33.041.260/0199-30", 28231);
+        Filial filial0017 = new Filial(filialPK, "CENTRO - ES", "33041260019930", 28231);
         filialService.addFilial(filial0017);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1949);
-        Filial filial0018 = new Filial(filialPK, "SÃO MATEUS - ES", "33.041.260/0518-26", 28169);
+        Filial filial0018 = new Filial(filialPK, "SÃO MATEUS - ES", "33041260051826", 28169);
         filialService.addFilial(filial0018);
         filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(2204);
-        Filial filial0019 = new Filial(filialPK, "GLORIA VILA VELHA - ES", "33.041.260/1834-98", 28223);
-        filialService.addFilial(filial0019);        
-
+        Filial filial0019 = new Filial(filialPK, "GLORIA VILA VELHA - ES", "33041260183498", 28223);
+        filialService.addFilial(filial0019);
+        
         
         // Carga da Tabela: MICROZONA
         Microzona microzona0001 = new Microzona(null, "ESPIRITO SANTO-EXCLUSIV CNOVA", "A", "S", " ", " ", " ", " ", " ", " ", estadoES, municipioES28231, 70);
@@ -636,7 +629,7 @@ public class AutoCargaBanco implements CommandLineRunner {
         microzonaService.addMicrozona(microzona0133);
         Microzona microzona0134 = new Microzona(null, "L OUTRAS TRANSP. (LEVE)", "A", "S", " ", " ", " ", " ", " ", " ", estadoES, municipioES28231, 81);
         microzonaService.addMicrozona(microzona0134);
-        
+
         
         // Carga da Tabela: ROTA DE ENTREGA
         RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
@@ -884,6 +877,6 @@ public class AutoCargaBanco implements CommandLineRunner {
         faixasCEPMicrozonaPK.setCodigoSequencial(1);
         FaixasCEPMicrozona faixasCEPMicrozona0009 = new FaixasCEPMicrozona(faixasCEPMicrozonaPK, 29920000, 29925000);
         faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0009);
+        
     }
-    
 }

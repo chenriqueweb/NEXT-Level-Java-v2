@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class RotaEntrega {
@@ -12,10 +15,21 @@ public class RotaEntrega {
     @EmbeddedId
     private RotaEntregaPK rotaEntregaPK;    
     
+    @NotNull
+    @NotEmpty
+    @Size(min=5, max=50)
     private String nome;
+
+    @NotNull
+    @NotEmpty
+    @Size(min=1, max=1)
     private String status;
+    
+    @NotNull
     private Integer codigoEmpresa;
     private Integer codigoFilial;
+    
+    @NotNull
     private Integer prazoExpedicao;
     
     // FK com Estado

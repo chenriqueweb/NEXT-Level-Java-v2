@@ -2,6 +2,9 @@ package br.com.henrique.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Filial {
@@ -9,8 +12,17 @@ public class Filial {
     @EmbeddedId
     private FilialPK filialPK;
     
+    @NotNull
+    @NotEmpty
+    @Size(min=5, max=50)
     private String nome;
+    
+    @NotNull
+    @NotEmpty
+    @Size(min=14, max=14)
     private String cnpj;
+    
+    @NotNull
     private Integer municipio;
     
     public Filial() {

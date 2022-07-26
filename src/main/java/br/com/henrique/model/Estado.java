@@ -2,13 +2,22 @@ package br.com.henrique.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Estado {
     
     @Id
+    @NotEmpty
+    @NotNull
+    @Size(min=2, max=2)
     private String sigla;
     
+    @NotEmpty
+    @NotNull
+    @Size(min=4, max=50)
     private String nome;
 
     // Construtores da Class
