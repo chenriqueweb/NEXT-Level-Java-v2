@@ -3,10 +3,15 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import br.com.henrique.service.exception.ConstraintViolationException;
+import br.com.henrique.service.exception.NoNullAllowedException;
+import br.com.henrique.service.exception.ObjectNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jmx.access.InvocationFailureException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,10 +74,20 @@ public class EmpresaController {
     	    @ApiResponse(code = 201, message = "Empresa criada com sucesso")
     })  
     public ResponseEntity<Void> addEmpresa(@RequestBody Empresa empresa) {
-        Empresa empresaNova = empresaService.addEmpresa(empresa);
-        
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(empresaNova.getCodigo()).toUri();
-        return ResponseEntity.created(uri).build();
+    	
+        URI uri = null;
+    	try {
+             Empresa empresaNova = empresaService.addEmpresa(empresa);
+             uri = ServletUriComponentsBuilder
+            		           .fromCurrentRequest().path("/{codigo}")
+            		           .buildAndExpand(empresaNova.getCodigo())
+            		           .toUri();
+    	}
+    	catch (Exception e) {
+    		throw new NoNullAllowedException(e.getMessage().toString());
+    	}
+    	
+		return ResponseEntity.created(uri).build();
     }    
     
     // Altera Empresa

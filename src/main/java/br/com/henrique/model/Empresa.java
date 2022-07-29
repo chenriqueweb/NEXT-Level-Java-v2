@@ -2,6 +2,7 @@ package br.com.henrique.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
@@ -27,7 +28,8 @@ public class Empresa {
     @ApiModelProperty(value = "Razão Social", required = true)
     private String razaoSocial;
     
-    @NotNull
+    //@NotNull(message = "{NotNull.raizCNPJ}")
+    @NotNull(message = "Raiz do CNPJ não pode ser nulo 1")
     @NotEmpty
     @Size(min=14, max=14)
     @ApiModelProperty(value = "Raiz do CNPJ", required = true)

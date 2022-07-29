@@ -1,5 +1,6 @@
 package br.com.henrique.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,49 +30,49 @@ public class Microzona {
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Status da Microzona", required = true)
     private String status;
 
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento Diário", required = true)
     private String atendimentoDiario;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Segunda-feira", required = true)
     private String atendeSegunda;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Terça-feira", required = true)
     private String atendeTerca;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Quarta-feira", required = true)
     private String atendeQuarta;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Quinta-feira", required = true)
     private String atendeQuinta;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Sexta-feira", required = true)
     private String atendeSexta;
     
     @NotNull
     @NotEmpty
-    @Size(min=1, max=1)
+    @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Sábado", required = true)
     private String atendeSabado;
     

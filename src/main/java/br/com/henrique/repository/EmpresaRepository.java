@@ -7,5 +7,6 @@ import br.com.henrique.model.Empresa;
 
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Integer> {
-        
+	
+        public Empresa findByraizCNPJ(String raizCNPJ);
 }

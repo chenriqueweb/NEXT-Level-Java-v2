@@ -11,8 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.com.henrique.service.exception.ConstraintViolationException;
 import br.com.henrique.service.exception.DataIntegrityViolationException;
+import br.com.henrique.service.exception.NoNullAllowedException;
 import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 import br.com.henrique.service.exception.TransactionSystemException;
@@ -46,6 +46,22 @@ public class ControllerExceptionHandler {
 		return ResponseEntity.status(status).body(error);
 	}
 	
+    @ExceptionHandler(NoNullAllowedException.class)   
+    public ResponseEntity<StandardError> NoNullAllowedException(NoNullAllowedException ex, 
+                                                                HttpServletRequest httpRequest) {
+        
+        System.out.println(">>>>>>>>>> teste 222");   
+        
+        HttpStatus status = HttpStatus.CONFLICT;   // INTERNAL_SERVER_ERROR;
+        StandardError error = new StandardError(
+                Instant.now(), 
+                status.value(), 
+                "Valor informado não pode ser nulo !", 
+                ex.getMessage(), 
+                httpRequest.getRequestURI());
+        return ResponseEntity.status(status).body(error);
+    }       
+	
     @ExceptionHandler(DataIntegrityViolationException.class)   
     public ResponseEntity<StandardError> handleDataIntegrityViolationException(DataIntegrityViolationException ex, 
                                                                                HttpServletRequest httpRequest) {
@@ -61,23 +77,7 @@ public class ControllerExceptionHandler {
                 httpRequest.getRequestURI());
         return ResponseEntity.status(status).body(error);
     }	
-    
-    @ExceptionHandler(ConstraintViolationException.class)   
-    public ResponseEntity<StandardError> handleConstraintViolationException(ConstraintViolationException ex, 
-                                                                            HttpServletRequest httpRequest) {
-        
-        System.out.println(">>>>>>>>>> teste 222");   
-        
-        HttpStatus status = HttpStatus.CONFLICT;   // INTERNAL_SERVER_ERROR;
-        StandardError error = new StandardError(
-                Instant.now(), 
-                status.value(), 
-                "Violação de Integridade Referencial !", 
-                ex.getMessage(), 
-                httpRequest.getRequestURI());
-        return ResponseEntity.status(status).body(error);
-    }       
-    
+
     @ExceptionHandler(TransactionSystemException.class)   
     public ResponseEntity<StandardError> handleTransactionSystemException(TransactionSystemException ex, 
                                                                           HttpServletRequest httpRequest) {

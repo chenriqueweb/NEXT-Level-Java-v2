@@ -75,12 +75,8 @@ public class AtendeController {
           if (cepAtende >= faixasCEPMicrozona.get(x).getCEPinicial() & 
               cepAtende <= faixasCEPMicrozona.get(x).getCEPfinal()) {
         	  
-                Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
+              Cep cep = ViaCepClient.findCep(cepAtende.toString());  // 14620000
               
-//              System.out.println(cep.getDdd());
-//              System.out.println(cep.getGia());
-//              System.out.println(cep.getSiafi());
-//
               // Dados do CEP informado
               if (cep.getCep() != null) {
                  arrayEnderecoJson.add("cep: " + cep.getCep());

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Empresa;
 import br.com.henrique.repository.EmpresaRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -42,6 +43,15 @@ public class EmpresaService {
 
     // Inclui Empresa
     public Empresa addEmpresa(Empresa empresa) {
+        Empresa empresaBuscaID = repositEmpresa.findById(empresa.getCodigo()).orElse(null);
+        if (empresaBuscaID != null) {
+            throw new ObjectFoundException("Empresa já encontra-se cadastrada !");
+        }         	
+        
+        Empresa empresaBuscaCNPJ = repositEmpresa.findByraizCNPJ(empresa.getRaizCNPJ());
+        if (empresaBuscaCNPJ != null) {
+            throw new ObjectFoundException("CNPJ informado já encontra-se cadastrado para outra Empresa !");
+        }         
         return repositEmpresa.save(empresa);
     }
 

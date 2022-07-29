@@ -1,5 +1,6 @@
 package br.com.henrique.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +15,7 @@ public class Estado {
     @Id
     @NotEmpty
     @NotNull
-    @Size(min=2, max=2)
+    @Column(columnDefinition = "Character(2)")
     @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String sigla;
     
