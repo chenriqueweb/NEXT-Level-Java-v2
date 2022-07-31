@@ -8,8 +8,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.henrique.model.Empresa;
+import br.com.henrique.model.Filial;
+import br.com.henrique.model.FilialPK;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
+import br.com.henrique.repository.EmpresaRepository;
+import br.com.henrique.repository.FilialRepository;
 import br.com.henrique.repository.RotaEntregaRepository;
 import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
@@ -18,7 +23,13 @@ import br.com.henrique.service.exception.ObjectNotFoundException;
 public class RotaEntregaService {
 
     @Autowired
-    private RotaEntregaRepository repositRotaEntrega;    
+    private RotaEntregaRepository repositRotaEntrega;
+
+    @Autowired
+    private EmpresaRepository repositEmpresa;
+    
+    @Autowired
+    private FilialRepository repositFilial;
     
     // Lista de Rotas de Entrega
     public List<RotaEntrega> findAll() {
@@ -59,6 +70,20 @@ public class RotaEntregaService {
         if (rotaEntregaAtualizado == null) {
             throw new ObjectNotFoundException("Rota de Entrega nao encontrada !");
         }  
+        
+        Empresa empresaBuscaID = repositEmpresa.findById(rotaEntrega.getCodigoEmpresa()).orElse(null);
+        if (empresaBuscaID == null) {
+            throw new ObjectNotFoundException("Empresa nao encontrada !");
+        }        
+        
+        FilialPK filialPK = new FilialPK();
+        filialPK.setCodigoEmpresa(rotaEntrega.getCodigoEmpresa());
+        filialPK.setCodigoFilial(rotaEntrega.getCodigoFilial());
+        
+        Filial filialBuscaID = repositFilial.findById(filialPK).orElse(null);
+        if (filialBuscaID == null) {
+            throw new ObjectNotFoundException("Filial nao encontrada !");
+        }        
         
         rotaEntregaAtualizado.setNome(rotaEntrega.getNome());
         rotaEntregaAtualizado.setStatus(rotaEntrega.getStatus());

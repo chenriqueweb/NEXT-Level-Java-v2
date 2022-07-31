@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.FaixasCEPMicrozona;
 import br.com.henrique.model.FaixasCEPMicrozonaPK;
+import br.com.henrique.model.Microzona;
 import br.com.henrique.repository.FaixasCEPMicrozonaRepository;
+import br.com.henrique.repository.MicrozonaRepository;
 import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
@@ -18,7 +20,10 @@ import br.com.henrique.service.exception.ObjectNotFoundException;
 public class FaixasCEPMicrozonaService {
 
     @Autowired
-    private FaixasCEPMicrozonaRepository repositFaixasCEPMicrozona;    
+    private FaixasCEPMicrozonaRepository repositFaixasCEPMicrozona;
+
+    @Autowired
+    private MicrozonaRepository repositMicrozona;
     
     // Lista Faixas de CEPs da Microzona
     public List<FaixasCEPMicrozona> findAll() {
