@@ -42,12 +42,21 @@ public class EstadoService {
     
     // Inclui Empresa
     public Estado addEstado(Estado estado) {
+        Estado estadoBuscaID = repositEstado.findById(estado.getSigla()).orElse(null);
+        if (estadoBuscaID != null) {
+            throw new ObjectNotFoundException("Estado já encontra-se cadastrado !");
+        }            	
+    	
         return repositEstado.save(estado);
     }
     
     // Altera Estado
     public void updateEstado(String sigla, Estado estado) {
         Estado estadoAtualizado = this.findById(sigla);
+        if (estadoAtualizado == null) {
+            throw new ObjectNotFoundException("Estado nao encontrado !");
+        }                
+        
         estadoAtualizado.setNome(estado.getNome());
         
         repositEstado.save(estadoAtualizado);
@@ -55,8 +64,12 @@ public class EstadoService {
     
     // Excluir Estado
     public void deletaEstado(String sigla) {
-        this.findById(sigla);
-
+        //this.findById(sigla);
+        Estado estadoExcluir = this.findById(sigla);
+        if (estadoExcluir == null) {
+            throw new ObjectNotFoundException("Estado nao encontrado !");
+        }     
+        
         repositEstado.deleteById(sigla);
     }
 }

@@ -58,6 +58,9 @@ public class EmpresaService {
     // Atualiza uma Empresa
     public void updateEmpresa(Integer codigo, Empresa empresa) {
         Empresa empresaAtualizado = this.findById(codigo);
+        if (empresaAtualizado == null) {
+            throw new ObjectNotFoundException("Empresa nao encontrada !");
+        }             
         
         empresaAtualizado.setRazaoSocial(empresa.getRazaoSocial());
         empresaAtualizado.setRaizCNPJ(empresa.getRaizCNPJ());
@@ -68,7 +71,10 @@ public class EmpresaService {
 
     // Exclusão de Empresa
     public void deletaEmpresa(Integer codigo) {
-        this.findById(codigo);
+        Empresa empresaExcluir = this.findById(codigo);
+        if (empresaExcluir == null) {
+            throw new ObjectNotFoundException("Empresa nao encontrada !");
+        }     
 
         repositEmpresa.deleteById(codigo);
     }

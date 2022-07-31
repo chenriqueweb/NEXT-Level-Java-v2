@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.com.henrique.model.FaixasCEPMicrozona;
 import br.com.henrique.model.FaixasCEPMicrozonaPK;
 import br.com.henrique.repository.FaixasCEPMicrozonaRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -34,7 +35,6 @@ public class FaixasCEPMicrozonaService {
     // Busca por Faixas de CEP da Microzona
     public FaixasCEPMicrozona findById(FaixasCEPMicrozonaPK faixasCEPMicrozonaPK) {
         FaixasCEPMicrozona faixasCEPMicrozonaBusca2 = repositFaixasCEPMicrozona.findById(faixasCEPMicrozonaPK).orElse(null);
-        
         if (faixasCEPMicrozonaBusca2 == null) {
             throw new ObjectNotFoundException("Faixa de CEP nao encontrada !");
         }
@@ -44,14 +44,32 @@ public class FaixasCEPMicrozonaService {
     
     // Inclui Faixas de CEP da Microzona
     public FaixasCEPMicrozona addFaixasCEPMicrozona(FaixasCEPMicrozona faixasCEPMicrozona) {
-            return repositFaixasCEPMicrozona.save(faixasCEPMicrozona);
+        FaixasCEPMicrozona faixasCEPMicrozonaBuscaID = repositFaixasCEPMicrozona.findById(faixasCEPMicrozona.getFaixasCEPMicrozonaPK()).orElse(null);
+        if (faixasCEPMicrozonaBuscaID != null) {
+            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
+        }    	
+        
+        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPInicial = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPinicial(), faixasCEPMicrozona.getCEPinicial());
+        if (faixasCEPMicrozonaBuscaCEPInicial != null) {
+            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
+        }    	
+        
+        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPFinal = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPfinal(), faixasCEPMicrozona.getCEPfinal());
+        if (faixasCEPMicrozonaBuscaCEPFinal != null) {
+            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
+        }            
+        
+        return repositFaixasCEPMicrozona.save(faixasCEPMicrozona);
     }
 
     
     // Atualiza Faixas de CEP da Microzona
     public void updateFaixasCEPMicrozona(FaixasCEPMicrozonaPK faixasCEPMicrozonaPK, 
                                          FaixasCEPMicrozona faixasCEPMicrozona) {
-        FaixasCEPMicrozona faixasCEPMicrozonaAtualizado = findById(faixasCEPMicrozonaPK);   //  repositFaixasCEPMicrozona.findById(faixasCEPMicrozonaPK).orElse(null);
+        FaixasCEPMicrozona faixasCEPMicrozonaAtualizado = findById(faixasCEPMicrozonaPK);
+        if (faixasCEPMicrozonaAtualizado == null) {
+            throw new ObjectNotFoundException("Faixa de CEP nao encontrada !");
+        }
         
         faixasCEPMicrozonaAtualizado.setCEPinicial(faixasCEPMicrozona.getCEPinicial());
         faixasCEPMicrozonaAtualizado.setCEPfinal(faixasCEPMicrozona.getCEPfinal());
@@ -59,10 +77,12 @@ public class FaixasCEPMicrozonaService {
         repositFaixasCEPMicrozona.save(faixasCEPMicrozonaAtualizado);
     }
     
-   
     // Exclusão da Faixa de CEP da Microzona
     public void deletaFaixasCEPMicrozona(FaixasCEPMicrozonaPK faixasCEPMicrozonaPK) {
-        this.findById(faixasCEPMicrozonaPK);
+        FaixasCEPMicrozona faixasCEPMicrozonaExcluir = findById(faixasCEPMicrozonaPK);
+        if (faixasCEPMicrozonaExcluir == null) {
+            throw new ObjectNotFoundException("Faixa de CEP nao encontrada !");
+        }
 
         repositFaixasCEPMicrozona.deleteById(faixasCEPMicrozonaPK);
     }

@@ -158,7 +158,7 @@ public class AtendeController {
     
     @GetMapping(path = "range/{cep}")
     public List<FaixasCEPMicrozona> findByRangeAtende(@PathVariable Integer cep) {
-    	return faixasCEPMicrozonaRepository.findByCEPinicialLessThanEqualAndCEPfinalGreaterThanEqual(cep, cep);
+    	return faixasCEPMicrozonaRepository.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(cep, cep);
     
     }
     

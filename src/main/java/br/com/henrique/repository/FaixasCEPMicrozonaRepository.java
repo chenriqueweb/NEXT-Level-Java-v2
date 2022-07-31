@@ -16,5 +16,5 @@ public interface FaixasCEPMicrozonaRepository extends JpaRepository<FaixasCEPMic
 	@Query(value = "SELECT f FROM FaixasCEPMicrozona f WHERE ?1 BETWEEN CEPinicial AND CEPfinal")
 	public List<FaixasCEPMicrozona> procuraPorFaixa(Integer cep);
 	
-	public List<FaixasCEPMicrozona> findByCEPinicialLessThanEqualAndCEPfinalGreaterThanEqual(Integer cep1, Integer cep2);
+	public List<FaixasCEPMicrozona> findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(Integer cep1, Integer cep2);
 }
