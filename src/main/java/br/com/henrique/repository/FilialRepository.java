@@ -9,5 +9,5 @@ import br.com.henrique.model.FilialPK;
 @Repository
 public interface FilialRepository extends JpaRepository<Filial, FilialPK> {
 
-    public Filial findByCNPJ(String cnpj);
+    public Filial findByCnpj(String cnpj);
 }

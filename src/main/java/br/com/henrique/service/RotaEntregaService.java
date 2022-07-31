@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.com.henrique.model.RotaEntrega;
 import br.com.henrique.model.RotaEntregaPK;
 import br.com.henrique.repository.RotaEntregaRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -34,22 +35,30 @@ public class RotaEntregaService {
     // Busca pela Rota de Entrega
     public RotaEntrega findById(RotaEntregaPK rotaEntregaPK) {
         RotaEntrega rotaEntregaBusca = repositRotaEntrega.findById(rotaEntregaPK).orElse(null);
-        
         if (rotaEntregaBusca == null) {
             throw new ObjectNotFoundException("Rota de Entrega nao encontrada !");
         }
+        
         return rotaEntregaBusca;
     }
     
     // Inclui Rota de Entrega
     public RotaEntrega addRotaEntrega(RotaEntrega rotaEntrega) {
-            return repositRotaEntrega.save(rotaEntrega);
+        RotaEntrega rotaEntregaBuscaID = repositRotaEntrega.findById(rotaEntrega.getRotaEntregaPK()).orElse(null);
+        if (rotaEntregaBuscaID != null) {
+            throw new ObjectFoundException("Rota de Entrega já cadastrada !");
+        }    	
+        
+        return repositRotaEntrega.save(rotaEntrega);
     }    
     
     // Atualiza uma Rota de Entrega
     public void updateRotaEntrega(RotaEntregaPK rotaEntregaPK,
                                   RotaEntrega rotaEntrega) {
-        RotaEntrega rotaEntregaAtualizado = findById(rotaEntregaPK);   // repositRotaEntrega.findById(rotaEntregaPK).orElse(null);
+        RotaEntrega rotaEntregaAtualizado = this.findById(rotaEntregaPK);
+        if (rotaEntregaAtualizado == null) {
+            throw new ObjectNotFoundException("Rota de Entrega nao encontrada !");
+        }  
         
         rotaEntregaAtualizado.setNome(rotaEntrega.getNome());
         rotaEntregaAtualizado.setStatus(rotaEntrega.getStatus());
@@ -62,7 +71,10 @@ public class RotaEntregaService {
     
     // Exclusão da Rota de Entrega
     public void deletaRotaEntrega(RotaEntregaPK rotaEntregaPK) {
-        this.findById(rotaEntregaPK);
+        RotaEntrega rotaEntregaExcluir = this.findById(rotaEntregaPK);
+        if (rotaEntregaExcluir == null) {
+            throw new ObjectNotFoundException("Rota de Entrega nao encontrada !");
+        }    	        
         
         repositRotaEntrega.deleteById(rotaEntregaPK);
     }    

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Microzona;
 import br.com.henrique.repository.MicrozonaRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -30,12 +31,7 @@ public class MicrozonaService {
     public Page<Microzona> findAllPage(Pageable pageable) {
         return repositMicrozona.findAll(pageable);
     }         
-    
-    // Inclui Microzona
-    public Microzona addMicrozona(Microzona microzona) {
-        return repositMicrozona.save(microzona);
-    }    
-    
+
     // Busca pela Microzona
     public Microzona findById(Integer codigo) {
         Microzona microzona = repositMicrozona.findById(codigo).orElse(null);
@@ -45,9 +41,27 @@ public class MicrozonaService {
         return microzona;
     }    
     
+    // Inclui Microzona
+    public Microzona addMicrozona(Microzona microzona) {
+    	Integer codigoMicrozona = microzona.getCodigo();
+    	if (codigoMicrozona == null) { 
+    		codigoMicrozona = 0;
+    	}
+    	
+        Microzona microzonaBuscaID = repositMicrozona.findById(codigoMicrozona).orElse(null);
+        if (microzonaBuscaID != null) {
+            throw new ObjectFoundException("Microzona já cadastrada !");
+        }
+        
+        return repositMicrozona.save(microzona);
+    }    
+    
     // Atualiza uma Microzona
     public void updateMicrozona(Integer codigo, Microzona microzona) {
         Microzona microzonaAtualizado = this.findById(codigo);
+        if (microzonaAtualizado == null) {
+            throw new ObjectFoundException("Microzona nao encontrada !");
+        }        
         
         microzonaAtualizado.setNome(microzona.getNome());
         microzonaAtualizado.setStatus(microzona.getStatus());
@@ -69,7 +83,10 @@ public class MicrozonaService {
     
     // Exclusão da Microzona
     public void deletaMicrozona(Integer codigo) {
-        this.findById(codigo);
+        Microzona microzonaExcluir = this.findById(codigo);
+        if (microzonaExcluir == null) {
+            throw new ObjectFoundException("Microzona nao encontrada !");
+        }              
         
         repositMicrozona.deleteById(codigo);
     }    

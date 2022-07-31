@@ -49,15 +49,15 @@ public class FaixasCEPMicrozonaService {
             throw new ObjectFoundException("Faixa de CEP já cadastrada !");
         }    	
         
-        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPInicial = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPinicial(), faixasCEPMicrozona.getCEPinicial());
-        if (faixasCEPMicrozonaBuscaCEPInicial != null) {
-            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
-        }    	
-        
-        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPFinal = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPfinal(), faixasCEPMicrozona.getCEPfinal());
-        if (faixasCEPMicrozonaBuscaCEPFinal != null) {
-            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
-        }            
+//        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPInicial = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPinicial(), faixasCEPMicrozona.getCEPinicial());
+//        if (faixasCEPMicrozonaBuscaCEPInicial != null) {
+//            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
+//        }    	
+//        
+//        List<FaixasCEPMicrozona> faixasCEPMicrozonaBuscaCEPFinal = repositFaixasCEPMicrozona.findByCEPinicialGreaterThanEqualAndCEPfinalLessThanEqual(faixasCEPMicrozona.getCEPfinal(), faixasCEPMicrozona.getCEPfinal());
+//        if (faixasCEPMicrozonaBuscaCEPFinal != null) {
+//            throw new ObjectFoundException("Faixa de CEP já cadastrada !");
+//        }            
         
         return repositFaixasCEPMicrozona.save(faixasCEPMicrozona);
     }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Municipio;
 import br.com.henrique.repository.MunicipioRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -41,12 +42,19 @@ public class MunicipioService {
     
     // Inclui Municipio
     public Municipio addMunicipio(Municipio municipio) {
+        Municipio municipioBuscaID = repositMunicipio.findById(municipio.getCodigo_ID()).orElse(null);
+        if (municipioBuscaID != null) {
+            throw new ObjectFoundException("Municipio já cadastrado !");
+        }    	
             return repositMunicipio.save(municipio);
     }
     
     // Atualiza um Municipio
     public void updateMunicipio(Integer codigo, Municipio municipio) {
         Municipio municipioAtualizado = this.findById(codigo);
+        if (municipioAtualizado == null) {
+            throw new ObjectNotFoundException("Municipio nao encontrado !");
+        }        
         
         municipioAtualizado.setNome(municipio.getNome());
         municipioAtualizado.setEstado(municipio.getEstado());
@@ -56,7 +64,10 @@ public class MunicipioService {
     
     // Exclusão de Municipio
     public void deletaMunicipio(Integer codigo) {
-        this.findById(codigo);
+        Municipio municipioExcluir = this.findById(codigo);
+        if (municipioExcluir == null) {
+            throw new ObjectNotFoundException("Municipio nao encontrado !");
+        }          
         
         repositMunicipio.deleteById(codigo);
     }

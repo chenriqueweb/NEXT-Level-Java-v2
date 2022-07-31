@@ -45,10 +45,10 @@ public class FilialService {
     public Filial addFilial(Filial filial) {
         Filial filialBuscaID = repositFilial.findById(filial.getFilialPK()).orElse(null);
         if (filialBuscaID != null) {
-            throw new ObjectFoundException("Filial já encontrada !");
+            throw new ObjectFoundException("Filial já cadastrada !");
         } 	
         
-        Filial filialBuscaCNPJ= repositFilial.findByCNPJ(filial.getCnpj());
+        Filial filialBuscaCNPJ = repositFilial.findByCnpj(filial.getCnpj());
         if (filialBuscaCNPJ != null) {
             throw new ObjectFoundException("CNPJ informado já encontra-se cadastrado para outra Filial !");
         } 	        
@@ -56,7 +56,8 @@ public class FilialService {
     }
     
     // Atualiza Filial
-    public void updateFilial(FilialPK filialPK, 
+    @SuppressWarnings("null")
+	public void updateFilial(FilialPK filialPK, 
                              Filial filial) {
         Filial filialAtualizado = this.findById(filial.getFilialPK());
         if (filialAtualizado != null) {
