@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Filial;
 import br.com.henrique.model.FilialPK;
+import br.com.henrique.model.Municipio;
 import br.com.henrique.repository.FilialRepository;
+import br.com.henrique.repository.MunicipioRepository;
 import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
@@ -19,6 +21,9 @@ public class FilialService {
 
     @Autowired
     private FilialRepository repositFilial;
+    
+    @Autowired
+    private MunicipioRepository repositMunicipio;
     
     // Lista Filiais
     public List<Filial> findAll() {
@@ -52,17 +57,27 @@ public class FilialService {
         if (filialBuscaCNPJ != null) {
             throw new ObjectFoundException("CNPJ informado já encontra-se cadastrado para outra Filial !");
         } 	        
+        
+        Municipio municipioBuscaID = repositMunicipio.findById(filial.getMunicipio()).orElse(null);
+        if (municipioBuscaID == null) {
+            throw new ObjectNotFoundException("Municipio nao encontrado !");
+        }          
+        
         return repositFilial.save(filial);
     }
     
     // Atualiza Filial
-    @SuppressWarnings("null")
 	public void updateFilial(FilialPK filialPK, 
                              Filial filial) {
-        Filial filialAtualizado = this.findById(filial.getFilialPK());
-        if (filialAtualizado != null) {
+        Filial filialAtualizado = repositFilial.findById(filialPK).orElse(null);
+        if (filialAtualizado == null) {
             throw new ObjectNotFoundException("Filial nao encontrada !");
         } 	        
+        
+        Municipio municipioBuscaID = repositMunicipio.findById(filial.getMunicipio()).orElse(null);
+        if (municipioBuscaID == null) {
+            throw new ObjectNotFoundException("Municipio nao encontrado !");
+        }  
         
         filialAtualizado.setNome(filial.getNome());
         filialAtualizado.setCnpj(filial.getCnpj());

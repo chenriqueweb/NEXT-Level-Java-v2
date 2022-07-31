@@ -347,10 +347,6 @@ public class AutoCargaBanco implements CommandLineRunner {
         Filial filial0016 = new Filial(filialPK, "SHOP VILA VELHA - ES", "33041260150050", 28223);
         filialService.addFilial(filial0016);
         filialPK.setCodigoEmpresa(21);
-        filialPK.setCodigoFilial(1943);
-        Filial filial0017 = new Filial(filialPK, "CENTRO - ES", "33041260019930", 28231);
-        filialService.addFilial(filial0017);
-        filialPK.setCodigoEmpresa(21);
         filialPK.setCodigoFilial(1949);
         Filial filial0018 = new Filial(filialPK, "SÃO MATEUS - ES", "33041260051826", 28169);
         filialService.addFilial(filial0018);

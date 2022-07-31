@@ -46,7 +46,7 @@ public class MunicipioService {
         if (municipioBuscaID != null) {
             throw new ObjectFoundException("Municipio já cadastrado !");
         }    	
-            return repositMunicipio.save(municipio);
+        return repositMunicipio.save(municipio);
     }
     
     // Atualiza um Municipio
