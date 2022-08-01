@@ -37,7 +37,8 @@ public class EmpresaService {
         Empresa empresa = repositEmpresa.findById(codigo).orElse(null);
         if (empresa == null) {
             throw new ObjectNotFoundException("Empresa nao encontrada !");
-        }      
+        }
+        
         return empresa;
     }
 
@@ -60,7 +61,12 @@ public class EmpresaService {
         Empresa empresaAtualizado = this.findById(codigo);
         if (empresaAtualizado == null) {
             throw new ObjectNotFoundException("Empresa nao encontrada !");
-        }             
+        }
+        
+        Empresa empresaBuscaCNPJ = repositEmpresa.findByraizCNPJ(empresa.getRaizCNPJ());
+        if (empresaBuscaCNPJ != null) {
+            throw new ObjectFoundException("CNPJ informado já encontra-se cadastrado para outra Empresa !");
+        }        
         
         empresaAtualizado.setRazaoSocial(empresa.getRazaoSocial());
         empresaAtualizado.setRaizCNPJ(empresa.getRaizCNPJ());

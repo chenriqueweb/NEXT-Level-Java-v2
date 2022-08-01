@@ -72,7 +72,12 @@ public class FilialService {
         Filial filialAtualizado = repositFilial.findById(filialPK).orElse(null);
         if (filialAtualizado == null) {
             throw new ObjectNotFoundException("Filial nao encontrada !");
-        } 	        
+        } 	   
+        
+        Filial filialBuscaCNPJ = repositFilial.findByCnpj(filial.getCnpj());
+        if (filialBuscaCNPJ != null) {
+            throw new ObjectFoundException("CNPJ informado já encontra-se cadastrado para outra Filial !");
+        } 	         
         
         Municipio municipioBuscaID = repositMunicipio.findById(filial.getMunicipio()).orElse(null);
         if (municipioBuscaID == null) {

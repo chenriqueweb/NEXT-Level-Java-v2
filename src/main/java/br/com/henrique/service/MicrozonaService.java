@@ -69,6 +69,25 @@ public class MicrozonaService {
             throw new ObjectFoundException("Microzona já cadastrada !");
         }
         
+        Estado estado = repositEstado.findById(microzona.getEstadoRota().getSigla()).orElse(null);
+        if (estado == null) {
+            throw new ObjectNotFoundException("Estado nao encontrado !");
+        }            
+        
+        Municipio municipioBuscaID = repositMunicipio.findById(microzona.getCodigoMunicipio().getCodigo_ID()).orElse(null);;
+        if (municipioBuscaID == null) {
+            throw new ObjectNotFoundException("Municipio nao encontrado !");
+        }         
+        
+        RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
+        rotaEntregaPK.setCodigoRota(microzona.getCodigoRota());
+        rotaEntregaPK.setSiglaEstado(microzona.getEstadoRota().getSigla()); 
+        
+        RotaEntrega rotaEntregaBusca = repositRotaEntrega.findById(rotaEntregaPK).orElse(null);
+        if (rotaEntregaBusca == null) {
+            throw new ObjectNotFoundException("Rota de Entrega nao encontrada !"); 
+        }        
+        
         return repositMicrozona.save(microzona);
     }    
     
@@ -89,7 +108,7 @@ public class MicrozonaService {
             throw new ObjectNotFoundException("Municipio nao encontrado !");
         }         
         
-        RotaEntregaPK  rotaEntregaPK = new RotaEntregaPK();
+        RotaEntregaPK rotaEntregaPK = new RotaEntregaPK();
         rotaEntregaPK.setCodigoRota(microzona.getCodigoRota());
         rotaEntregaPK.setSiglaEstado(microzona.getEstadoRota().getSigla()); 
         

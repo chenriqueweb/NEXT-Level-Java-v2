@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Estado;
 import br.com.henrique.repository.EstadoRepository;
+import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
 
 @Service
@@ -44,9 +45,8 @@ public class EstadoService {
     public Estado addEstado(Estado estado) {
         Estado estadoBuscaID = repositEstado.findById(estado.getSigla()).orElse(null);
         if (estadoBuscaID != null) {
-            throw new ObjectNotFoundException("Estado já encontra-se cadastrado !");
+            throw new ObjectFoundException("Estado já cadastrado !");
         }            	
-    	
         return repositEstado.save(estado);
     }
     
@@ -56,7 +56,6 @@ public class EstadoService {
         if (estadoAtualizado == null) {
             throw new ObjectNotFoundException("Estado nao encontrado !");
         }                
-        
         estadoAtualizado.setNome(estado.getNome());
         
         repositEstado.save(estadoAtualizado);
@@ -64,7 +63,6 @@ public class EstadoService {
     
     // Excluir Estado
     public void deletaEstado(String sigla) {
-        //this.findById(sigla);
         Estado estadoExcluir = this.findById(sigla);
         if (estadoExcluir == null) {
             throw new ObjectNotFoundException("Estado nao encontrado !");
