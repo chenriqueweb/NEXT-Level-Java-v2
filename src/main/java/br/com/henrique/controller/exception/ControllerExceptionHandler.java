@@ -1,8 +1,11 @@
 package br.com.henrique.controller.exception;
 
 import java.time.Instant;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +64,21 @@ public class ControllerExceptionHandler {
                 httpRequest.getRequestURI());
         return ResponseEntity.status(status).body(error);
     }       
+    
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<String> handle(ConstraintViolationException constraintViolationException) {
+        Set<ConstraintViolation<?>> violations = constraintViolationException.getConstraintViolations();
+
+        String errorMessage = "";
+        if (!violations.isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            violations.forEach(violation -> builder.append("\n " + violation.getMessage()));
+            errorMessage = builder.toString();
+        } else {
+            errorMessage = "Ocorreu uma violação de conteúdo campo.";
+        }
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
 	
     @ExceptionHandler(DataIntegrityViolationException.class)   
     public ResponseEntity<StandardError> handleDataIntegrityViolationException(DataIntegrityViolationException ex, 

@@ -16,10 +16,12 @@ public class FaixasCEPMicrozona {
     private FaixasCEPMicrozonaPK faixasCEPMicrozonaPK;
     
     @NotNull
+    //@Pattern(regexp = "\\d{5}-\\d{3})")
     @ApiModelProperty(value = "CEP Inicial", required = true)
     private Integer CEPinicial;
     
     @NotNull
+    //@Pattern(regexp = "\\d{5}-\\d{3})")
     @ApiModelProperty(value = "CEP Final", required = true)
     private Integer CEPfinal;
     
