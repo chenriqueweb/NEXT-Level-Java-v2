@@ -2,6 +2,9 @@ package br.com.henrique.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.ResourceBundle;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,9 +33,11 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping(path = "/estado")
 public class EstadoController {
-    
+	
+    private static final ResourceBundle messagesErrors = ResourceBundle.getBundle("utils.messages");
+
     @Autowired
-    private EstadoService estadoService;
+    private EstadoService estadoService; 
     
     // Lista Estado
     @GetMapping
@@ -69,7 +74,7 @@ public class EstadoController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Estado criado com sucesso")
     }) 
-    public ResponseEntity<Void> addEstado(@RequestBody Estado estado) {
+    public ResponseEntity<Void> addEstado(@Valid @RequestBody Estado estado) {
         Estado estadoNovo = estadoService.addEstado(estado);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{sigla}").buildAndExpand(estadoNovo.getSigla()).toUri();
@@ -84,8 +89,12 @@ public class EstadoController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Estado não encontrado")    	    
     }) 
-    public ResponseEntity<Void> updateEstado(@PathVariable String sigla, @RequestBody Estado estado ) {
+    public ResponseEntity<Void> updateEstado(@Valid @PathVariable String sigla, @RequestBody Estado estado ) {
+//        String teste = getMessage("NotEmpty.nome");
+//        System.out.println(teste);
+        
         estadoService.updateEstado(sigla, estado);
+        
         return ResponseEntity.noContent().build();
     }
 
@@ -129,6 +138,15 @@ public class EstadoController {
         modelAndView.addObject("estado", estado);
         
         return modelAndView;
+    }
+    
+    public static String getMessage(String mensagem) {
+        if (messagesErrors.containsKey(mensagem)) {
+            return messagesErrors.getString(mensagem);
+        }
+        //Logar no console uma mensagem indicando que não achou o rotulo
+        return "";
     }    
+
     
 }

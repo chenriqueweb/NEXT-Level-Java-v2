@@ -21,7 +21,7 @@ public class Empresa {
     @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigo;
 
-    @NotNull
+    @NotEmpty(message = "Você deve informar algo em Razão Social")
     @NotEmpty
     @Size(min=5, max=50)
     @ApiModelProperty(value = "Razão Social", required = true)

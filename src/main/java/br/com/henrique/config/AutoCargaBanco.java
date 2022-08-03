@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import br.com.henrique.model.Empresa;
 import br.com.henrique.model.Estado;
@@ -25,7 +26,7 @@ import br.com.henrique.service.MunicipioService;
 import br.com.henrique.service.RotaEntregaService;
 
 @Configuration
-// @Profile("dev")
+@Profile("dev")
 public class AutoCargaBanco implements CommandLineRunner {
     
     // private static Logger logger = LoggerFactory.getLogger(AutoCargaBanco.class);
@@ -55,7 +56,7 @@ public class AutoCargaBanco implements CommandLineRunner {
     @Override
     public void run(String...args) throws Exception { 
         
-        final SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");        
+        final SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");      
         
         // Carga da Tabela: EMPRESA
         Empresa empresa0001 = new Empresa(21, "VIAVAREJO", "33041260094711", formatterDate.parse("25/08/2016"));  // "33.041.260/0947-11"
@@ -843,4 +844,5 @@ public class AutoCargaBanco implements CommandLineRunner {
         faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona0009);
         
     }
+    
 }

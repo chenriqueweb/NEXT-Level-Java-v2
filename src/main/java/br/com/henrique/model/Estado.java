@@ -1,5 +1,7 @@
 package br.com.henrique.model;
 
+import java.util.ResourceBundle;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 public class Estado {
-    
+	
     @Id
     @NotEmpty
     @NotNull
@@ -19,8 +21,9 @@ public class Estado {
     @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String sigla;
     
-    @NotEmpty(message = "Você deve informar algo em Nome do Estado")
-    @NotNull
+    //@NotEmpty(message = "Você deve informar algo em Nome do Estado")
+    @NotEmpty(message = "{NotEmpty.nome}")
+    @NotNull(message = "{NotNull.nome}")
     @Size(min=4, max=50, message="Informe um valor entre 4 e 50 bytes em Nome do Estado")
     @ApiModelProperty(value = "Nome do Estado", required = true)
     private String nome;
@@ -84,5 +87,4 @@ public class Estado {
             return false;
         return true;
     }
-
 }
