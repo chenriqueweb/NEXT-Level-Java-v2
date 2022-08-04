@@ -21,16 +21,16 @@ public class Empresa {
     @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigo;
 
-    @NotEmpty(message = "Você precisa informar algo")
+    @NotEmpty(message = "O campo é obrigatório é não foi preenchido")
     @NotNull(message = "O campo não pode ser nulo")
-    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
+    @Size(min=5, max=50, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "Razão Social", required = true)
     private String razaoSocial;
     
     //@NotNull(message = "{NotNull.raizCNPJ}")
-    @NotEmpty(message = "Você precisa informar algo")
+    @NotEmpty(message = "O campo é obrigatório é não foi preenchido")
     @NotNull(message = "O campo não pode ser nulo")
-    @Size(min=14, max=14, message="Tamanho da informação deverá ter 14 caracteres")
+    @Size(min=14, max=14, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "Raiz do CNPJ", required = true)
     private String raizCNPJ;
     

@@ -16,14 +16,14 @@ public class Filial {
     private FilialPK filialPK;
     
     @NotNull(message = "O campo não pode ser nulo")
-    @NotEmpty(message = "Você precisa informar algo")
-    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
+    @NotEmpty(message = "O campo é obrigatório é não foi preenchido")
+    @Size(min=5, max=50, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "Nome da Filial", required = true)
     private String nome;
     
     @NotNull(message = "O campo não pode ser nulo")
-    @NotEmpty(message = "Você precisa informar algo")
-    @Size(min=14, max=14, message="Tamanho da informação deverá ter 14 caracteres")
+    @NotEmpty(message = "O campo é obrigatório é não foi preenchido")
+    @Size(min=14, max=14, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "CNPJ da Filial", required = true)
     private String cnpj;
     

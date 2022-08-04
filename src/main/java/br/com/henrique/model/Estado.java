@@ -19,10 +19,9 @@ public class Estado {
     @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String sigla;
     
-    //@NotEmpty(message = "{NotEmpty.nome}")
-    @NotEmpty(message = "Você precisa informar algo")
+    @NotEmpty(message = "O campo é obrigatório é não foi preenchido")
     @NotNull(message = "O campo não pode ser nulo")
-    @Size(min=4, max=50, message="Tamanho da informação deverá estar entre 4 até 50 caracteres")
+    @Size(min=4, max=50, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "Nome do Estado", required = true)
     private String nome;
 

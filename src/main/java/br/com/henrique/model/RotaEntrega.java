@@ -20,7 +20,7 @@ public class RotaEntrega {
     
     @NotNull(message = "O campo não pode ser nulo")
     @NotEmpty(message = "Você precisa informar algo")
-    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
+    @Size(min=5, max=50, message="Tamanho inválido! Digite no mínimo {min} e no máximo {max} caracteres")
     @ApiModelProperty(value = "Nome da Rota de Entrega", required = true)
     private String nome;
 
