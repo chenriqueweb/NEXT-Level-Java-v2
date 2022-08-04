@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiResponses;
 public class EmpresaController {
     
     @Autowired
-    private EmpresaService empresaService;
+    private EmpresaService empresaService; 
 
     // Lista Empresa
     @GetMapping
