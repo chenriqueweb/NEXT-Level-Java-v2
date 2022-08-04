@@ -13,10 +13,10 @@ public class Translator {
    comentado devido a problemas em encontrar o arquivo messages quando executado em container docker
    recupera um locale "en" da openjdk:15 e nao consegue encontrar o arquivo messages
     */
-    ResourceBundle resourceMessages = ResourceBundle.getBundle("messages.validation");
+    ResourceBundle resourceMessages = ResourceBundle.getBundle("messages.validation"); 
 
     public String getText(String messageCode) {
-        return resourceMessages.getString(messageCode);        
+        return resourceMessages.getString(messageCode);  
     }
    
     public String getText(String messageCode, Object... parameters) {

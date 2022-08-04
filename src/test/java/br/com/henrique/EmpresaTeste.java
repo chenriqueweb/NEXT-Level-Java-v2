@@ -5,21 +5,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.henrique.model.Empresa;
 import br.com.henrique.repository.EmpresaRepository;
-import br.com.henrique.service.EmpresaService;
 
 class EmpresaTeste {
 	
     @Autowired
-    private EmpresaRepository repositEmpresa;
+    
+    private EmpresaRepository repositEmpresaTest;
 
 	@Test
 	void empresaTestefindById() {
-		EmpresaService.class.getAnnotatedInterfaces();
+		// EmpresaService.class.getAnnotatedInterfaces();
 		
-		// fail("Not yet implemented");
 		Integer codigoEsperado = 21;
-		Integer codigoRetornado = repositEmpresa.findById(codigoEsperado).get().getCodigo();
+		
+		// Integer codigoRetornado = repositEmpresa.findById(codigoEsperado).get().getCodigo();
+		
+		Empresa empresaRetornoTest = repositEmpresaTest.findById(codigoEsperado).orElse(null);
+		
+		Integer codigoRetornado = empresaRetornoTest.getCodigo();
 		
 		assertEquals(codigoEsperado, codigoRetornado, 0);
 	}

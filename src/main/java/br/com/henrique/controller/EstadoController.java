@@ -22,7 +22,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Estado;
 import br.com.henrique.service.EstadoService;
-import br.com.henrique.utils.Translator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,7 +33,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping(path = "/estado")
 public class EstadoController {
 	
-    private final Translator translator = new Translator();
+    // private final Translator translator = new Translator();
 	
     @Autowired
     private EstadoService estadoService; 
@@ -46,7 +45,7 @@ public class EstadoController {
     	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Estados")
     })  
     public ResponseEntity<List<Estado>> findAll() {
-        List<Estado> estados = estadoService.findAll();
+        List<Estado> estados = estadoService.findAll(); 
         return ResponseEntity.ok().body(estados);
     }
     
