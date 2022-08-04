@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -69,7 +71,7 @@ public class EmpresaController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Empresa criada com sucesso")
     })  
-    public ResponseEntity<Void> addEmpresa(@RequestBody Empresa empresa) {
+    public ResponseEntity<Void> addEmpresa(@Valid @RequestBody Empresa empresa) {
     	
         URI uri = null;
     	try {
@@ -94,7 +96,7 @@ public class EmpresaController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Empresa não encontrada")    	    
     })  
-    public ResponseEntity<Void> updateEmpresa(@PathVariable Integer codigo, @RequestBody Empresa empresa) {
+    public ResponseEntity<Void> updateEmpresa(@Valid @PathVariable Integer codigo, @RequestBody Empresa empresa) {
         empresaService.updateEmpresa(codigo, empresa);
         return ResponseEntity.noContent().build();
     }

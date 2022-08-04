@@ -22,61 +22,61 @@ public class Microzona {
     @ApiModelProperty(value = "Código da Microzona", required = true)
     private Integer codigo;
         
-    @NotNull
-    @NotEmpty
-    @Size(min=5, max=50)
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
+    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
     @ApiModelProperty(value = "Nome da Microzona", required = true)
     private String nome;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Status da Microzona", required = true)
     private String status;
 
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento Diário", required = true)
     private String atendimentoDiario;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Segunda-feira", required = true)
     private String atendeSegunda;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Terça-feira", required = true)
     private String atendeTerca;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Quarta-feira", required = true)
     private String atendeQuarta;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Quinta-feira", required = true)
     private String atendeQuinta;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Sexta-feira", required = true)
     private String atendeSexta;
     
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Column(columnDefinition = "Character(1)")
     @ApiModelProperty(value = "Atendimento - Sábado", required = true)
     private String atendeSabado;
     
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     @ApiModelProperty(value = "Código da Rota", required = true)
     private Integer codigoRota;
     

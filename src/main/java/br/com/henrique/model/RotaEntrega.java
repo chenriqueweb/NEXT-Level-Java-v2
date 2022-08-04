@@ -18,23 +18,23 @@ public class RotaEntrega {
     @ApiModelProperty(value = "Chave para Rota de Entrega", required = true)
     private RotaEntregaPK rotaEntregaPK;    
     
-    @NotNull
-    @NotEmpty
-    @Size(min=5, max=50)
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
+    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
     @ApiModelProperty(value = "Nome da Rota de Entrega", required = true)
     private String nome;
 
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
     @Size(min=1, max=1)
     @ApiModelProperty(value = "Status da Rota de Entrega", required = true)
     private String status;
     
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigoEmpresa;
     
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     @ApiModelProperty(value = "Código da Filial", required = true)
     private Integer codigoFilial;
     

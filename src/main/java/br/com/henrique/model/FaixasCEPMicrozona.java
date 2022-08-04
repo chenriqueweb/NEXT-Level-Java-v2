@@ -15,12 +15,12 @@ public class FaixasCEPMicrozona {
     @ApiModelProperty(value = "Chave para Rota Faixa de CEP Microzona", required = true)
     private FaixasCEPMicrozonaPK faixasCEPMicrozonaPK;
     
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     //@Pattern(regexp = "\\d{5}-\\d{3})")
     @ApiModelProperty(value = "CEP Inicial", required = true)
     private Integer CEPinicial;
     
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     //@Pattern(regexp = "\\d{5}-\\d{3})")
     @ApiModelProperty(value = "CEP Final", required = true)
     private Integer CEPfinal;

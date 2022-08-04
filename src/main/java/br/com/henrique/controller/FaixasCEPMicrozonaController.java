@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,7 +78,7 @@ public class FaixasCEPMicrozonaController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Faixa de CEP da Microzona criada com sucesso")
     }) 
-    public ResponseEntity<Void> addFaixasCEPMicrozona(@RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
+    public ResponseEntity<Void> addFaixasCEPMicrozona(@Valid @RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
         FaixasCEPMicrozona faixasCEPMicrozonaNova = faixasCEPMicrozonaService.addFaixasCEPMicrozona(faixasCEPMicrozona);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -94,7 +96,8 @@ public class FaixasCEPMicrozonaController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Faixa de CEP da Microzona não encontrada")    	    
     })
-    public ResponseEntity<Void> updateFaixasCEPMicrozona(@PathVariable Integer codigoMicrozona,
+    public ResponseEntity<Void> updateFaixasCEPMicrozona(@Valid 
+    		                                             @PathVariable Integer codigoMicrozona,
                                                          @PathVariable Integer codigoSequencial, 
                                                          @RequestBody FaixasCEPMicrozona faixasCEPMicrozona) {
         FaixasCEPMicrozonaPK faixasCEPMicrozonaPK = new FaixasCEPMicrozonaPK();

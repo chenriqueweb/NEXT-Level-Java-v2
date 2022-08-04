@@ -2,7 +2,6 @@ package br.com.henrique.controller;
 
 import java.net.URI;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import javax.validation.Valid;
 
@@ -23,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.henrique.model.Estado;
 import br.com.henrique.service.EstadoService;
+import br.com.henrique.utils.Translator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,8 +34,8 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping(path = "/estado")
 public class EstadoController {
 	
-    private static final ResourceBundle messagesErrors = ResourceBundle.getBundle("utils.messages");
-
+    private final Translator translator = new Translator();
+	
     @Autowired
     private EstadoService estadoService; 
     
@@ -89,8 +89,10 @@ public class EstadoController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Estado não encontrado")    	    
     }) 
-    public ResponseEntity<Void> updateEstado(@Valid @PathVariable String sigla, @RequestBody Estado estado ) {
-//        String teste = getMessage("NotEmpty.nome");
+    public ResponseEntity<Void> updateEstado(@Valid 
+    		                                 @PathVariable String sigla, 
+    		                                 @RequestBody Estado estado ) {
+//        String teste = translator.getText("NotEmpty.nome");
 //        System.out.println(teste);
         
         estadoService.updateEstado(sigla, estado);
@@ -140,13 +142,13 @@ public class EstadoController {
         return modelAndView;
     }
     
-    public static String getMessage(String mensagem) {
-        if (messagesErrors.containsKey(mensagem)) {
-            return messagesErrors.getString(mensagem);
-        }
-        //Logar no console uma mensagem indicando que não achou o rotulo
-        return "";
-    }    
+//    public static String getMessage(String mensagem) {
+//        if (messagesErrors.containsKey(mensagem)) {
+//            return messagesErrors.getString(mensagem);
+//        }
+//        //Logar no console uma mensagem indicando que não achou o rotulo
+//        return "";
+//    }    
 
     
 }

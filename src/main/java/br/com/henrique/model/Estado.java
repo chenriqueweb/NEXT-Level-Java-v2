@@ -1,7 +1,5 @@
 package br.com.henrique.model;
 
-import java.util.ResourceBundle;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,10 +19,10 @@ public class Estado {
     @ApiModelProperty(value = "Sigla da Unidade Federativa", required = true)
     private String sigla;
     
-    //@NotEmpty(message = "Você deve informar algo em Nome do Estado")
-    @NotEmpty(message = "{NotEmpty.nome}")
-    @NotNull(message = "{NotNull.nome}")
-    @Size(min=4, max=50, message="Informe um valor entre 4 e 50 bytes em Nome do Estado")
+    //@NotEmpty(message = "{NotEmpty.nome}")
+    @NotEmpty(message = "Você precisa informar algo")
+    @NotNull(message = "O campo não pode ser nulo")
+    @Size(min=4, max=50, message="Tamanho da informação deverá estar entre 4 até 50 caracteres")
     @ApiModelProperty(value = "Nome do Estado", required = true)
     private String nome;
 

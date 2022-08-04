@@ -9,7 +9,7 @@ public class NoNullAllowedException extends RuntimeException {
 	}
 
 	public NoNullAllowedException(String message) {
-		super(message);
+		super(message); 
 	}
 
 }

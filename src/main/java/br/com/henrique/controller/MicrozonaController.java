@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -68,7 +70,7 @@ public class MicrozonaController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Micrzona criada com sucesso")
     }) 
-    public ResponseEntity<Void> addMicrozona(@RequestBody Microzona microzona) {
+    public ResponseEntity<Void> addMicrozona(@Valid @RequestBody Microzona microzona) {
         Microzona microzonaNova = microzonaService.addMicrozona(microzona);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(microzonaNova.getCodigo()).toUri();
@@ -83,7 +85,8 @@ public class MicrozonaController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Microzona não encontrada")    	    
     }) 
-    public ResponseEntity<Void> updateMicrozona(@PathVariable Integer codigo, 
+    public ResponseEntity<Void> updateMicrozona(@Valid 
+    		                                    @PathVariable Integer codigo, 
                                                 @RequestBody Microzona microzona) {
         microzonaService.updateMicrozona(codigo, microzona);
         return ResponseEntity.noContent().build();

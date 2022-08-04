@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,7 +78,7 @@ public class RotaEntregaController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "RotaEntrega criada com sucesso")
     }) 
-    public ResponseEntity<Void> addRotaEntrega(@RequestBody RotaEntrega rotaEntrega) {
+    public ResponseEntity<Void> addRotaEntrega(@Valid @RequestBody RotaEntrega rotaEntrega) {
         RotaEntrega rotaEntregaNova = rotaEntregaService.addRotaEntrega(rotaEntrega);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{siglaEstado}/{codigoRota}")
@@ -94,7 +96,8 @@ public class RotaEntregaController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "RotaEntrega não encontrada")    	    
     })  
-    public ResponseEntity<Void> updateRotaEntrega(@PathVariable String siglaEstado,
+    public ResponseEntity<Void> updateRotaEntrega(@Valid 
+    		                                      @PathVariable String siglaEstado,
                                                   @PathVariable Integer codigoRota, 
                                                   @RequestBody RotaEntrega rotaEntrega) {
         

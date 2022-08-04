@@ -30,7 +30,7 @@ public class MicrozonaService {
     private MunicipioRepository repositMunicipio;
     
     @Autowired
-    private EstadoRepository repositEstado;
+    private EstadoRepository repositEstado; 
     
     @Autowired
     private RotaEntregaRepository repositRotaEntrega;        

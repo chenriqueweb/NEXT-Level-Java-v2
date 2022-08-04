@@ -7,5 +7,5 @@ import br.com.henrique.model.Municipio;
 
 @Repository
 public interface MunicipioRepository extends JpaRepository<Municipio, Integer>  {
-
+ 
 }

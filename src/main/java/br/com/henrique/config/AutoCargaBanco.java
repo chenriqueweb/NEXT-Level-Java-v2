@@ -25,7 +25,7 @@ import br.com.henrique.service.MicrozonaService;
 import br.com.henrique.service.MunicipioService;
 import br.com.henrique.service.RotaEntregaService;
 
-@Configuration
+@Configuration 
 @Profile("dev")
 public class AutoCargaBanco implements CommandLineRunner {
     

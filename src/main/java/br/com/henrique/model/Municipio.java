@@ -18,9 +18,9 @@ public class Municipio {
     @ApiModelProperty(value = "Código do Município", required = true)
     private Integer codigo_ID;
     
-    @NotNull
-    @NotEmpty
-    @Size(min=4, max=50)
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotEmpty(message = "Você precisa informar algo")
+    @Size(min=4, max=50, message="Tamanho da informação deverá estar entre 4 até 50 caracteres")
     @ApiModelProperty(value = "Nome do Município", required = true)
     private String nome;
     

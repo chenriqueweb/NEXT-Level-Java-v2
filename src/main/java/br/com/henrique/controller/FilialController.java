@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,7 +78,7 @@ public class FilialController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Filial criada com sucesso")
     }) 
-    public ResponseEntity<Void> addFilial(@RequestBody Filial filial) {
+    public ResponseEntity<Void> addFilial(@Valid @RequestBody Filial filial) {
         Filial filialNova = filialService.addFilial(filial);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigoEmpresa}")
@@ -93,7 +95,8 @@ public class FilialController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Filial não encontrada")    	    
     })  
-    public ResponseEntity<Void> updateFilial(@PathVariable Integer codigoEmpresa,
+    public ResponseEntity<Void> updateFilial(@Valid 
+    		                                 @PathVariable Integer codigoEmpresa,
                                              @PathVariable Integer codigoFilial, 
                                              @RequestBody Filial filial) {
         

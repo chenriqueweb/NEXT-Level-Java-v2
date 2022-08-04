@@ -3,6 +3,8 @@ package br.com.henrique.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -69,7 +71,7 @@ public class MunicipioController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Municipio criado com sucesso")
     }) 
-    public ResponseEntity<Void> addMunicipio(@RequestBody Municipio municipio) {
+    public ResponseEntity<Void> addMunicipio(@Valid @RequestBody Municipio municipio) {
         Municipio municipioNovo = municipioService.addMunicipio(municipio);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(municipioNovo.getCodigo_ID()).toUri();
@@ -84,7 +86,9 @@ public class MunicipioController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Municipio não encontrado")    	    
     })  
-    public ResponseEntity<Void> updateMunicipio(@PathVariable Integer codigo, @RequestBody Municipio municipio) {
+    public ResponseEntity<Void> updateMunicipio(@Valid 
+    		                                    @PathVariable Integer codigo, 
+    		                                    @RequestBody Municipio municipio) {
         municipioService.updateMunicipio(codigo, municipio);
         return ResponseEntity.noContent().build();
     }

@@ -15,22 +15,22 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 public class Empresa {
     
-    @Id
+    @Id 
     //@GeneratedValue(strategy = GenerationType.IDENTITY)   // Utilizando numeracao do banco DB2
     @NotNull
     @ApiModelProperty(value = "Código da Empresa", required = true)
     private Integer codigo;
 
-    @NotEmpty(message = "Você deve informar algo em Razão Social")
-    @NotEmpty
-    @Size(min=5, max=50)
+    @NotEmpty(message = "Você precisa informar algo")
+    @NotNull(message = "O campo não pode ser nulo")
+    @Size(min=5, max=50, message="Tamanho da informação deverá estar entre 5 até 50 caracteres")
     @ApiModelProperty(value = "Razão Social", required = true)
     private String razaoSocial;
     
     //@NotNull(message = "{NotNull.raizCNPJ}")
-    @NotNull(message = "Raiz do CNPJ não pode ser nulo 1")
-    @NotEmpty
-    @Size(min=14, max=14)
+    @NotEmpty(message = "Você precisa informar algo")
+    @NotNull(message = "O campo não pode ser nulo")
+    @Size(min=14, max=14, message="Tamanho da informação deverá ter 14 caracteres")
     @ApiModelProperty(value = "Raiz do CNPJ", required = true)
     private String raizCNPJ;
     
