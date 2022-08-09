@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,6 +50,10 @@ public class EmpresaController {
     
     // Lista de Empresas com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas as Empresas - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Empresas")
+    })    
     public ResponseEntity<Page<Empresa>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(empresaService.findAllPage(pageable));
     }    
@@ -71,13 +76,16 @@ public class EmpresaController {
     @ApiResponses(value = {
     	    @ApiResponse(code = 201, message = "Empresa criada com sucesso")
     })  
-    public ResponseEntity<Void> addEmpresa(@Valid @RequestBody Empresa empresa) {
+    public ResponseEntity<Void> addEmpresa(@Valid 
+//    		@RequestHeader(name = "X-COM-PERSIST", required = true) String headerPersist,
+    		@RequestBody Empresa empresa) {
     	
         URI uri = null;
     	try {
              Empresa empresaNova = empresaService.addEmpresa(empresa);
              uri = ServletUriComponentsBuilder
-            		           .fromCurrentRequest().path("/{codigo}")
+            		           .fromCurrentRequest()
+            		           .path("/{codigo}")
             		           .buildAndExpand(empresaNova.getCodigo())
             		           .toUri();
     	}
@@ -96,7 +104,8 @@ public class EmpresaController {
     	    @ApiResponse(code = 400, message = "Dados inválidos"),
     	    @ApiResponse(code = 404, message = "Empresa não encontrada")    	    
     })  
-    public ResponseEntity<Void> updateEmpresa(@Valid @PathVariable Integer codigo, @RequestBody Empresa empresa) {
+    public ResponseEntity<Void> updateEmpresa(@Valid @PathVariable Integer codigo, 
+    		                                         @RequestBody Empresa empresa) {
         empresaService.updateEmpresa(codigo, empresa);
         return ResponseEntity.noContent().build();
     }

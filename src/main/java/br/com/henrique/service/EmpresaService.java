@@ -38,7 +38,6 @@ public class EmpresaService {
         if (empresa == null) {
             throw new ObjectNotFoundException("Empresa nao encontrada !");
         }
-        
         return empresa;
     }
 

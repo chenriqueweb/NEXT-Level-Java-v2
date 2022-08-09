@@ -48,6 +48,10 @@ public class MicrozonaController {
     
     // Lista de Microzonas com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas as Microzonas - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Microzonas")
+    })    
     public ResponseEntity<Page<Microzona>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(microzonaService.findAllPage(pageable));
     }       

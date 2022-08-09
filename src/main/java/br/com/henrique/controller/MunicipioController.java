@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.henrique.model.Estado;
 import br.com.henrique.model.Municipio;
 import br.com.henrique.service.MunicipioService;
 import io.swagger.annotations.Api;
@@ -47,8 +48,23 @@ public class MunicipioController {
         return ResponseEntity.ok().body(municipios);
     }
     
+    // Lista Municipio por Estado
+    @GetMapping(path = "estado/{sigla}")
+    @ApiOperation(value = "Lista todos os Municipios por Estado")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas os Municipios por Estado")
+    })
+    public ResponseEntity<List<Municipio>> findAllByEstado(@PathVariable String sigla) {
+        List<Municipio> municipios = municipioService.findAllByEstado(sigla);
+        return ResponseEntity.ok().body(municipios);
+    }
+
     // Lista de Municipios com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todos os Municipios - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas os Municipios")
+    })  
     public ResponseEntity<Page<Municipio>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(municipioService.findAllPage(pageable));
     } 

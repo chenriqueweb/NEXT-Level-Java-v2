@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.henrique.model.Empresa;
 import br.com.henrique.repository.EmpresaRepository;
 
-class EmpresaTeste {
+class old_EmpresaTeste {
 	
     @Autowired
     

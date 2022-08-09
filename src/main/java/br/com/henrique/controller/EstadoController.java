@@ -51,6 +51,10 @@ public class EstadoController {
     
     // Lista de Estado com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas os Estados - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Estados")
+    })  
     public ResponseEntity<Page<Estado>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(estadoService.findAllPage(pageable));
     }

@@ -50,6 +50,10 @@ public class FilialController {
     
     // Lista de Filiais com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas as Filiais - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as Filiais")
+    }) 
     public ResponseEntity<Page<Filial>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(filialService.findAllPage(pageable));
     }     

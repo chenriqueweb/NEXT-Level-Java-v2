@@ -49,6 +49,10 @@ public class FaixasCEPMicrozonaController {
 
     // Lista de Faixas de CEP Microzona com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas as Faixas de CEP Microzona - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de Faixas de CEP Microzona")
+    }) 
     public ResponseEntity<Page<FaixasCEPMicrozona>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(faixasCEPMicrozonaService.findAllPage(pageable));
     } 

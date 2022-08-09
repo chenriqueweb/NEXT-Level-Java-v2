@@ -50,6 +50,10 @@ public class RotaEntregaController {
     
     // Lista de Rotas de Entrega com paginação
     @GetMapping(path = "page")
+    @ApiOperation(value = "Lista todas as RotaEntregas - paginação")
+    @ApiResponses(value = {
+    	    @ApiResponse(code = 200, message = "Retorna uma lista de todas as RotaEntregas")
+    })  
     public ResponseEntity<Page<RotaEntrega>> findAllPage(Pageable pageable) {
         return ResponseEntity.ok().body(rotaEntregaService.findAllPage(pageable));
     }       
