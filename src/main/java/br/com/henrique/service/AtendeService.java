@@ -129,6 +129,7 @@ public class AtendeService {
 		  throw new ObjectNotFoundException("Não foi encontrada uma Filial próxima ao CEP informado");
   	  }
         
-      return atende;
+      // return atende;
+        return repositAtende.save(atende);
     } 	
 }

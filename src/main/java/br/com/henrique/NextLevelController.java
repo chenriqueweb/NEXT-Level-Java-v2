@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.henrique.model.Atende;
@@ -415,14 +418,14 @@ public class NextLevelController {
             return modelAndView;
         }    
         
-        @GetMapping(path = "/atende/filial/{cepAtende}")
-        public ModelAndView filialAtendeBuscaWeb(@PathVariable Integer cepAtende) throws ClassNotFoundException {
+        @RequestMapping(value = "atende/filialCEP", method = RequestMethod.GET)
+        // public ModelAndView filialAtendeBuscaWeb(@PathVariable Integer cepAtende) throws ClassNotFoundException {
+        public ModelAndView filialAtendeBuscaWeb(@RequestParam(value = "cepAtende") Integer cepAtende) throws ClassNotFoundException {
         	
         	Atende atende = atendeService.retornaCEP(cepAtende);
         	
             ModelAndView modelAndView = new ModelAndView("FilialAtendeBusca");
-            
-            modelAndView.addObject("atende", new Atende());
+            modelAndView.addObject("atendeFilial", atende);
             
 //            Class filialAtendeBusca = Class.forName((this.cepAtende(cep).getBody()).toString());
 //            modelAndView.addObject("filialAtendeBusca", filialAtendeBusca);
@@ -431,7 +434,7 @@ public class NextLevelController {
 //            modelAndView.addObject("filialAtendeBusca", objectFilialAtendeBusca);  // this.cepAtende(cep).getBody());  // this.cepAtende(cep));
             
             return modelAndView;
-        }            
+        }
        
 }
 

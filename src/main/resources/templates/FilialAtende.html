@@ -227,34 +227,16 @@ to {
 		</section>
 
 		<section>
-			<form action="/atende/filial" method="get">
-<!-- 	
-				th:action="@{/atende/filial/{cepAtende}" th:method="get">
+			<form name="buscaAtendeFilial" action="/atende/filialCEP" method="get">
 
-		        th:action="${atende.novo} ? @{/atende/filial} : @{/atende/filial/{sigla}(sigla=${estado.sigla})}"
-				th:object="${atende}" th:method="${atende.novo} ? post : put">
-				
--->
-				<div>
+   				<div>
 					<label>CEP de Origem: </label>
-<!--					<input th:field="*{cepAtende}"> -->
-       				    <input name="cepAtende" />
+       			 <input type="text" name="cepAtende" id="cepAtende"/> 
 				</div>
 
 				<div>
 					<button>Buscar</button>
 				</div>
-
-
-
-					<tr th:each="estado: ${estados}">
-						<td th:text="${estado.sigla}"></td>
-						<td th:text="${estado.nome}"></td>
-
-						<td><a
-							th:href="@{/estado/editar/{sigla}(sigla=${estado.sigla})}">Editar</a>
-
-
 
 			</form>
 

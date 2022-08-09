@@ -223,11 +223,6 @@ to {
 	<main>
 		<section>
 			<h1>Busca Filial por CEP</h1>
-		</section>
-		
-                <td th:text="${atende}"></td>			
-
-		<section>
 
 <!--  Dados do CEP Informado -->
 		    <br>
@@ -239,28 +234,27 @@ to {
 			
  				<tbody>
  				
-					<tr th:each="atende: ${atende}"></tr>
-
+<!-- 			    <tr th:each="atende: ${atendeFilial}"> -->
                     <tr>					
-	    				<td>CEP: </td> <!-- <td th:text="${cep}"></td> -->
+   		   	            <td>CEP: </td> <td th:text="${atendeFilial.getCep}"></td>
 	    			</tr>
 	    			<tr>
-      				    <td>Logradouro: </td> <!-- <td th:text="${logradouro}"></td> -->
+      				    <td>Logradouro: </td> <td th:text="${atendeFilial.getLogradouro}"></td>
    				    </tr>
 	    			<tr>
-      				    <td>Logradouro: </td> <!-- <td th:text="${complemento}"></td> -->
+      				    <td>Complemento: </td> <td th:text="${atendeFilial.getComplemento}"></td>
    				    </tr>
 	    			<tr>
-      				    <td>Localidade: </td> <!-- <td th:text="${localidade}"></td> -->
+      				    <td>Localidade: </td> <td th:text="${atendeFilial.getLocalidade}"></td>
    				    </tr>
 	    			<tr>
-      				    <td>Bairro: </td> <!-- <td th:text="${bairro}"></td> -->
+      				    <td>Bairro: </td> <td th:text="${atendeFilial.getBairro}"></td>
    				    </tr>
 	    			<tr>
-      				    <td>UF: </td> <!-- <td th:text="${uf}"></td> -->
+      				    <td>UF: </td> <td th:text="${atendeFilial.getUf}"></td>
    				    </tr>
-
  				</tbody>
+ 				
 			</table>
 
 <!--  Dados da Filial -->
@@ -273,40 +267,38 @@ to {
 			<table >
 			
  				<tbody>
-					<tr th:each="atende: ${atende}"></tr>
-
                     <tr>					
-	    				<td>Empresa Atende: </td> <!-- <td th:text="${empresaAtende}"></td> -->
+	    				<td>Empresa Atende: </td> <td th:text="${atendeFilial.getEmpresaAtende}"></td>
                     </tr>					
                     <tr>					
-	    				<td>Filial Atende: </td> <!--  <td th:text="${filialAtende}"></td> -->
+	    				<td>Filial Atende: </td> <td th:text="${atendeFilial.getFilialAtende}"></td>
                     <tr>					
                     <tr>					
-	    				<td>Nome Filial: </td> <!-- <td th:text="${nomeFilial}"></td> -->
+	    				<td>Nome Filial: </td> <td th:text="${atendeFilial.getNomeFilial}"></td>
                     </tr>					
                     <tr>					
-	    				<td>CNPJ Filial: </td> <!-- <td th:text="${cnpjFilial}"></td> -->
+	    				<td>CNPJ Filial: </td> <td th:text="${atendeFilial.getCnpjFilial}"></td>
                     <tr>					
                     <tr>					
-	    				<td>Microzona: </td> <!-- <td th:text="${microzona}"></td> -->
+	    				<td>Microzona: </td> <td th:text="${atendeFilial.getMicrozona}"></td>
                     </tr>					
                     <tr>					
-	    				<td>UF da Rota: </td> <!-- <td th:text="${ufRota}"></td> -->
+	    				<td>UF da Rota: </td> <td th:text="${atendeFilial.getUfRota}"></td>
                     <tr>					
                     <tr>					
-	    				<td>Codigo Rota: </td> <!-- <td th:text="${codigoRota}"></td> -->
+	    				<td>Codigo Rota: </td> <td th:text="${atendeFilial.getCodigoRota}"></td>
                     </tr>					
                     <tr>					
-	    				<td>Codigo Municipio: </td> <!-- <td th:text="${codigoMunicipio}"></td> -->
+	    				<td>Codigo Municipio: </td> <td th:text="${atendeFilial.getCodigoMunicipio}"></td>
                     <tr>					
                     <tr>					
-	    				<td>Municipio: </td> <!-- <td th:text="${municipio}"></td> -->
+	    				<td>Municipio: </td> <td th:text="${atendeFilial.getMunicipio}"></td>
                     </tr>					
                     <tr>					
-	    				<td>Sigla do Estado: </td> <!-- <td th:text="${estado}"></td> -->
+	    				<td>Sigla do Estado: </td> <td th:text="${atendeFilial.getEstado}"></td>
                     <tr>					
                     <tr>					
-	    				<td>Nome do Estado: </td> <!-- <td th:text="${nomeEstado}"></td> -->	    			
+	    				<td>Nome do Estado: </td> <td th:text="${atendeFilial.getNomeEstado}"></td>	    			
 	    			</tr>
 
  				</tbody>
