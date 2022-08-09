@@ -1,216 +1,239 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
 
-<title>NEXT Level - Java</title>    
+	<title>NEXT Level - Java</title>
 
-<!-- <link rel="icon" href="../image/png/favicon.png"/> -->
-<link rel="shortcut icon" href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
-<link href="http://localhost:8090/static/css/estilo.css" th:href="@{http://localhost:8090/static/css/estilo.css}" rel="stylesheet" />
+	<!-- <link rel="icon" href="../image/png/favicon.png"/> -->
+	<link rel="shortcut icon" href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
+	<link href="http://localhost:8090/static/css/estilo.css" th:href="@{http://localhost:8090/static/css/estilo.css}"
+		rel="stylesheet" />
 
-<style>
-body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Roboto', sans-serif;
-	font-family: 'Josefin Sans', sans-serif;
-}
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Roboto', sans-serif;
+			font-family: 'Josefin Sans', sans-serif;
+		}
 
-header {
-	margin: 0;
-}
+		header {
+			margin: 0;
+		}
 
-header nav {
-	background: #555;
-	height: 3em;
-}
+		header nav {
+			background: #555;
+			height: 3em;
+		}
 
-header nav ul {
-	margin: 0;
-	padding: 0;
-}
+		header nav ul {
+			margin: 0;
+			padding: 0;
+		}
 
-header nav ul li {
-	list-style: none;
-	line-height: 3em;
-	float: left;
-}
+		header nav ul li {
+			list-style: none;
+			line-height: 3em;
+			float: left;
+		}
 
-header nav ul li a {
-	text-decoration: none;
-	display: block;
-	height: 100%;
-	padding: 0 1em;
-	color: #888;
-}
+		header nav ul li a {
+			text-decoration: none;
+			display: block;
+			height: 100%;
+			padding: 0 1em;
+			color: #888;
+		}
 
-nav a:hover {
-	color: #fff;
-	background-color: #777;
-}
+		nav a:hover {
+			color: #fff;
+			background-color: #777;
+		}
 
-header nav ul li:first-child a {
-	font-size: 1.4em;
-	color: #80aebd;
-}
+		header nav ul li:first-child a {
+			font-size: 1.4em;
+			color: #80aebd;
+		}
 
-header nav ul li:first-child a:hover {
-	color: lightblue;
-}
+		header nav ul li:first-child a:hover {
+			color: lightblue;
+		}
 
-main {
-	padding: 0 1em;
-}
+		main {
+			padding: 0 1em;
+		}
 
-main section form div {
-	margin: 0 0 10px 0;
-}
+		main section form div {
+			margin: 0 0 10px 0;
+		}
 
-main section form div label {
-	display: block;
-}
+		main section form div label {
+			display: block;
+		}
 
-main section form div input {
-	width: 20em;
-}
+		main section form div input {
+			width: 20em;
+		}
 
-main section form div button {
-	border: none;
-	padding: 10px 15px;
-	background-color: #80aebd;
-	color: #fff;
-}
+		main section form div button {
+			border: none;
+			padding: 10px 15px;
+			background-color: #80aebd;
+			color: #fff;
+		}
 
-main section form div button:hover {
-	background-color: lightblue;
-	cursor: pointer;
-}
+		main section form div button:hover {
+			background-color: lightblue;
+			cursor: pointer;
+		}
 
-main section table {
-	border-collapse: collapse;
-}
+		main section table {
+			border-collapse: collapse;
+		}
 
-main section table, main section table th, main section table td {
-	border: 1px solid #eee;
-	padding: 10px 15px;
-}
+		main section table,
+		main section table th,
+		main section table td {
+			border: 1px solid #eee;
+			padding: 10px 15px;
+		}
 
-main section table tbody tr td a {
-	text-decoration: none;
-	color: #80aebd;
-}
+		main section table tbody tr td a {
+			text-decoration: none;
+			color: #80aebd;
+		}
 
-main section table tbody tr td a:hover {
-	text-decoration: underline;
-	color: lightblue;
-}
+		main section table tbody tr td a:hover {
+			text-decoration: underline;
+			color: lightblue;
+		}
 
-main section table tbody tr td form button {
-	border: none;
-	padding: 10px 15px;
-	background-color: #bd8088;
-	color: #fff;
-}
+		main section table tbody tr td form button {
+			border: none;
+			padding: 10px 15px;
+			background-color: #bd8088;
+			color: #fff;
+		}
 
-main section table tbody tr td form button:hover {
-	background-color: #e6adb7;
-	cursor: pointer;
-}
+		main section table tbody tr td form button:hover {
+			background-color: #e6adb7;
+			cursor: pointer;
+		}
 
-main section div {
-	user-select: none;
-}
+		main section div {
+			user-select: none;
+		}
 
-main section div span {
-	border-radius: 3px;
-	border: 1px solid #999;
-	padding: 5px;
-	margin: 10px 0px 0px 10px;
-	display: inline-block
-}
+		main section div span {
+			border-radius: 3px;
+			border: 1px solid #999;
+			padding: 5px;
+			margin: 10px 0px 0px 10px;
+			display: inline-block
+		}
 
-main section div span.selected {
-	background: #ccf;
-}
+		main section div span.selected {
+			background: #ccf;
+		}
 
-/* The snackbar - position it at the bottom and in the middle of the screen */
-#snackbar {
-	visibility: hidden; /* Hidden by default. Visible on click */
-	min-width: 250px; /* Set a default minimum width */
-	margin-left: -125px; /* Divide value of min-width by 2 */
-	background-color: #333; /* Black background color */
-	/* limão como fundo #00ff00 */
-	color: #fff; /* White text color */
-	text-align: center; /* Centered text */
-	border-radius: 2px; /* Rounded borders */
-	padding: 16px; /* Padding */
-	position: fixed; /* Sit on top of the screen */
-	z-index: 1; /* Add a z-index if needed */
-	left: 50%; /* Center the snackbar */
-	bottom: 30px; /* 30px from the bottom */
-}
+		/* The snackbar - position it at the bottom and in the middle of the screen */
+		#snackbar {
+			visibility: hidden;
+			/* Hidden by default. Visible on click */
+			min-width: 250px;
+			/* Set a default minimum width */
+			margin-left: -125px;
+			/* Divide value of min-width by 2 */
+			background-color: #333;
+			/* Black background color */
+			/* limão como fundo #00ff00 */
+			color: #fff;
+			/* White text color */
+			text-align: center;
+			/* Centered text */
+			border-radius: 2px;
+			/* Rounded borders */
+			padding: 16px;
+			/* Padding */
+			position: fixed;
+			/* Sit on top of the screen */
+			z-index: 1;
+			/* Add a z-index if needed */
+			left: 50%;
+			/* Center the snackbar */
+			bottom: 30px;
+			/* 30px from the bottom */
+		}
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#snackbar.show {
-	visibility: visible; /* Show the snackbar */
-	/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+		/* Show the snackbar when clicking on a button (class added with JavaScript) */
+		#snackbar.show {
+			visibility: visible;
+			/* Show the snackbar */
+			/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */
-	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-	animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
+			-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
 
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-	from {bottom: 0;
-	opacity: 0;
-}
+		/* Animations to fade the snackbar in and out */
+		@-webkit-keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
 
-to {
-	bottom: 30px;
-	opacity: 1;
-}
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
 
-}
-@keyframes fadein {
-	from {bottom: 0;
-	opacity: 0;
-}
+		}
 
-to {
-	bottom: 30px;
-	opacity: 1;
-}
+		@keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
 
-}
-@-webkit-keyframes fadeout {
-	from {bottom: 30px;
-	opacity: 1;
-}
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
 
-to {
-	bottom: 0;
-	opacity: 0;
-}
+		}
 
-}
-@keyframes fadeout {
-	from {bottom: 30px;
-	opacity: 1;
-}
+		@-webkit-keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
 
-to {
-	bottom: 0;
-	opacity: 0;
-}
-}
-</style>
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
 
-</head> 
-  
+		}
+
+		@keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
+
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+	</style>
+
+</head>
+
 <body>
 	<header>
 		<nav>
@@ -241,56 +264,56 @@ to {
 			<center>
 				<br> <br> <br> <br>
 
-				<svg width="184" height="140" viewBox="0 0 184 140" fill="none"
-					xmlns="http://www.w3.org/2000/svg" class="sc-gGLxEB dGJRan">
-<path
+				<svg width="184" height="140" viewBox="0 0 184 140" fill="none" xmlns="http://www.w3.org/2000/svg"
+					class="sc-gGLxEB dGJRan">
+					<path
 						d="M126.828 66.0877L126.854 98.2905C126.854 103.451 131.072 108.108 136.243 108.418C142.057 108.766 146.878 104.181 146.878 98.4714V42.1649C146.878 36.843 142.758 32.3284 137.424 32.0442C134.096 31.8633 131.468 33.2972 129.138 35.6417L94.0736 70.5442C91.9648 72.6691 90.6541 75.5755 90.6541 78.7983L90.68 102.075L126.828 66.0877Z"
 						fill="url(#paint0_linear_37037_9627)">
-</path>
-<path
+					</path>
+					<path
 						d="M67.5874 41.9948C67.5874 36.4919 71.9991 32.0289 77.4387 32.0289C82.8783 32.0289 87.29 36.4919 87.29 41.9948V98.4704C87.29 103.973 82.8783 108.436 77.4387 108.436C71.9991 108.436 67.5874 103.973 67.5874 98.4704V41.9948V41.9948Z"
 						fill="url(#paint1_linear_37037_9627)">
-</path>
-<path
+					</path>
+					<path
 						d="M77.4387 28.1831C82.8794 28.1831 87.29 23.665 87.29 18.0916C87.29 12.5181 82.8794 8 77.4387 8C71.998 8 67.5874 12.5181 67.5874 18.0916C67.5874 23.665 71.998 28.1831 77.4387 28.1831Z"
 						fill="url(#paint2_linear_37037_9627)">
-</path>
-<path
+					</path>
+					<path
 						d="M28.05 74.3778L28.024 42.1752C28.024 37.0148 23.8064 32.3582 18.6349 32.0482C12.8211 31.693 8 36.285 8 41.9944V98.3004C8 103.622 12.1203 108.137 17.454 108.421C20.7827 108.602 23.4106 107.168 25.74 104.824L60.8048 69.9214C62.9136 67.7965 64.2244 64.8901 64.2244 61.6673L64.1984 38.3905L28.05 74.3778Z"
 						fill="url(#paint3_linear_37037_9627)">
-</path>
+					</path>
 
-<defs>
-<linearGradient id="paint0_linear_37037_9627" x1="7.47094" y1="108.369"
-						x2="146.464" y2="31.5258" gradientUnits="userSpaceOnUse">
-<stop stop-color="#6A5AFF">
-</stop>
-<stop offset="1" stop-color="#00D3C3">
-</stop>
-</linearGradient>
-<linearGradient id="paint1_linear_37037_9627" x1="77.4387" y1="8.00188"
-						x2="77.4387" y2="108.436" gradientUnits="userSpaceOnUse">
-<stop stop-color="#929497">
-</stop>
-<stop offset="1" stop-color="#6D6E70">
-</stop>
-</linearGradient>
-<linearGradient id="paint2_linear_37037_9627" x1="77.4387" y1="8"
-						x2="77.4387" y2="109.631" gradientUnits="userSpaceOnUse">
-<stop stop-color="#929497">
-</stop>
-<stop offset="1" stop-color="#6D6E70">
-</stop>
-</linearGradient>
-<linearGradient id="paint3_linear_37037_9627" x1="8" y1="108.366"
-						x2="146.993" y2="31.5232" gradientUnits="userSpaceOnUse">
-<stop stop-color="#6A5AFF">
-</stop>
-<stop offset="1" stop-color="#00D3C3">
-</stop>
-</linearGradient>
-</defs>
-</svg>
+					<defs>
+						<linearGradient id="paint0_linear_37037_9627" x1="7.47094" y1="108.369" x2="146.464"
+							y2="31.5258" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#6A5AFF">
+							</stop>
+							<stop offset="1" stop-color="#00D3C3">
+							</stop>
+						</linearGradient>
+						<linearGradient id="paint1_linear_37037_9627" x1="77.4387" y1="8.00188" x2="77.4387"
+							y2="108.436" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#929497">
+							</stop>
+							<stop offset="1" stop-color="#6D6E70">
+							</stop>
+						</linearGradient>
+						<linearGradient id="paint2_linear_37037_9627" x1="77.4387" y1="8" x2="77.4387" y2="109.631"
+							gradientUnits="userSpaceOnUse">
+							<stop stop-color="#929497">
+							</stop>
+							<stop offset="1" stop-color="#6D6E70">
+							</stop>
+						</linearGradient>
+						<linearGradient id="paint3_linear_37037_9627" x1="8" y1="108.366" x2="146.993" y2="31.5232"
+							gradientUnits="userSpaceOnUse">
+							<stop stop-color="#6A5AFF">
+							</stop>
+							<stop offset="1" stop-color="#00D3C3">
+							</stop>
+						</linearGradient>
+					</defs>
+				</svg>
 				<h1>Imagine caminhos.</h1>
 				<h3>Para você, onde, quando e como quiser.</h3>
 			</center>

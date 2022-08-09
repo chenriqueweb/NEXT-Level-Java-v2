@@ -9,7 +9,7 @@
 <title>NEXT Level - Java</title>
 
 <link rel="shortcut icon" href="https://www.via.com.br/wp-content/themes/viavarejo/assets/images/favicon.png?v=2">
-<link href="../static/css/estilo.css" th:href="@{/css/estilo.css}" rel="stylesheet" />
+<!-- <link href="../static/css/estilo.css" th:href="@{/css/estilo.css}" rel="stylesheet" /> -->
 
 <style>
 body {
@@ -18,7 +18,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-family: 'Josefin Sans', sans-serif;
 }
-
+ 
 header {
 	margin: 0;
 }
@@ -225,9 +225,7 @@ to {
 			<h1>Busca Filial por CEP</h1>
 		</section>
 		
-<td th:text="${filialAtendeBusca}"></td>			
-
-
+                <td th:text="${atende}"></td>			
 
 		<section>
 
@@ -240,25 +238,26 @@ to {
 			<table >
 			
  				<tbody>
-					<tr th:each="filial: ${filialAtendeBusca}"></tr>
+ 				
+					<tr th:each="atende: ${atende}"></tr>
 
                     <tr>					
-	    				<td>CEP: </td> <td th:text="${cep}"></td>
+	    				<td>CEP: </td> <!-- <td th:text="${cep}"></td> -->
 	    			</tr>
 	    			<tr>
-      				    <td>Logradouro: </td> <td th:text="${logradouro}"></td>
+      				    <td>Logradouro: </td> <!-- <td th:text="${logradouro}"></td> -->
    				    </tr>
 	    			<tr>
-      				    <td>Logradouro: </td> <td th:text="${complemento}"></td>
+      				    <td>Logradouro: </td> <!-- <td th:text="${complemento}"></td> -->
    				    </tr>
 	    			<tr>
-      				    <td>Localidade: </td> <td th:text="${localidade}"></td>
+      				    <td>Localidade: </td> <!-- <td th:text="${localidade}"></td> -->
    				    </tr>
 	    			<tr>
-      				    <td>Bairro: </td> <td th:text="${bairro}"></td>
+      				    <td>Bairro: </td> <!-- <td th:text="${bairro}"></td> -->
    				    </tr>
 	    			<tr>
-      				    <td>UF: </td> <td th:text="${uf}"></td>
+      				    <td>UF: </td> <!-- <td th:text="${uf}"></td> -->
    				    </tr>
 
  				</tbody>
@@ -274,40 +273,40 @@ to {
 			<table >
 			
  				<tbody>
-					<tr th:each="filial: ${filialAtende}"></tr>
+					<tr th:each="atende: ${atende}"></tr>
 
                     <tr>					
-	    				<td>Empresa Atende: </td> <td th:text="${empresaAtende}"></td>
+	    				<td>Empresa Atende: </td> <!-- <td th:text="${empresaAtende}"></td> -->
                     </tr>					
                     <tr>					
-	    				<td>Filial Atende: </td> <!--  <td th:text="${filialAtende}"></td>  -->
+	    				<td>Filial Atende: </td> <!--  <td th:text="${filialAtende}"></td> -->
                     <tr>					
                     <tr>					
-	    				<td>Nome Filial: </td> <td th:text="${nomeFilial}"></td>
+	    				<td>Nome Filial: </td> <!-- <td th:text="${nomeFilial}"></td> -->
                     </tr>					
                     <tr>					
-	    				<td>CNPJ Filial: </td> <td th:text="${cnpjFilial}"></td>
+	    				<td>CNPJ Filial: </td> <!-- <td th:text="${cnpjFilial}"></td> -->
                     <tr>					
                     <tr>					
-	    				<td>Microzona: </td> <td th:text="${microzona}"></td>
+	    				<td>Microzona: </td> <!-- <td th:text="${microzona}"></td> -->
                     </tr>					
                     <tr>					
-	    				<td>UF da Rota: </td> <td th:text="${ufRota}"></td>
+	    				<td>UF da Rota: </td> <!-- <td th:text="${ufRota}"></td> -->
                     <tr>					
                     <tr>					
-	    				<td>Codigo Rota: </td> <td th:text="${codigoRota}"></td>
+	    				<td>Codigo Rota: </td> <!-- <td th:text="${codigoRota}"></td> -->
                     </tr>					
                     <tr>					
-	    				<td>Codigo Municipio: </td> <td th:text="${codigoMunicipio}"></td>
+	    				<td>Codigo Municipio: </td> <!-- <td th:text="${codigoMunicipio}"></td> -->
                     <tr>					
                     <tr>					
-	    				<td>Municipio: </td> <td th:text="${municipio}"></td>
+	    				<td>Municipio: </td> <!-- <td th:text="${municipio}"></td> -->
                     </tr>					
                     <tr>					
-	    				<td>Sigla do Estado: </td> <td th:text="${estado}"></td>
+	    				<td>Sigla do Estado: </td> <!-- <td th:text="${estado}"></td> -->
                     <tr>					
                     <tr>					
-	    				<td>Nome do Estado: </td> <td th:text="${nomeEstado}"></td>	    			
+	    				<td>Nome do Estado: </td> <!-- <td th:text="${nomeEstado}"></td> -->	    			
 	    			</tr>
 
  				</tbody>
