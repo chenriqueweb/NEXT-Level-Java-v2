@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.henrique.model.Estado;
 import br.com.henrique.model.Municipio;
 import br.com.henrique.service.MunicipioService;
 import io.swagger.annotations.Api;

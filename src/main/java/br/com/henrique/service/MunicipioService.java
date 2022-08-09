@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.henrique.model.Municipio;
-import br.com.henrique.repository.EstadoRepository;
 import br.com.henrique.repository.MunicipioRepository;
 import br.com.henrique.service.exception.ObjectFoundException;
 import br.com.henrique.service.exception.ObjectNotFoundException;
@@ -19,9 +18,6 @@ public class MunicipioService {
     
     @Autowired
     private MunicipioRepository repositMunicipio;
-    
-    @Autowired
-    private EstadoRepository repositEstado;
     
     // Lista Municipio
     public List<Municipio> findAll() {
